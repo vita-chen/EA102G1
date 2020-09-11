@@ -130,8 +130,9 @@
 <!-- 		</div> -->
 <!-- </header>sect-heading -->
 
-<%@ include file="page1.file" %>  
- <c:forEach var="prodvo" items="${prodList}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+<%-- <%@ include file="page1.file" %>   --%>
+ <c:forEach var="prodvo" items="${prodList}">
+<%--  <c:forEach var="prodvo" items="${prodList}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>"> --%>
  <div style="display:none" class="prod_no">${prodvo.prod_no }</div>
 <article class="card card-product-list">
 	<div class="row no-gutters">
@@ -178,11 +179,17 @@
 	</div> <!-- row.// -->
 </article> <!-- card-product .// -->
  </c:forEach>
-<%@ include file="page2.file" %> 
-
-
-
-
+<%-- <%@ include file="page2.file" %>  --%>
+<c:if test="${not empty prodList }">
+<div class="d-flex justify-content-center mt-2">
+<nav aria-label="Page navigation example">
+  <ul class="pagination" style="color:#0991a0">
+    <li class="Previous page-item"><a class="page-link" >First</a></li>
+    <li class="Next page-item"><a class="page-link" >Last</a></li>
+  </ul>
+</nav>
+</div>
+</c:if>
 
 
 
