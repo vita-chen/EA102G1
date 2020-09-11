@@ -1,0 +1,3 @@
+PtpService ptpSvc = new PtpService();
+	List<PtpVO> list = ptpSvc.getAll();
+	pageContext.setAttribute("list", list);

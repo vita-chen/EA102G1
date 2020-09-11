@@ -1,0 +1,14 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+  <nav aria-label="Page navigation sample">
+  <ul class="pagination d-flex justify-content-center">
+  <%if (rowsPerPage<rowNumber) {%>
+ 
+      <li class="page-item"><a class="page-link" href="<%=request.getRequestURI()%>?whichPage=<%=whichPage-1%>&shopper=<%=request.getParameter("shopper")%>">Previous</a>&nbsp;</li>
+
+    <%for (int i=1; i<=pageNumber; i++){%>
+    <li class="page-item"><a class = "page-link" href="<%=request.getRequestURI()%>?whichPage=<%=i%>&shopper=<%=request.getParameter("shopper")%>"><%=i%></a></li>
+    <%}%> 
+  
+       <li class="page-item"> <a class="page-link" href="<%=request.getRequestURI()%>?whichPage=<%=whichPage+1%>&shopper=<%=request.getParameter("shopper")%>">Next</a>&nbsp;</li>
+
+  <%}%>  

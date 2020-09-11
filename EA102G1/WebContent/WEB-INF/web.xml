@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="false">
+  
+  <display-name>EA102G1</display-name>
+  
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+  
+  	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/TestJDBC</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	<!-- 廠商&後台  -->
+  
+  	<servlet>
+		<servlet-name>VenderServlet</servlet-name>
+		<servlet-class>com.vender.controller.VenderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VenderServlet</servlet-name>
+		<url-pattern>/vender/vender.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdmServlet</servlet-name>
+		<servlet-class>com.adm.controller.AdmServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdmServlet</servlet-name>
+		<url-pattern>/adm/adm.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 新名(會員&二手) -->
+	
+  	<servlet>
+		<servlet-name>ProdServlet</servlet-name>
+		<servlet-class>com.prod.controller.ProdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProdServlet</servlet-name>
+		<url-pattern>/prod/prod.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Select_Ajax</servlet-name>
+		<servlet-class>second.ajax.controller.Select_Ajax</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Select_Ajax</servlet-name>
+		<url-pattern>/second/ajax.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MembreServlet</servlet-name>
+		<servlet-class>com.membre.controller.MembreServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MembreServlet</servlet-name>
+		<url-pattern>/membre/membre.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ListServlet</servlet-name>
+		<servlet-class>com.buy_list.controller.ListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListServlet</servlet-name>
+		<url-pattern>/prod/list.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ShoppingCartServlet</servlet-name>
+		<servlet-class>com.shoppingcart.controller.ShoppingCartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShoppingCartServlet</servlet-name>
+		<url-pattern>/order/shopping.do</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>OrderServlet</servlet-name>
+		<servlet-class>com.prod_order.controller.OrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OrderServlet</servlet-name>
+		<url-pattern>/order/order.do</url-pattern>
+	</servlet-mapping>
+	
+	<!--  500先鎖著 我GOOGLE翻譯比較好除錯
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	-->
+	
+	<!-- 禮車  -->
+	<servlet>
+		<servlet-name>CarServlet</servlet-name>
+		<servlet-class>com.car.controller.CarServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CarServlet</servlet-name>
+		<url-pattern>/car/car.do</url-pattern>
+	</servlet-mapping>
+  
+  
+  	<servlet>
+		<servlet-name>CarExtServlet</servlet-name>
+		<servlet-class>com.carExt.controller.CarExtServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CarExtServlet</servlet-name>
+		<url-pattern>/carExt/carext.do</url-pattern>
+	</servlet-mapping>
+  
+  
+    <servlet>
+		<servlet-name>CarOrderServlet</servlet-name>
+		<servlet-class>com.carOrder.controller.CarOrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CarOrderServlet</servlet-name>
+		<url-pattern>/carOrder/carorder.do</url-pattern>
+	</servlet-mapping>
+  	
+  	<!-- 婚攝  -->
+  	
+  <servlet>
+    <servlet-name>WedPhotoServlet</servlet-name>
+    <servlet-class>com.wpcase.controller.WedPhotoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WedPhotoServlet</servlet-name>
+    <url-pattern>/wed/wpcase.do</url-pattern>
+  </servlet-mapping>
+  	
+  	<!-- 婚紗  -->
+  	
+  	<servlet>
+		<servlet-name>DressCaseServlet</servlet-name>
+		<servlet-class>com.dresscase.controller.DressCaseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DressCaseServlet</servlet-name>
+		<url-pattern>/front_end/dresscase/dress.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DressOrderServlet</servlet-name>
+		<servlet-class>com.dressorder.controller.DressOrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DressOrderServlet</servlet-name>
+		<url-pattern>/front_end/dressorder/order.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DressPicServlet</servlet-name>
+		<servlet-class>com.dresscase.controller.DressPicServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DressPicServlet</servlet-name>
+		<url-pattern>/front_end/dresscase/pic.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DressAddOnServlet</servlet-name>
+		<servlet-class>com.dressaddon.controller.DressAddOnServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DressAddOnServlet</servlet-name>
+		<url-pattern>/front_end/addon/addon.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShoppingServlet</servlet-name>
+		<servlet-class>com.dresscase.controller.ShoppingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShoppingServlet</servlet-name>
+		<url-pattern>/front_end/dresscase/shop.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DressTrackServlet</servlet-name>
+		<servlet-class>com.dresscasetrack.controller.DressTrackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DressTrackServlet</servlet-name>
+		<url-pattern>/front_end/dresstrack/track.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 冠閎 廣告+置頂公告+討論區  -->
+  <servlet>
+		<servlet-name>AdServlet</servlet-name>
+		<servlet-class>com.ad.controller.AdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdServlet</servlet-name>
+		<url-pattern>/back_end/ad/ad.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DBGifReader4</servlet-name>
+		<servlet-class>com.ad.controller.DBGifReader4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DBGifReader4</servlet-name>
+		<url-pattern>/back_end/ad/ad_img.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PtpServlet</servlet-name>
+		<servlet-class>com.pinthepost.controller.PtpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PtpServlet</servlet-name>
+		<url-pattern>/back_end/ptp/ptp.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ForumServlet</servlet-name>
+		<servlet-class>com.forum.controller.ForumServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ForumServlet</servlet-name>
+		<url-pattern>/front_end/forum/forum.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MesServlet</servlet-name>
+		<servlet-class>com.forum_mes.controller.MesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MesServlet</servlet-name>
+		<url-pattern>/front_end/forum/mes.do</url-pattern>
+	</servlet-mapping>
+	
+	
+</web-app>

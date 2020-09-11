@@ -1,0 +1,538 @@
+/*===================================
+整個網頁的基本樣式(字型...etc)
+====================================*/
+
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+    overflow-x: hidden;
+
+} /* 統一全站字型 */
+
+body .container-fluid{
+    padding: 0;
+} /* 調整整個網頁邊界，不同section有不同邊界需求就要另外重設。*/
+
+.my_banner{
+    height: 100%; 
+    position: relative;
+}
+.modal-backdrop.show {
+    opacity: .5;
+    z-index: 99;
+}
+
+@media all and (max-width: 991px){
+    .my_banner{
+        height: auto; 
+        overflow: visible;
+    }
+}
+
+.my_carousel > .row{
+    margin:0; /* 使圖滿版的設定 */
+}
+.my_carousel > .row > .col-md-12 {
+    padding:0; /* 使圖滿版的設定 */
+}
+.my_carousel .carousel-control-next,.my_carousel .carousel-control-prev{    
+	position: absolute;
+    z-index: 20;}
+/*===================================
+選單區塊
+====================================*/
+
+.logo{
+    width:200px;
+   } /* 調整logo大小 */
+
+
+.top{ 
+    z-index: 999; /* 指定元素在堆疊環境中的堆疊層級，數值越大就越上面，數值越小就越底層 
+                   *(top要指定999不然會因為被header-menu蓋住而使按下「填問卷抽好禮！會挑轉頁面的效果失效」) */
+    position: relative;
+    background-color:#eee; 
+    padding: 10px;
+} /* top的目的是讓「歡迎來到婚禮導航~~ 置頂公告：填問卷抽好禮！」
+   * 這個section有顏色(灰)，藉此跟其他區塊做出區隔 */
+
+
+.header-menu{
+    z-index: 1; /* 指定元素在堆疊環境中的堆疊層級 */
+    position: relative;
+}
+
+/*===================================
+會員登入
+====================================*/
+
+.user-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #212529c7;
+  z-index: 3;
+  overflow-y: auto;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s 0, visibility 0 0.3s;
+  -moz-transition: opacity 0.3s 0, visibility 0 0.3s;
+  transition: opacity 0.3s 0, visibility 0 0.3s;
+}
+.user-modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: opacity 0.3s 0, visibility 0 0;
+  -moz-transition: opacity 0.3s 0, visibility 0 0;
+  transition: opacity 0.3s 0, visibility 0 0;
+}
+.user-modal.is-visible .user-modal-container {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.user-modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  background: #FFF;
+  margin: 3em auto 4em;
+  cursor: auto;
+  border-radius: 0.25em;
+  -webkit-transform: translateY(-30px);
+  -moz-transform: translateY(-30px);
+  -ms-transform: translateY(-30px);
+  -o-transform: translateY(-30px);
+  transform: translateY(-30px);
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.user-modal-container .switcher:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.user-modal-container .switcher li {
+  width: 50%;
+  float: left;
+  text-align: center;
+	list-style:none;
+}
+.user-modal-container .switcher li:first-child a {
+  border-radius: .25em 0 0 0;
+}
+.user-modal-container .switcher li:last-child a {
+  border-radius: 0 .25em 0 0;
+}
+.user-modal-container .switcher a {
+  display: block;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background: #d2d8d8;
+  color: #809191;
+	text-decoration: none;
+}
+.user-modal-container .switcher a.selected {
+  background: #FFF;
+  color: #505260;
+}
+@media only screen and (min-width: 600px) {
+  .user-modal-container {
+    margin: 4em auto;
+  }
+  .user-modal-container .switcher a {
+    height: 70px;
+    line-height: 70px;
+  }
+}
+
+.form {
+  padding: 1.4em;
+}
+.form .fieldset {
+  position: relative;
+  margin: 1.4em 0;
+}
+.form .fieldset:first-child {
+  margin-top: 0;
+}
+.form .fieldset:last-child {
+  margin-bottom: 0;
+}
+.form label {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+.form label.image-replace {
+  /* replace text with an icon */
+  display: inline-block;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  color: transparent;
+  text-shadow: none;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+}
+.form label.username {
+  background-image: url("https://codyhouse.co/demo/login-signup-modal-window/img/cd-icon-username.svg");
+}
+.form label.email {
+  background-image: url("https://codyhouse.co/demo/login-signup-modal-window/img/cd-icon-email.svg");
+}
+.form label.password {
+  background-image: url("https://codyhouse.co/demo/login-signup-modal-window/img/cd-icon-password.svg");
+}
+.form input {
+  margin: 0;
+  padding: 0;
+  border-radius: 0.25em;
+}
+.form input.full-width {
+  width: 100%;
+}
+.form input.has-padding {
+  padding: 12px 20px 12px 50px;
+}
+.form input.has-border {
+  border: 1px solid #d2d8d8;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+.form input.has-border:focus {
+  border-color: #343642;
+  box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+  outline: none;
+}
+.form input.has-error {
+  border: 1px solid #d76666;
+}
+.form input[type=password] {
+  /* space left for the HIDE button */
+  padding-right: 65px;
+}
+.form input[type=submit] {
+  padding: 16px 0;
+  cursor: pointer;
+  background: #F64747;
+  color: #FFF;
+  font-weight: bold;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+	-webkit-transition: all 0.30s ease-in-out;
+  	-moz-transition: all 0.30s ease-in-out;
+  	-ms-transition: all 0.30s ease-in-out;
+  	-o-transition: all 0.30s ease-in-out;
+}
+.form input[type=submit]:hover {
+	background: #d83d3d;
+}
+.no-touch .form input[type=submit]:hover, .no-touch .form input[type=submit]:focus {
+  background: #d83d3d;
+  outline: none;
+}
+.form .hide-password {
+  display: inline-block;
+  position: absolute;
+	text-decoration: none;
+  right: 0;
+  top: 0;
+  padding: 6px 15px;
+  border-left: 1px solid #d2d8d8;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #343642;
+}
+.form .error-message {
+  display: inline-block;
+  position: absolute;
+  left: -5px;
+  bottom: -35px;
+  background: rgba(215, 102, 102, 0.9);
+  padding: .8em;
+  z-index: 2;
+  color: #FFF;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  border-radius: 0.25em;
+  /* prevent click and touch events */
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s 0, visibility 0 0.2s;
+  -moz-transition: opacity 0.2s 0, visibility 0 0.2s;
+  transition: opacity 0.2s 0, visibility 0 0.2s;
+}
+.form .error-message::after {
+  /* triangle */
+  content: '';
+  position: absolute;
+  left: 22px;
+  bottom: 100%;
+  height: 0;
+  width: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(215, 102, 102, 0.9);
+}
+.form .error-message.is-visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.2s 0, visibility 0 0;
+  -moz-transition: opacity 0.2s 0, visibility 0 0;
+  transition: opacity 0.2s 0, visibility 0 0;
+}
+@media only screen and (min-width: 600px) {
+  .form {
+    padding: 2em;
+  }
+  .form .fieldset {
+    margin: 2em 0;
+  }
+  .form .fieldset:first-child {
+    margin-top: 0;
+  }
+  .form .fieldset:last-child {
+    margin-bottom: 0;
+  }
+  .form input.has-padding {
+    padding: 16px 20px 16px 50px;
+  }
+  .form input[type=submit] {
+    padding: 16px 0;
+  }
+}
+
+.form-message {
+  padding: 1.4em 1.4em 0;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: center;
+}
+@media only screen and (min-width: 600px) {
+  .form-message {
+    padding: 2em 2em 0;
+  }
+}
+
+.form-bottom-message {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -40px;
+  text-align: center;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+.form-bottom-message a {
+  color: #FFF;
+  text-decoration: none;
+	border-bottom: 1px solid rgba(255, 255, 255, .0);
+	padding: 0 0 0 2px;
+	-webkit-transition: all 0.30s ease-in-out;
+  	-moz-transition: all 0.30s ease-in-out;
+  	-ms-transition: all 0.30s ease-in-out;
+  	-o-transition: all 0.30s ease-in-out;
+}
+.form-bottom-message a:hover {
+	animation: borderslide-3px .5s;
+	border-bottom: 1px solid rgba(255, 255, 255, 1);
+	padding-bottom: 3px;
+}
+
+@keyframes borderslide-3px {
+  0% {
+		padding-bottom: 1px;
+  }
+  50% {
+		padding-bottom: 3px;
+  }
+}
+
+@keyframes borderslide-2px {
+  0% {
+		padding-bottom: 1px;
+  }
+  50% {
+		padding-bottom: 2px;
+  }
+}
+
+.close-form {
+  /* form X button on top right */
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: 0;
+  top: -40px;
+  background: url("../img/icon-close.svg") no-repeat center center;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@media only screen and (min-width: 1170px) {
+  .close-form {
+    display: none;
+  }
+}
+
+.accept-terms {
+	color: #F64747;
+	text-decoration: none;
+	padding: 0 1px 1px 2px;
+	border-bottom: 1px solid rgba(246, 71, 71, .0);
+	-webkit-transition: all 0.30s ease-in-out;
+  	-moz-transition: all 0.30s ease-in-out;
+  	-ms-transition: all 0.30s ease-in-out;
+  	-o-transition: all 0.30s ease-in-out;
+}
+
+.accept-terms:hover {
+	animation: borderslide-2px .5s;
+	padding-bottom: 2px;
+	border-bottom: 1px solid rgba(246, 71, 71, 1);
+}
+
+#login, #signup, #reset-password {
+  display: none;
+}
+
+#login.is-selected, #signup.is-selected, #reset-password.is-selected {
+  display: block;
+}
+/*===================================
+內容區塊
+====================================*/
+.section-content img{
+    width:100%;
+
+}
+.page-section img{
+    width: 120px;
+}
+
+.pic-icon img{
+    width: 105px;
+    padding-top: 10px;
+}
+.pic-icon .mt-5{
+    padding-top: 5px;
+}
+
+.divider{
+    width:150px;
+    border:#eee 2px solid ;
+}
+
+a.btn.btn-outline-primary.float-right {
+    color: #fff;
+    background-color: #FCB400;
+    border: 0;
+    }
+
+a.btn.btn-outline-primary.float-right:hover {
+    background-color:#FFCF00;
+    }
+
+/*===================================
+頁尾區塊
+====================================*/
+
+footer{
+    background-color: #f6f6f6;
+  
+
+} /* 讓整塊Footer有顏色(灰)，藉此跟其他區塊做出區隔 */
+
+.footer-about ul li{
+list-style-type: none;
+padding:10px;
+
+}/* 把ui/li清單預設的黑色圓點拿掉 */
+
+.footer-logo{
+    text-align: center;
+}
+
+footer .contact-info{
+    padding-left: 150px;
+    line-height: 2;
+}
+
+.copyright{
+    text-align: center;
+    background-color:#ddd; 
+    padding:10px;
+
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+    position: fixed;
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    right: 15px;
+    bottom: 15px;
+    background: #67b0d1;
+    color: #fff;
+    transition: display 0.5s ease-in-out;
+    z-index: 99999;
+  }
+  
+  .back-to-top i {
+    font-size: 24px;
+    position: absolute;
+    top: 7px;
+    left: 8px;
+  }
+  
+  .back-to-top:hover {
+    color: #fff;
+    background: #86c0da;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  #main {
+    margin-top: 90px;
+  }
