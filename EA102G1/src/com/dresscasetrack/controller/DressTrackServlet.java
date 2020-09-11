@@ -74,11 +74,11 @@ public class DressTrackServlet extends HttpServlet {
 			DressCaseTrackService dctSvc = new DressCaseTrackService();
 			dctSvc.deleteTrack(drcase_id,membre_id);
 			
-			RequestDispatcher failureView = req.getRequestDispatcher("/front_end/dresscase/ListAllTrack_membre.jsp");
-			failureView.forward(req, res);
+			RequestDispatcher success = req.getRequestDispatcher("/front_end/membre_order/membre_dress_listall_track.jsp");
+			success.forward(req, res);
 		}	catch (Exception e) {
 			errors.add("無法取得要修改的資料" + e.getMessage());
-			RequestDispatcher failureView = req.getRequestDispatcher("/front_end/dresscase/ListAllTrack_membre.jsp");
+			RequestDispatcher failureView = req.getRequestDispatcher("/front_end/membre_order/membre_dress_listall_track.jsp");
 			failureView.forward(req, res);
 		}
 		}

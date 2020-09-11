@@ -39,6 +39,8 @@
 			}
 		});
 	</script>
+	
+	
 	<!-- third party css -->
 	<link href="<%=request.getContextPath()%>/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
 	<!-- CSS Files -->
@@ -55,16 +57,8 @@
 
 <script src="<%=request.getContextPath() %>/vendors/jquery/jquery-3.4.1.min.js"></script>
 
-<style type="text/css">
-	
-	/* 評價的星星數 */
-
-
-
-</style>
-
-
-
+<!--連Sweetalert2  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -150,11 +144,11 @@
 				    		</td>
 				    		<!--取消收藏-->
 				    		<td>
-				    		<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front_end/dresstrack/track.do" style="margin-bottom: 0px;">
-							     <button type="submit" value="取消">取消收藏</button>
-							     <input type="hidden" name="drcase_id"  value="${caseVO.drcase_id}">
+				    		<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front_end/dresstrack/track.do" id="cancelForm">
+							     <input type="button" id="cancelBut" value="取消收藏">
+							     <input type="hidden" name="drcase_id"  value="${caseVO.drcase_id}" id="drcase_id">
 							     <input type="hidden" name="action"	value="delTrack">
-							     <input type="hidden" name="membre_id" value="${membrevo.membre_id}">
+							     <input type="hidden" name="membre_id" value="${membrevo.membre_id}" name="membre_id">
 					    	</FORM>
 							</td>
 				    		
@@ -174,14 +168,30 @@
 
 
 </div>
-<!-- 塞資料的地方 -->
-<!-- 塞資料的地方 -->
 </div>
 </div>
 
 </div>
 </div>
 
+<script>
+$('#cancelBut').click(function(){
+	Swal.fire({
+		  title: '確定要取消收藏嗎?',
+		  text: "我捨不得~",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: '100%確定',
+		  cancelButtonText: '繼續收藏',
+		}).then((result) => {
+		  if (result.isConfirmed) {
+			  $('#cancelForm').submit();
+		  }
+		})
+})
 
+</script>
 </body>
 </html>

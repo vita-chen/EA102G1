@@ -52,20 +52,13 @@
 			<li><a href="index.html" target="_blank">討論區</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp" target="_blank">商場</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_home.jsp" target="_blank">會員訂單</a></li>
-		
+			
             
 <nav class="d-flex align-items-center flex-column flex-md-row">
-    <ul class="nav mr-md-auto">
-    </ul>
-
     <ul class="nav ">
     <li class="nav-item d-flex flex-column">
-<div class="dropleft my-auto">
-  <a id="notice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-     	<svg id="notice" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-		  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-		</svg>
-  </a>
+	<div class="dropleft my-auto">
+  		
  <div id="content" style="overflow-y:auto; height: 50px;" class="dropdown-menu dropdown-menu-sm-right" aria-labelledby="dropdownMenuLink">
 </div>
 </div>
@@ -105,7 +98,12 @@
 		            <a class="dropdown-item" href="<%=request.getContextPath()%>/membre/membre.do?action=logOut">登出</a>
 		          </div>
 		</li>
-		<li class="nav-item text-right myItem"><a href="<%=request.getContextPath()%>/front_end/dresscase/Cart.jsp" target="_blank" width="20px"><img style="width:25px; height:20px;" class="rounded" src="<%=request.getContextPath() %>/img/bag.svg"></a></li>
+		<li class="nav-item text-right myItem"><a href="<%=request.getContextPath()%>/front_end/dresscase/Cart.jsp" target="_blank" width="20px">
+		<img style="width:25px; height:20px;" class="rounded" src="<%=request.getContextPath() %>/img/bag.svg"></a></li>
+   		<li class="nav-item text-right myItem"><a href="<%=request.getContextPath() %>/front_end/membre_order/membre_dress_listall_track.jsp" >
+     	<img style="width:30px; height:20px;" class="rounded" src="<%=request.getContextPath() %>/img/heart3.jpg">
+        </a>
+   
     </c:if>	
     </ul>
   </nav> <!-- nav .// --> </li>

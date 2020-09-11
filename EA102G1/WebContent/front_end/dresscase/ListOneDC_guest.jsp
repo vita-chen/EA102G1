@@ -373,14 +373,14 @@ if(dcVO == null){
 				success:function(data,status,xhr){
 					Swal.fire({
 						  icon: 'success',
-						  title: '已加入收藏囉',
-						  text: '記得回來看看他！',
+						  title: '成功加入收藏',
+						  text: '記得到右上角的愛心看看他！',
 						})
 				},
 				error:function(jqXhr,textStatus,errorMessage){
 					Swal.fire({
 						  icon: 'error',
-						  title: '已加入收藏囉',
+						  title: '已在收藏清單囉',
 						  text: '加油好嗎',
 						})
 				}
