@@ -238,30 +238,30 @@ public class ProdServlet extends HttpServlet {
 			Collection<Part> parts = request.getParts();
 			 String picToPass = request.getParameter("pass");
 			 int index= 0;
-			PicDetector detector = new PicDetector();
-			if (picToPass.trim().length() > 0) {
-				for (Part part : parts) {	
-					String toPass = String.valueOf(index);
-					if (part.getName().equals("pic") && picToPass.indexOf(toPass) == -1) {
-						index++;
-						if (!detector.detectPic(part)) {
-							errors.add("請勿上傳含有人物、動物的圖片");
-							break;
-						}
-					}
-					if (part.getName().equals("pic") && picToPass.indexOf(toPass) != -1) {
-						index++;
-						continue;
-					}
-				}
-			} else {
-				for (Part part : parts) {
-					if (part.getName().equals("pic") && !detector.detectPic(part)) {
-						errors.add("請勿上傳含有人物、動物的圖片");
-						break;
-					}
-				}
-			}
+//			PicDetector detector = new PicDetector();
+//			if (picToPass.trim().length() > 0) {
+//				for (Part part : parts) {	
+//					String toPass = String.valueOf(index);
+//					if (part.getName().equals("pic") && picToPass.indexOf(toPass) == -1) {
+//						index++;
+//						if (!detector.detectPic(part)) {
+//							errors.add("請勿上傳含有動物的圖片");
+//							break;
+//						}
+//					}
+//					if (part.getName().equals("pic") && picToPass.indexOf(toPass) != -1) {
+//						index++;
+//						continue;
+//					}
+//				}
+//			} else {
+//				for (Part part : parts) {
+//					if (part.getName().equals("pic") && !detector.detectPic(part)) {
+//						errors.add("請勿上傳含有動物的圖片");
+//						break;
+//					}
+//				}
+//			}
 
 			if (!errors.isEmpty()) {
 				request.setAttribute("prodvo", prodvo);

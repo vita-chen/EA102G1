@@ -180,7 +180,7 @@
 			<li><a href="<%=request.getContextPath()%>/front_end/wed_photo/wp_home.jsp" target="_blank">婚禮攝影</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp" target="_blank">婚紗租借</a></li>
 			<li><a href="index.html" target="_blank">討論區</a></li>
-			<li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp" target="_blank">商場</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp">商場</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_home.jsp" target="_blank">會員訂單</a></li>
 			
 			<li>  
