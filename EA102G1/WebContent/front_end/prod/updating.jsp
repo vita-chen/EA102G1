@@ -26,11 +26,11 @@
           </div> <!-- form-group// -->
           <label>價格</label>
           <div class="form-group">
-          <input type="text" class="form-control" name="price" value="${prodvo.price }" maxlength="8">
+          <input type="text" class="form-control" name="price" value="${prodvo.price }" maxlength="6">
           </div> <!-- form-group// -->
           <label>數量</label>
             <div class="form-group">
-			<input type="text" class="form-control" name="prod_qty" value="${prodvo.prod_qty }" maxlength="4">
+			<input type="text" class="form-control" name="prod_qty" value="${prodvo.prod_qty }" maxlength="3">
           </div> <!-- form-group// -->
           		<jsp:useBean id="typeDao" class="com.prod_type.model.TypeDAO"/>
 				<div class="form-group">
