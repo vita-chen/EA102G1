@@ -11,7 +11,6 @@ import com.dresscase.model.DressCaseService;
 import com.dresscase.model.DressCaseVO;
 import com.dresscasetrack.model.*;
 
-//34與72行的membre_id：待改
 public class DressTrackServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
@@ -68,7 +67,6 @@ public class DressTrackServlet extends HttpServlet {
 		if("delTrack".equals(action)) {
 		try {
 			String drcase_id = req.getParameter("drcase_id");
-//			membre_id待改
 			String membre_id = req.getParameter("membre_id");
 			
 			DressCaseTrackService dctSvc = new DressCaseTrackService();
