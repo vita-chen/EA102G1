@@ -68,10 +68,15 @@
 							</div>
 
 							<div class="flex flex-wrap mb-6">
-								<label for="password"
+
+								<label for="縣市1"
 									class="block text-gray-700 text-sm font-bold mb-2">
-									廠商地址: </label> <input class="form-input w-full"input type="TEXT" name="ven_addr" size="45"
-			 value="<%= (venderVO==null)? "台灣" : venderVO.getVen_addr()%>" />
+									廠商地址: </label>
+									　
+<select id="縣市1"name="addr1"></select>
+<select id="鄉鎮市區1"name="addr2"></select>
+<input class="form-input w-full" type="TEXT" name="addr3" size="45"
+			  value="<%= (venderVO==null)?  "": venderVO.getVen_addr()%>" />
 
 							</div>
 
@@ -107,6 +112,8 @@
 											上傳名片(審核一定要上傳!): </label> <input class="form-input w-full"type="file" name="ven_evidence_pic" size="45"
 			 value="<%= (venderVO==null)? "100" : venderVO.getVen_evidence_pic()%>" />
 										<span id="phone-error" class="text-xs"></span>
+										<img style="height: 50%;width: 50%;border:0;"  />
+
 									</div>
 
 									<div class="flex flex-wrap">
@@ -130,7 +137,22 @@
 	<br>
 
 </body>
+<script src="<%=request.getContextPath()%>/js/vender/regis.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  <script>
+    $('input').on('change', function(e){      
+      const file = this.files[0];
+      
+      const fr = new FileReader();
+      fr.onload = function (e) {
+        $('img').attr('src', e.target.result);
+      };
+      
+      // 使用 readAsDataURL 將圖片轉成 Base64
+      fr.readAsDataURL(file);
+    });
+  </script>
 </html>  

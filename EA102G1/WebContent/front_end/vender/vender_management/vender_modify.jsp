@@ -83,7 +83,9 @@
     <div class="form-group row">
     <label for="inputPassword" class="col-sm-1 col-form-label">住址</label>
     <div class="col-sm-3">
-      <input type="text" class="form-control" name="ven_addr" value="${vendervo.ven_addr}">
+<select id="縣市1"name="addr1"></select>
+<select id="鄉鎮市區1"name="addr2"></select>
+<input class="form-control" type="TEXT" name="addr3" size="45" value="${vendervo.ven_addr}" />
     </div>
   </div>
     <div class="form-group row">
@@ -110,6 +112,10 @@
 			<input type="file" class="" name="ven_evidence_pic">
 		</div>
   </div>
+  <div class="form-group row">
+  <img id="imgg" style="height: 30%;width: 30%;border:0;"
+	src="<%=request.getContextPath() %>/vender/vender.do?action=getphot&vender_id=${vendervo.vender_id}">
+  </div>
 
 <button type="submit" class="btn btn-primary col-sm-4" name="action" value="update">修改</button>
 
@@ -124,6 +130,20 @@
 </div>
 </div>
 <!-- js -->
+<script src="<%=request.getContextPath()%>/js/vender/regis.js"></script>
 <%@ include file="/front_end/vender/vender_home_js.jsp" %>	
+  <script>
+    $('input').on('change', function(e){      
+      const file = this.files[0];
+      
+      const fr = new FileReader();
+      fr.onload = function (e) {
+        $('#imgg').attr('src', e.target.result);
+      };
+      
+      // 使用 readAsDataURL 將圖片轉成 Base64
+      fr.readAsDataURL(file);
+    });
+  </script>
 </body>
 </html>

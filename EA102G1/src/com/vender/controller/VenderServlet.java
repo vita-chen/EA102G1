@@ -141,9 +141,13 @@ public class VenderServlet extends HttpServlet {
 				String ven_name = req.getParameter("ven_name").trim();
 				if (ven_name == null || ven_name.trim().length() == 0) {
 					errorMsgs.add("廠商名稱請勿空白");
-				}		
-				
-				String ven_addr = req.getParameter("ven_addr").trim();
+				}
+				String addr1 = req.getParameter("addr1").trim();
+				String addr2 = req.getParameter("addr2").trim();
+				String addr3 = req.getParameter("addr3").trim();
+			    StringBuffer sBuffer = new StringBuffer(addr1+addr2+addr3);
+			    String ven_addr = sBuffer.toString();
+//				String ven_addr = req.getParameter("ven_addr").trim();
 				if (ven_addr == null || ven_addr.trim().length() == 0) {
 					errorMsgs.add("廠商地址請勿空白");
 				}	
@@ -329,7 +333,12 @@ public class VenderServlet extends HttpServlet {
 					errorMsgs.add("廠商名稱請勿空白");
 				}		
 				
-				String ven_addr = req.getParameter("ven_addr").trim();
+				String addr1 = req.getParameter("addr1").trim();
+				String addr2 = req.getParameter("addr2").trim();
+				String addr3 = req.getParameter("addr3").trim();
+			    StringBuffer sBuffer = new StringBuffer(addr1+addr2+addr3);
+			    String ven_addr = sBuffer.toString();
+//				String ven_addr = req.getParameter("ven_addr").trim();
 				if (ven_addr == null || ven_addr.trim().length() == 0) {
 					errorMsgs.add("廠商地址請勿空白");
 				}	
@@ -400,9 +409,9 @@ public class VenderServlet extends HttpServlet {
 				
 				/***************************其他可能的錯誤處理**********************************/
 			} catch (Exception e) {
-				errorMsgs.add("帳號重複囉");
+				System.out.println(e);
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front_end/vender/vender_home_modify.jsp");
+						.getRequestDispatcher("/front_end/vender/vender_management/vender_modify.jsp");
 				failureView.forward(req, res);
 			} 
 		
