@@ -143,11 +143,11 @@
 
 <!-- PTP START -->
 		<div>
-				<%
-					PtpService ptpSvc = new PtpService();
-					List<PtpVO> list = ptpSvc.getAll();
-					pageContext.setAttribute("list", list);
-				%>
+<%-- 				<% --%>
+<!-- // 					PtpService ptpSvc = new PtpService(); -->
+<!-- // 					List<PtpVO> list = ptpSvc.getAll(); -->
+<!-- // 					pageContext.setAttribute("list", list); -->
+<%-- 				%> --%>
 
 				<header class="ms-header">置頂公告：					
 						<div class="ms-slider">
