@@ -148,6 +148,7 @@ function init() {
 		var query = e.srcElement.value;
 		if (query.trim().length == 0){
 			goPage(1);
+			return;
 	}
 	let display = false;
 		

@@ -39,7 +39,8 @@ public class DevelopOnly {
 			
 			for (int i = 1; i <=2; i++) {
 				pstmt.setString(1,"P002");
-				byte[] pic = getPictureByteArray("WebContent/img/prod_img/Tshirt/Tshirt_"+i+".jpg");
+				byte[] pic = getPictureByteArray("WebContent/img/prod_img/top/top_"+i+".jpg");
+//				byte[] pic = getPictureByteArray("WebContent/img/prod_img/Tshirt/Tshirt_"+i+".jpg");
 				pstmt.setBytes(2, pic);
 				pstmt.executeUpdate();
 				pstmt.clearParameters();
@@ -53,14 +54,15 @@ public class DevelopOnly {
 			}
 			for (int i = 1; i<=3; i++) {
 				pstmt.setString(1,"P004");
-				byte[] pic = getPictureByteArray("WebContent/img/prod_img/airpods/airpods_"+i+".jpg");
+				byte[] pic = getPictureByteArray("WebContent/img/prod_img/shoes/shoes_"+i+".jpg");
 				pstmt.setBytes(2, pic);
 				pstmt.executeUpdate();
 				pstmt.clearParameters();
 			}
 			for (int i = 1; i<=3; i++) {
 				pstmt.setString(1,"P005");
-				byte[] pic = getPictureByteArray("WebContent/img/prod_img/shoes/shoes_"+i+".jpg");
+				byte[] pic = getPictureByteArray("WebContent/img/prod_img/airpods/airpods_"+i+".jpg");
+				
 				pstmt.setBytes(2, pic);
 				pstmt.executeUpdate();
 				pstmt.clearParameters();
@@ -88,7 +90,8 @@ public class DevelopOnly {
 			}
 			for (int i = 1; i<=2; i++) {
 				pstmt.setString(1,"P009");
-				byte[] pic = getPictureByteArray("WebContent/img/prod_img/top/top_"+i+".jpg");
+				byte[] pic = getPictureByteArray("WebContent/img/prod_img/Tshirt/Tshirt_"+i+".jpg");
+//				byte[] pic = getPictureByteArray("WebContent/img/prod_img/top/top_"+i+".jpg");
 				pstmt.setBytes(2, pic);
 				pstmt.executeUpdate();
 				pstmt.clearParameters();
