@@ -53,17 +53,7 @@
 	
 
 <script src="<%=request.getContextPath() %>/vendors/jquery/jquery-3.4.1.min.js"></script>
-
-<style type="text/css">
-	
-	/* 評價的星星數 */
-
-
-
-</style>
-
-
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -206,7 +196,7 @@
           </div>
           <div class="modal-body">
              <div class="planel_boxs">
-                 <div class="row" id="new_content"> 
+                 <div class="row" id="new_content" style="text-align:left;"> 
                  <!--後台的資料用js放這兒！ -->
                      <div> </div> </div></div>  </div> </div></div></div>	
 <!--modal 2:檢舉內容:顯示檢舉狀況：若未檢舉，可以增加描述，其他情形都只能看; 此action可讓m_rep_st由0變成1-->	
@@ -221,15 +211,16 @@
              <div class="planel_boxs">
                  <div class="row"> 
                      <div class="row_line col-md-12 col-sm-12 col-xs-12">
+                     <div style="text-align:left;">
                      	<!-- 內容：隱藏按鈕區，視各種狀況會出現不同的按鈕 -->
                      	<label style="display:none;" id="showinfo" width="700"></label>
                      	
         			<form method="post" action="<%=request.getContextPath()%>/front_end/dressorder/order.do" id="rep">
-        			<div style="text-align:left;">
-        			<label style="display:none;" id="labelRep">若要檢舉，請輸入您的檢舉原因:</label></div>
+        			
+        			<label style="display:none;" id="labelRep">若要檢舉，請輸入您的檢舉原因:</label>
         			
                          <input type="text" class="form-controls content" style="display:none; width:400px;" name="mrep_de" id="textRep">
-                         <br><br>
+                         </div><br><br>
                          
                          <div class="rt" id="but">
 				           <button type="button" class="btn btn-default btn_blue" id="cancelRep" data-dismiss="modal">取消</button>
@@ -410,10 +401,14 @@ $('#orderContent').on('show.bs.modal', function (event) {
 		  $("#new_content").append('</tr></thead><tbody>');
 		  
 		  for(var i=0; i<n;i++){
-			  $("#new_content").append('<tr bgcolor="white" height="40"><th width="220">'+caseNaArr[i]+'</th><td width="80">'+casePrArr[i]+'</td><td width="300">'+addNaArr[i]+'</td><td width="80">'+dePrArr[i]+'</td></tr>');
+			if(addNaArr[i].length===0){
+				$("#new_content").append('<tr bgcolor="white" height="40"><th width="220">'+caseNaArr[i]+'</th><td width="80">'+casePrArr[i]+'</td><td width="300">無 </td><td width="80">'+dePrArr[i]+'</td></tr>');
+			}
+			else{
+				$("#new_content").append('<tr bgcolor="white" height="40"><th width="220">'+caseNaArr[i]+'</th><td width="80">'+casePrArr[i]+'</td><td width="300">'+addNaArr[i]+'</td><td width="80">'+dePrArr[i]+'</td></tr>');
+			}
 		  }
 		  $("#new_content").append('</tbody></table>');
-	
 }
 //2-1. 檢舉
 $('#repContent').on('show.bs.modal', function (event) {

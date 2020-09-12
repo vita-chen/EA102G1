@@ -64,6 +64,18 @@ public class MembreServlet extends HttpServlet{
 				membrevo.setStatus("0");
 				memSvc.update(membrevo);
 				session.setAttribute("membrevo", membrevo);
+				
+			    List<String> buyList = (ArrayList<String>) session.getAttribute("buyList");
+			    if (buyList != null) {
+				    ListService listService = new ListService();
+				    for (String prod_no : buyList) {
+				    	ListVO listvo = listService.getOne(prod_no, membre_id);
+				    	if (listvo.getProd_no() != null)
+							continue;
+				    		listService.add(prod_no, membre_id);
+				    }
+			    }
+				
 				request.setAttribute("verifySuccess", "驗證成功");
 				RequestDispatcher view = request.getRequestDispatcher("/front_end/home/home.jsp");
 				view.forward(request, response);
@@ -97,7 +109,7 @@ public class MembreServlet extends HttpServlet{
 
 			String mem_name = request.getParameter("mem_name");
 			String sex = request.getParameter("sex");
-			String address = request.getParameter("address");
+			String address = "我家";
 			String phone = request.getParameter("phone");
 			String email = request.getParameter("email");
 			String status = "2";
@@ -160,7 +172,7 @@ public class MembreServlet extends HttpServlet{
 			}
 			context.setAttribute("keyMap", keyMap);
 			keyMap.put(key, newMembrevo.getMembre_id());
-			String messageText = "請點選此連結完成帳號驗證:http://weddingnavi.tk/EA102G1/membre/membre.do?action=verifyAccount&key="+key;
+			String messageText = "請點選此連結完成帳號驗證:localhost:8081/EA102G1/membre/membre.do?action=verifyAccount&key="+key;
 			MailService.sendMail(email, "婚禮導航 會員帳號驗證", messageText);
 			request.setAttribute("success", "success");
 //			http://weddingnavi.tk/EA102G1/front_end/home/home.jsp
@@ -212,8 +224,10 @@ public class MembreServlet extends HttpServlet{
 				return;
 		    }
 		    //成功登入
+		    
 		    session.setAttribute("membrevo", membrevo);
 		    String membre_id = membrevo.getMembre_id();
+		    
 		    @SuppressWarnings("unchecked")
 		    List<String> buyList = (ArrayList<String>) session.getAttribute("buyList");
 		    if (buyList != null) {

@@ -82,9 +82,6 @@ $(document).ready(function() {
 				}
 			}
 			noticeContent+=text;
-//			var myAnchor = document.createElement("a");
-//			myAnchor.classList.add("dropdown-item");
-//			myAnchor.setAttribute("href", url);
 			var anchorText = noticeContent+jsonObj.order_no;
 			content.innerHTML+=`<a class="dropdown-item" href="${url}">${anchorText}</a>`;
 			if (document.querySelectorAll('#content a').length > 0) {
@@ -97,7 +94,12 @@ $(document).ready(function() {
 		webSocket.onclose = function(e) {
 			console.log("Disconnected");
 		}
-	}(); //endOfConnection
+	}; //endOfConnection
+	
+	if(currentUser.length > 0){
+		connect();
+	}
+	
 	function disconnect() {
 		webSocket.close();
 	}

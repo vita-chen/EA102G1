@@ -11,7 +11,6 @@ import com.dresscase.model.DressCaseService;
 import com.dresscase.model.DressCaseVO;
 import com.dresscasetrack.model.*;
 
-//34與72行的membre_id：待改
 public class DressTrackServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
@@ -68,17 +67,16 @@ public class DressTrackServlet extends HttpServlet {
 		if("delTrack".equals(action)) {
 		try {
 			String drcase_id = req.getParameter("drcase_id");
-//			membre_id待改
 			String membre_id = req.getParameter("membre_id");
 			
 			DressCaseTrackService dctSvc = new DressCaseTrackService();
 			dctSvc.deleteTrack(drcase_id,membre_id);
 			
-			RequestDispatcher failureView = req.getRequestDispatcher("/front_end/dresscase/ListAllTrack_membre.jsp");
-			failureView.forward(req, res);
+			RequestDispatcher success = req.getRequestDispatcher("/front_end/membre_order/membre_dress_listall_track.jsp");
+			success.forward(req, res);
 		}	catch (Exception e) {
 			errors.add("無法取得要修改的資料" + e.getMessage());
-			RequestDispatcher failureView = req.getRequestDispatcher("/front_end/dresscase/ListAllTrack_membre.jsp");
+			RequestDispatcher failureView = req.getRequestDispatcher("/front_end/membre_order/membre_dress_listall_track.jsp");
 			failureView.forward(req, res);
 		}
 		}

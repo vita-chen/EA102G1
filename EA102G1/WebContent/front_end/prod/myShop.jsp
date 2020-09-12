@@ -9,6 +9,11 @@
 <jsp:param name="title" value="Home page"/>
 </jsp:include>
 <script src="<%=request.getContextPath() %>/js/prod/index.js" type="text/javascript" charset="utf-8"></script>
+<style>
+.card-product-list {
+margin-bottom: 0px;
+}
+</style>
 </head>
 <body>
 <%@ include file="/front_end/prod/header.jsp" %>
@@ -121,11 +126,11 @@
 </svg></div>
 <div>尚未新增任何商品</div>
 </div>
-<div class="h-25 d-flex justify-content-center align-items-center" ><a href="<%=request.getContextPath() %>/front_end/prod/addProd.jsp" class="btn btn-primary" style="color:white">新增商品</a></div>
+<div class="h-25 d-flex justify-content-center align-items-center" ><a href="<%=request.getContextPath() %>/front_end/prod/addProd.jsp" class="btn btn-primary" style="color:white;">新增商品</a></div>
 </c:if>
 
 <%@ include file="page1.file" %>  
- <c:forEach var="prodvo" items="${prodList}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+ <c:forEach var="prodvo" items="${prodList}"  begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
  
 <article class="card card-product-list">
 	<div class="row no-gutters">
@@ -161,12 +166,19 @@
 </article> <!-- card-product .// -->
  </c:forEach>
  <c:if test="${prodList != null }">
- <div class="d-flex justify-content-center align-items-center" ><a href="<%=request.getContextPath() %>/front_end/prod/addProd.jsp" class="btn btn-primary" style="color:white">新增商品</a></div>
+ <div class="d-flex justify-content-center align-items-center" ><a href="<%=request.getContextPath() %>/front_end/prod/addProd.jsp" class="btn btn-primary" style="color:white ;margin:5px;">新增商品</a></div>
  </c:if>
 <%@ include file="page2.file" %> 
 
 
-
+<!-- <div class="d-flex justify-content-center mt-2"> -->
+<!-- <nav aria-label="Page navigation example" id="pagination"> -->
+<!--   <ul class="pagination" style="color:#0991a0"> -->
+<!--     <li class="Previous page-item"><a class="page-link" >First</a></li> -->
+<!--     <li class="Next page-item"><a class="page-link" >Last</a></li> -->
+<!--   </ul> -->
+<!-- </nav> -->
+<!-- </div> -->
 
 
 
@@ -177,6 +189,9 @@
 
 </div> <!-- container .//  -->
 </section>
+<%-- <c:if test="${not empty prodList }"> --%>
+
+<%-- </c:if> --%>
 <!-- ========================= SECTION CONTENT END// ========================= -->
 
 <!-- ========================= FOOTER ========================= -->

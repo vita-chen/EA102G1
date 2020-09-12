@@ -143,11 +143,11 @@
 
 <!-- PTP START -->
 		<div>
-				<%
-					PtpService ptpSvc = new PtpService();
-					List<PtpVO> list = ptpSvc.getAll();
-					pageContext.setAttribute("list", list);
-				%>
+<%-- 				<% --%>
+<!-- // 					PtpService ptpSvc = new PtpService(); -->
+<!-- // 					List<PtpVO> list = ptpSvc.getAll(); -->
+<!-- // 					pageContext.setAttribute("list", list); -->
+<%-- 				%> --%>
 
 				<header class="ms-header">置頂公告：					
 						<div class="ms-slider">
@@ -174,6 +174,7 @@
 		</a>
 		<nav class="nav-menu d-none d-lg-block col-sm-10 main-nav">
 			<ul>
+
 			<li><a href="<%=request.getContextPath()%>/back_end/back_end_home.jsp" >後台</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/vender/vender_home.jsp" >廠商專區</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp" >禮車租借</a></li>

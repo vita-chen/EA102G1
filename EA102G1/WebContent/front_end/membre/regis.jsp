@@ -44,23 +44,12 @@
 					  <span class="custom-control-label"> 女 </span>
 					</label>
 				</div> <!-- form-group end.// -->
-				<div class="form-row">
-					<div class="form-group col-md-12">
-					  <label>地址</label>
-					  <input type="text" class="form-control" name="address" value="${errorMembrevo.address }">
-					</div> <!-- form-group end.// -->
-<!-- 					<div class="form-group col-md-6"> -->
-<!-- 					  <label>Country</label> -->
-<!-- 					  <select id="inputState" class="form-control"> -->
-<!-- 					    <option> Choose...</option> -->
-<!-- 					      <option>Uzbekistan</option> -->
-<!-- 					      <option>Russia</option> -->
-<!-- 					      <option selected="">United States</option> -->
-<!-- 					      <option>India</option> -->
-<!-- 					      <option>Afganistan</option> -->
-<!-- 					  </select> -->
+<!-- 				<div class="form-row"> -->
+<!-- 					<div class="form-group col-md-12"> -->
+<!-- 					  <label>地址</label> -->
+<%-- 					  <input type="text" class="form-control" name="address" value="${errorMembrevo.address }"> --%>
 <!-- 					</div> form-group end.// -->
-				</div> <!-- form-row.// -->
+<!-- 				</div> form-row.// -->
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>密碼</label>

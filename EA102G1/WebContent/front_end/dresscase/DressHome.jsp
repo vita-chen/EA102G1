@@ -37,13 +37,10 @@
   
   /*分隔流程*/
   .mm{
-  
   	margin-top:50px;
   }
-  
   #id{
   vertical-align:middle;
-  
   }
   .ellipsis{
   	overflow:hidden;

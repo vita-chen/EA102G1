@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -60,7 +61,7 @@ public class ListServlet extends HttpServlet {
 			
 			String membre_id = membrevo.getMembre_id();
 			ListVO listvo = listSvc.getOne(prod_no, membre_id);
-			
+			//避免重複新增
 			if (listvo.getProd_no() != null)
 				return;
 			listSvc.add(prod_no, membre_id);

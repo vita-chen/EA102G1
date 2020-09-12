@@ -93,6 +93,7 @@ public class ProdService {
 		prodList  = prodList.stream()
 									   .filter(vo -> vo.getMembre_id().equals(membre_id))
 									   .filter(vo -> vo.getType_no().equals(type_no))
+									   .sorted(Comparator.comparing(ProdVO::getSale_time).reversed())
 									   .collect(Collectors.toList());
 		return prodList;
 	}

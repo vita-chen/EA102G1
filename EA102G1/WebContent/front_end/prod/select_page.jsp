@@ -22,7 +22,7 @@
 			<a style="border:3px solid gray" href="<%=request.getContextPath() %>/membre/membre.do?action=openShop&shopper=${membrevo.membre_id}" class="card card-product-grid">
 			<div class="img-wrap"> <img src="<%=request.getContextPath()%>/membre/membre.do?action=getphoto&membre_id=${membrevo.membre_id}"> </div>
 			<figcaption class="info-wrap">
-				<p class="title text-center">創建我的賣場</p>
+				<p class="title text-center">開啟我的賣場</p>
 			</figcaption>
 		</a> <!-- card // -->
 	</div> <!-- col.// -->

@@ -10,16 +10,13 @@
  //會員登入判斷
  
  MembreVO membrevo = (MembreVO)session.getAttribute("membrevo");
-	if(membrevo == null){
-		String url = request.getContextPath() +"/front_end/dressorder/ListOneDC_guest.jsp";
-		session.setAttribute("location",url);
-		response.sendRedirect(request.getContextPath()+"/front_end/membre/login.jsp");
-	    return;
-	}
+DressCaseVO dcVO = (DressCaseVO) request.getAttribute("dcVO");
 
+if(dcVO == null){
+	response.sendRedirect(request.getContextPath()+"/front_end/dresscase/DressHome.jsp");
+    return;
+}
 
-
-  DressCaseVO dcVO = (DressCaseVO) request.getAttribute("dcVO");
   request.setAttribute("vender_id",dcVO.getVender_id());
   
   @SuppressWarnings("unchecked")
@@ -154,6 +151,7 @@
             <div id="trackDiv">
 				<form id="trackForm" method="post">
 					<input type="hidden" name="drcase_id" value="<%=dcVO.getDrcase_id()%>" id="drcase_id">
+					<input type="hidden" name="membre_id" value="${membrevo.membre_id}" id="membre_id">
 					<input type="button" class="btn btn-md btn-primary display-4 align-center"
 					id="trackBtn" name="action"  value="我要收藏" onclick="track()"> 
 				</form>
@@ -361,33 +359,42 @@
 	}//end of pure
 
 	function track(){
-		$.ajax({
-			type:"POST",
-			url:"<%=request.getContextPath()%>/front_end/dresstrack/track.do",
-			dataType:"JSON",
-			data: { 
-				action : 'addTrack',
-				drcase_id : $("#drcase_id").val()	
-			},
-			success:function(data,status,xhr){
-				Swal.fire({
-					  icon: 'success',
-					  title: '已加入收藏囉',
-					  text: '記得回來看看他！',
-					})
-			},
-			error:function(jqXhr,textStatus,errorMessage){
-				Swal.fire({
-					  icon: 'error',
-					  title: '已加入收藏囉',
-					  text: '加油好嗎',
-					})
-			}
-	}) 
-	}
+		if($('#membre_id').val()){
+			var membre_id = $('#membre_id').val();
+			$.ajax({
+				type:"POST",
+				url:"<%=request.getContextPath()%>/front_end/dresstrack/track.do",
+				dataType:"JSON",
+				data: { 
+					action : 'addTrack',
+					drcase_id : $("#drcase_id").val(),
+					membre_id: membre_id
+				},
+				success:function(data,status,xhr){
+					Swal.fire({
+						  icon: 'success',
+						  title: '成功加入收藏',
+						  text: '記得到右上角的愛心看看他！',
+						})
+				},
+				error:function(jqXhr,textStatus,errorMessage){
+					Swal.fire({
+						  icon: 'error',
+						  title: '已在收藏清單囉',
+						  text: '加油好嗎',
+						})
+				}
+		}) 
+		} else{
+			Swal.fire({
+				  icon: 'error',
+				  title: '你還沒登入喔',
+				  text: '請按右上角登入好嗎',
+				})
+		}
+	} // end of track
 </script>
 <!--連Sweetalert2  -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
-
 </html>
