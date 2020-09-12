@@ -39,7 +39,7 @@ public class WPDetailDAO implements WPDetailDAO_Interface{
 			pstmt.setString(1, WPDetailVO.getWed_photo_order_no());
 			pstmt.setString(2, WPDetailVO.getWed_photo_case_no());
 			pstmt.executeUpdate();
-			System.out.println("WPDetailDAO : 新增訂單明細成功!");
+//			System.out.println("WPDetailDAO : 新增訂單明細成功!");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,9 +101,9 @@ public class WPDetailDAO implements WPDetailDAO_Interface{
 		try {
 			con = ds.getConnection();
 			stmt = con.createStatement();
-			System.out.println("WPCollectJDBCDAO 連線成功!");			
+			System.out.println("WPDetailDAO 連線成功!");			
 			rs = stmt.executeQuery(SELECT);
-			System.out.println("WPCollectJDBCDAO 查詢成功!");
+			System.out.println("WPDetailDAO 查詢成功!");
 			
 			while (rs.next()) {				
 				WPDetailVO wpdetailvo = new WPDetailVO();

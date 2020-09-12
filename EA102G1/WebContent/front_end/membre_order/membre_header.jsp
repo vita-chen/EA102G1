@@ -80,7 +80,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="tables/datatables.html">
+										<a href="<%=request.getContextPath()%>/front_end/membre_order/membre_wp_listall_track.jsp">
 											<span class="sub-item">婚攝收藏清單</span>
 										</a>
 									</li>

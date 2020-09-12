@@ -164,4 +164,10 @@ public class WPImgJDBCDAO implements WPImgDAO_Interface {
 //		dao.delImg(vo);
 	}
 
+	@Override
+	public void delImg(String[] wp_imgs_no) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

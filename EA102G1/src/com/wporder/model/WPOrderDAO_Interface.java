@@ -12,7 +12,7 @@ public interface WPOrderDAO_Interface {
 	
 	public List<WPOrderVO> getAll();
 	
-	public List<WPOrderVO> getOne(String wed_photo_order_no);
+	public WPOrderVO getOne(String wed_photo_order_no);
 	
 	public void Mem_Report(WPOrderVO WPOrderVO);//會員檢舉
 	

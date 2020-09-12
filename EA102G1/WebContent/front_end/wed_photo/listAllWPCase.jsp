@@ -17,7 +17,7 @@
 			
 		pageContext.setAttribute("list",list);
 		
-}
+	}
 %>
 <!DOCTYPE html>
 <html>

@@ -49,7 +49,7 @@ public class WPOrderService {
 		return wporderdao.getAll();
 	}
 
-	public List<WPOrderVO> getOne(String wed_photo_order_no) {
+	public WPOrderVO getOne(String wed_photo_order_no) {
 		return wporderdao.getOne(wed_photo_order_no);
 	}
 	public void cancel_order(String wed_photo_order_no) {

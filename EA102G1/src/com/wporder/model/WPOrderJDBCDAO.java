@@ -174,8 +174,8 @@ public class WPOrderJDBCDAO implements WPOrderDAO_Interface{
 	}
 
 	@Override
-	public List<WPOrderVO> getOne(String wed_photo_order_no) {
-		List<WPOrderVO> list = new ArrayList<WPOrderVO>();		
+	public WPOrderVO getOne(String wed_photo_order_no) {
+		WPOrderVO WPOrderVO = new WPOrderVO();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -190,7 +190,6 @@ public class WPOrderJDBCDAO implements WPOrderDAO_Interface{
 			System.out.println("WPOrderVO 查詢成功!");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {				
-				WPOrderVO WPOrderVO = new WPOrderVO();
 				WPOrderVO.setWed_photo_order_no(rs.getString("wed_photo_order_no"));
 				WPOrderVO.setMembre_id(rs.getString("membre_id"));
 				WPOrderVO.setVender_id(rs.getString("vender_id"));
@@ -208,7 +207,6 @@ public class WPOrderJDBCDAO implements WPOrderDAO_Interface{
 				WPOrderVO.setWp_vrep_r(rs.getString("wp_vrep_r"));
 				WPOrderVO.setWp_mrep_r(rs.getString("wp_mrep_r"));
 				
-				list.add(WPOrderVO); // Store the row in the list
 			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
@@ -239,7 +237,7 @@ public class WPOrderJDBCDAO implements WPOrderDAO_Interface{
 				}
 			}
 		}
-		return list;
+		return WPOrderVO;
 	}
 
 

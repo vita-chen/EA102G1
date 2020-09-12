@@ -143,4 +143,35 @@ public class WPImgDAO implements WPImgDAO_Interface {
 		return list;
 	}
 
+	@Override
+	public void delImg(String[] wp_imgs_no) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(DEL_IMGNO);
+			for(String imgno : wp_imgs_no) {
+				pstmt.setString(1, imgno);
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					System.out.println(se);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException se) {
+					System.out.println(se);
+				}
+			}
+		}
+	}
+
 }

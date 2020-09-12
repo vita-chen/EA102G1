@@ -5,6 +5,7 @@
 <%@page import="com.wpcase.model.WPCaseDAO"%>
 <%@page import="com.membre.model.MembreVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -261,29 +262,6 @@ a {
     margin-top: 10px;
 }
 
-.img_box {
-    display: inline-block;
-    border-radius: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    height: 420px;
-    border: 1px dotted #F90;
-}
-
-.img_box img {
-    height: 230px;
-    width: 348px;
-    border-radius: 10px;
-}
-
-.img_text h5 {
-    margin-top: 20px;
-}
-
-.img_text {
-    margin-left: 10px;
-}
-
 .fluid {
     border: dotted #A0A0D0FF 1px;
     height: 600px;
@@ -294,6 +272,61 @@ a {
 .popular_vendors {
     border: 1px dotted #62E970FF;
     height: 460px;
+}
+
+.img_box {
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: #EBD0D0FF 3px 3px 3px 3px;
+    height: 420px;
+    color: #4F4F4FFF;
+}
+.img_box:hover{
+    box-shadow: #E0E0E0FF 3px 3px 3px 3px;
+}
+.img_box img {
+    height: 230px;
+    width: 350px;
+    border-radius: 5px;
+}
+
+.img_text h5 {
+	margin-left: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.text_time {
+    margin-bottom: 0;
+    margin-right: 5px;
+    text-align: right;
+    font-size: 14px;   
+}
+
+.text_new {
+    margin-left: 40px;
+    margin-right: 5px;
+    text-align: justify;
+    height: 100px;
+    letter-spacing:1px;
+    line-height: 25px;  
+}
+.img_text :hover {
+    opacity: 0.5;
+}
+.img_box img:hover{
+    opacity: 0.9;   
+}
+.new_case_icon {
+    position: absolute;
+    top: 15px;
+    padding: 3px 10px 3px 10px;
+    background-color: #FF0000BD;
+    border-radius: 5px;
+    color: #FFFFFFFF;
+    z-index: 1;
 }
 </style>
 <!-- <a href="https://pngtree.com/free-backgrounds">free background photos from pngtree.com</a> -->
@@ -331,14 +364,23 @@ a {
         <p>最新方案 New case</p>
         <div class="row justify-content-between new_case">
         	<c:forEach var="new_list" items="${new_list }">
-	            <div class="col-4 img_box">
-	                <img src="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_WPImg&wed_photo_case_no=${new_list.wed_photo_case_no}">
-	                <div class="img_text">
-	                	<a href="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no=${new_list.wed_photo_case_no}" target="_blank">
-	                    <h5>${new_list.wed_photo_name }</h5></a><br>
-	                    read more...${new_list.wed_photo_price }
-	                </div>
-	            </div>
+				<div class="col-4">
+	                <a href="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no=${new_list.wed_photo_case_no}" target="_blank">
+	                    <div class="img_box">
+	                        <div class="new_case_icon">New</div>
+	                        <img src="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_WPImg&wed_photo_case_no=${new_list.wed_photo_case_no}">
+	                        <div class="img_text">
+	                            <h5>${new_list.wed_photo_name }</h5>
+	                            <div class="text_new">
+	                            	${new_list.wed_photo_intro }
+	                            </div>
+	                            <div class="text_time">
+	                                <span style="font-style:oblique;"><fmt:formatDate value="${new_list.wed_photo_addtime }" pattern="MMM d, yyyy hh:mm aa" /></span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </a>
+            	</div>
 			</c:forEach>
         </div>
         <p>照片畫廊 Photo gallery</p>
@@ -411,14 +453,29 @@ a {
     <script src="<%=request.getContextPath()%>/js/scripts.js"></script>
 </body>
 <script>
-	var location_id = ${location}
+
+    
+$(document).ready(function() {
 	
-	if(location_id != null){
+	var text_new = document.querySelectorAll('.text_new');
+    for (var i = 0; i < text_new.length; i++) {
+        if (text_new[i].innerText.length > 32) {        	
+            var str = text_new[i].innerText.substring(32);
+            var str_new = text_new[i].innerText.replace(str, '...read more');
+            text_new[i].innerText = str_new;
+        }
+    }
+
+	
+	var location_id = '${location}';
+	
+	if(location_id === search){
 		var t = $('#search').offset().top;
 		$("html,body").animate({scrollTop:t},500);
 		
 	}
-	
 
+	
+})
 </script>
 </html>

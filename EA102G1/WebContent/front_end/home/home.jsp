@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-123
+
   </head>
   <body>
 
@@ -31,23 +31,51 @@
 					<li data-slide-to="5" data-target="#carousel-213956">
 					</li>
 				</ol>
+				
 				<div class="carousel-inner">
 					<div class="carousel-item" data-interval="3000">
-						<img class="d-block w-100" alt="Carousel img1" src="<%=request.getContextPath()%>/img/img_for_carousels/beautiful-bloom-blooming-blossom-540522.jpg">
+						<a href="https://www.promise-you.com/" target="_blank"> <img
+							class="d-block w-100" alt="Carousel img1"
+							src="<%=request.getContextPath()%>/back_end/ad/ad_img.do?ad_id=AD001">
+						</a>
 					</div>
+
 					<div class="carousel-item">
-						<img class="d-block w-100" alt="Carousel img2" src="<%=request.getContextPath()%>/img/img_for_carousels/gold-wedding-bands-on-sand-3488259.jpg">
+						<a href="https://www.weddings.tw/" target="_blank"> <img class="d-block w-100"
+							alt="Carousel img2"
+							src="<%=request.getContextPath()%>/back_end/ad/ad_img.do?ad_id=AD002">
+						</a>
 					</div>
+
 					<div class="carousel-item active">
-						<img class="d-block w-100" alt="Carousel img3" src="<%=request.getContextPath()%>/img/img_for_carousels/man-and-woman-kissing-1491282.jpg">
+						<a href="https://www.marry.com.tw/prewedding-home" target="_blank"> <img
+							class="d-block w-100" alt="Carousel img3"
+							src="<%=request.getContextPath()%>/back_end/ad/ad_img.do?ad_id=AD003">
+						</a>
 					</div>
+
 					<div class="carousel-item">
-						<img class="d-block w-100" alt="Carousel img5" src="<%=request.getContextPath()%>/img/img_for_carousels/couple-holding-hands-3608797.jpg">
+						<a href="https://www.vincentimage.com/" target="_blank"> <img
+							class="d-block w-100" alt="Carousel img4"
+							src="<%=request.getContextPath()%>/back_end/ad/ad_img.do?ad_id=AD004">
+						</a>
 					</div>
+
 					<div class="carousel-item">
-						<img class="d-block w-100" alt="img6" src="<%=request.getContextPath()%>/img/img_for_carousels/man-and-woman-kissing-2253870.jpg">
+						<a href="https://www.ijwedding.com.tw/" target="_blank"> <img
+							class="d-block w-100" alt="img5"
+							src="<%=request.getContextPath()%>/back_end/ad/ad_img.do?ad_id=AD005">
+						</a>
 					</div>
-				</div> 
+
+					<div class="carousel-item">
+						<a href="https://www.ijwedding.com.tw/" target="_blank"> <img
+							class="d-block w-100" alt="img6"
+							src="<%=request.getContextPath()%>/back_end/ad/ad_img.do?ad_id=AD006">
+						</a>
+					</div>					
+				</div>
+							
 				<a class="carousel-control-prev" href="#carousel-213956" data-slide="prev">
 					<span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span>
 				</a> 

@@ -169,19 +169,19 @@
 
 	<div class="container d-flex align-items-cente">
 
-    <a href="<%=request.getContextPath()%>/front_end/home/home.jsp" target="_blank">
+    <a href="<%=request.getContextPath()%>/front_end/home/home.jsp" >
 		<img class="logo" style="width:200px; height:63px;" alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>\img\logo.png" class="rounded mx-auto d-block" alt="?">
 		</a>
 		<nav class="nav-menu d-none d-lg-block col-sm-10 main-nav">
 			<ul>
-			<li><a href="<%=request.getContextPath()%>/back_end/back_end_home.jsp" target="_blank">後台</a></li>
-			<li><a href="<%=request.getContextPath()%>/front_end/vender/vender_home.jsp" target="_blank">廠商專區</a></li>
-			<li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp" target="_blank">禮車租借</a></li>
-			<li><a href="<%=request.getContextPath()%>/front_end/wed_photo/wp_home.jsp" target="_blank">婚禮攝影</a></li>
-			<li><a href="<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp" target="_blank">婚紗租借</a></li>
-			<li><a href="index.html" target="_blank">討論區</a></li>
-			<li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp" target="_blank">商場</a></li>
-			<li><a href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_home.jsp" target="_blank">會員訂單</a></li>
+			<li><a href="<%=request.getContextPath()%>/back_end/back_end_home.jsp" >後台</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/vender/vender_home.jsp" >廠商專區</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp" >禮車租借</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/wed_photo/wp_home.jsp" >婚禮攝影</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp" >婚紗租借</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/forum/listAllForum.jsp" >討論區</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp" >商場</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_home.jsp" >會員訂單</a></li>
 			
 			<li>  
 <nav class="d-flex align-items-center flex-column flex-md-row">
