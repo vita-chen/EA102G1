@@ -12,6 +12,61 @@
 <!-- ======= Header ======= -->
 
 <jsp:include page="../home/home_header.jsp" />
+
+<!-- 首頁跳窗開始 -->
+	<div class="modal fade" id="regisModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title2" id="exampleModalLabel">註冊成功</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       	<ul>
+				註冊成功 ! 請至信箱收取驗證信。
+	</ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<c:if test="${success != null}">
+<script>
+$('#regisModal').modal('show');
+</script>
+</c:if>
+
+<div class="modal fade" id="verifyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title2" id="exampleModalLabel">驗證成功</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       	<ul>
+				帳號驗證成功 ! 已將您登入。
+	</ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<c:if test="${verifySuccess != null}">
+<script>
+$('#verifyModal').modal('show');
+</script>
+</c:if>
+<!-- 首頁跳窗結束 -->
 	
 	<!-- Banner Start -->
 	<div class="row">
