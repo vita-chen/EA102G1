@@ -6,6 +6,7 @@
 <%@ page import="com.ad.model.*"%>
 <%@ page import="java.util.*"%>
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -134,6 +135,7 @@
   }
 }
 </style>
+
   </head>
   <body>
 
@@ -143,11 +145,11 @@
 
 <!-- PTP START -->
 		<div>
-<%-- 				<% --%>
-<!-- // 					PtpService ptpSvc = new PtpService(); -->
-<!-- // 					List<PtpVO> list = ptpSvc.getAll(); -->
-<!-- // 					pageContext.setAttribute("list", list); -->
-<%-- 				%> --%>
+				<%
+					PtpService ptpSvc = new PtpService();
+					List<PtpVO> list = ptpSvc.getAll();
+					pageContext.setAttribute("list", list);
+				%>
 
 				<header class="ms-header">置頂公告：					
 						<div class="ms-slider">
@@ -168,13 +170,12 @@
 <!-- PTP END -->
 
 	<div class="container d-flex align-items-cente">
-
-    <a href="<%=request.getContextPath()%>/front_end/home/home.jsp" >
+	
+    <a href="<%=request.getContextPath()%>/front_end/home/home.jsp" target="_blank">
 		<img class="logo" style="width:200px; height:63px;" alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>\img\logo.png" class="rounded mx-auto d-block" alt="?">
 		</a>
 		<nav class="nav-menu d-none d-lg-block col-sm-10 main-nav">
 			<ul>
-
 			<li><a href="<%=request.getContextPath()%>/back_end/back_end_home.jsp" >後台</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/vender/vender_home.jsp" >廠商專區</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp" >禮車租借</a></li>
@@ -183,7 +184,6 @@
 			<li><a href="<%=request.getContextPath()%>/front_end/forum/listAllForum.jsp" >討論區</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp" >商場</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_home.jsp" >會員訂單</a></li>
-			
 			<li>  
 <nav class="d-flex align-items-center flex-column flex-md-row">
     <ul class="nav mr-md-auto">
@@ -206,7 +206,8 @@
 					String queryString = request.getQueryString();
 					request.setAttribute("currentLocation", currentLocation);
 					request.setAttribute("queryString", queryString);
-				%>
+					%>
+					
      <c:if test="${membrevo==null }">
     		<div class="widget-header icontext">
     		<c:choose>
@@ -218,13 +219,13 @@
 			</c:otherwise>
 			</c:choose>
 						<a href="<%=request.getContextPath()%>/front_end/membre/regis.jsp"> Register</a>
-					</div>
+			</div>
 			
     </c:if>
     
     <c:if test="${membrevo !=null }">
     	<li  class="nav-item text-right myItem" style="margin-right:-20px"><a class="nav-link px-2"> <img style="width:100%; height:26px;" class="rounded" src="<%=request.getContextPath() %>/membre/membre.do?action=getphoto&membre_id=${membrevo.membre_id }"></a></li>
-<li class="nav-item dropdown">
+		<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="http://example.com">${membrevo.mem_name}</a>
           <div class="dropdown-menu">
           	<a class="dropdown-item" href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_home.jsp">會員訂單</a>
@@ -249,32 +250,34 @@
 	
 
 
-
+	<script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
 	<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>-->
-
+	<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script> 
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" ></script>
-	
+	<script src="<%=request.getContextPath()%>/js/scripts.js"></script>
+	<!--<script src="js/main.js"></script>-->
+	<script src="<%=request.getContextPath()%>/js/jquery.easing.min.js"></script>
 	<script type="text/javascript">
 	var ptp001 = document.getElementById("PTP001");
 	ptp001.addEventListener("click",href1,false);
 	function href1(e){
-		window.open("<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp");//待補 禮車方案路徑
+		window.open("https://www.google.com/");//待補 禮車方案路徑
 	}
 	
 	var ptp002 = document.getElementById("PTP002");
 	ptp002.addEventListener("click",href2,false);
 	function href2(e){
-		window.open("<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp");//待補 婚紗方案路徑
+		window.open("https://tw.yahoo.com/");//待補 婚紗方案路徑
 	}
 	
 	var ptp003 = document.getElementById("PTP003");
 	ptp003.addEventListener("click",href3,false);
 	function href3(e){
-		window.open("<%=request.getContextPath()%>/front_end/wed_photo/wp_home.jsp");//待補 婚攝方案路徑
+		window.open("https://www.baidu.com/");//待補 婚攝方案路徑
 	}
 	
 	</script>
-
+	
   </body>
 </html>
