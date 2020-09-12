@@ -82,6 +82,17 @@ function init() {
 		xhr.send(null);
 	}();
 	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 // 分頁開始
     var tr = document.querySelectorAll(".card-product-list"); //抓取所有內容行 
     var num = tr.length; //表格所有行數 
@@ -112,7 +123,6 @@ function init() {
 
 
     function goPage(page) { 			//切換頁數函式 page > 當前頁數
-    	console.log(123);
         var startRow = (page - 1) * pageSize + 1; //開始顯示的行
         var endRow = page * pageSize; 		//結束顯示的行
         endRow = (endRow > num) ? num : endRow; //num > 表格所有行數
@@ -127,10 +137,33 @@ function init() {
             }
         }
     }
-    
     goPage(1);
-	
-	
+//	分頁結束
+    
+//    搜尋開始
+    let prod_names = document.getElementsByClassName("prod_name");
+    
+	let search = document.getElementById("search");
+	search.addEventListener("keyup", function(e) {
+		var query = e.srcElement.value;
+		if (query.trim().length == 0){
+			goPage(1);
+	}
+	let display = false;
+		
+		for (let i = 0; i < prod_names.length; i++) {
+			if(prod_names[i].innerText.trim().indexOf(query) !== -1) {
+				prod_names[i].closest("article").style.display = "inline";
+				display = true;
+			} else {
+				prod_names[i].closest("article").style.display =  "none";
+			}
+		}
+		console.log(display);
+		if (!display) { 
+			document.getElementById("pagination").style.display = "none";
+		}
+	})
 	
 } 
 window.addEventListener('load', init);

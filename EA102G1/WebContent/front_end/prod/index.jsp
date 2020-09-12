@@ -67,16 +67,16 @@
 		</header>
 		<div class="filter-content collapse show" >
 			<div class="card-body">
-				<form class="pb-3" action="<%=request.getContextPath()%>/prod/prod.do" method="post">
+<%-- 				<form class="pb-3" action="<%=request.getContextPath()%>/prod/prod.do" method="post"> --%>
 				<div class="input-group">
-				  <input type="text" class="form-control" name="query"placeholder="Search">
+				  <input type="text" class="form-control" name="query"placeholder="Search" id="search">
 				  <input type="hidden" name="action" value="query">
 				  <input type="hidden" name="shopper" value="${shopper }">
 				  <div class="input-group-append">
 				    <button class="btn btn-light" type="button"><i class="fa fa-search"></i></button>
 				  </div>
 				</div>
-				</form>
+<!-- 				</form> -->
 				
 				<ul class="list-menu">
 				
@@ -182,7 +182,7 @@
 <%-- <%@ include file="page2.file" %>  --%>
 <c:if test="${not empty prodList }">
 <div class="d-flex justify-content-center mt-2">
-<nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example" id="pagination">
   <ul class="pagination" style="color:#0991a0">
     <li class="Previous page-item"><a class="page-link" >First</a></li>
     <li class="Next page-item"><a class="page-link" >Last</a></li>
