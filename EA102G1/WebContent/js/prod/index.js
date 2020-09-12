@@ -145,9 +145,10 @@ function init() {
     
 	let search = document.getElementById("search");
 	search.addEventListener("keyup", function(e) {
-		var query = e.srcElement.value;
+		var query = e.srcElement.value.trim();
 		if (query.trim().length == 0){
 			goPage(1);
+			document.getElementById("pagination").style.display = "inline";
 			return;
 	}
 	let display = false;
