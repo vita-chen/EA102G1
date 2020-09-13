@@ -18,7 +18,6 @@ request.setAttribute("off", off);
 </div>
   <script>
   	document.getElementById("vender_off").style.display="none";//隱藏
-　	
   	var vender_off = ${off[0] };
 
   	if(vender_off>=1){
