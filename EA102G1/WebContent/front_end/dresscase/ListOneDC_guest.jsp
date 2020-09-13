@@ -171,6 +171,7 @@ if(dcVO == null){
             <div>
 	            <FORM method="post">
 					<input type="button" name="action" value="我要購買" id="seeAO" class="btn btn-md btn-primary display-4 align-center">
+					<input type="hidden" name="membre_id2" value="${membrevo.membre_id}" id="membre_id2">
 					<input type="hidden" name="oriVender" value="${oriVender}" id="oriVen">
 					<input type="hidden" name="vender_id"  value="${dcVO.vender_id}" id="venderid">
 					<input type="hidden" name="idList"  value="${idList}" id="idList">
@@ -278,32 +279,53 @@ if(dcVO == null){
 	  var oriVen = $("#oriVen").val();
 	  var venderid = $("#venderid").val();
 	  var idArr = $("#idList").val().split(","); 
-	  /* 不可重複購買同一方案 */
-	  for(var i=0;i<idArr.length;i++){
-		  if(idArr[i].includes($("#drcaseid").val())){
-			  alert("不可重複購買同一方案!");
-			  return;
+	  
+	  //會員有登入才能購買或查看加購項目
+	  if($('#membre_id2').val()){
+		  
+		  /* 不可重複購買同一方案 */
+		  for(var i=0;i<idArr.length;i++){
+			  if(idArr[i].includes($("#drcaseid").val())){
+				  Swal.fire({
+					  icon: 'error',
+					  title: '不可以重複購買呦',
+					  text: '您要結幾次婚呢',
+					});
+				  return;
+			  }
+		  }
+		  /* 相同廠商：送後台 */
+		  if(oriVen === "" || oriVen === venderid){
+			  $.ajax({
+					type:"POST",
+					url:"<%=request.getContextPath()%>/front_end/dresscase/shop.do",
+					dataType:"JSON",
+					data: { 
+						action : 'SeeAddOn',
+						vender_id : $("#venderid").val()	
+					},
+					success:function(data,status,xhr){
+						SeeAddOn(data);
+					},
+					error:function(jqXhr,textStatus,errorMessage){
+						alert("傳送失敗!"+errorMessage);
+					}
+			})}
+		  else{
+			  Swal.fire({
+				  icon: 'error',
+				  title: '購物車裡只能放同一個廠商的方案喔',
+				  text: '想繼續請到右上角購物袋圖示，清除您原本的商品',
+				})
 		  }
 	  }
-	  /* 相同廠商：送後台 */
-	  if(oriVen === "" || oriVen === venderid){
-		  $.ajax({
-				type:"POST",
-				url:"<%=request.getContextPath()%>/front_end/dresscase/shop.do",
-				dataType:"JSON",
-				data: { 
-					action : 'SeeAddOn',
-					vender_id : $("#venderid").val()	
-				},
-				success:function(data,status,xhr){
-					SeeAddOn(data);
-				},
-				error:function(jqXhr,textStatus,errorMessage){
-					alert("傳送失敗!"+errorMessage);
-				}
-		})}
 	  else{
-	  alert("須為同一廠商才能一起結帳，若要繼續請清空您的購物車商品");
+		  //會員若沒登入，跳出提醒視窗
+		  Swal.fire({
+				  icon: 'error',
+				  title: '購買前請先至右上角登入會員',
+				  text: '讓您的購物流程更加方便呦',
+				})
 	  }
 	}) 
 	
@@ -384,7 +406,7 @@ if(dcVO == null){
 						  text: '加油好嗎',
 						})
 				}
-		}) 
+			})// end of ajax
 		} else{
 			Swal.fire({
 				  icon: 'error',
