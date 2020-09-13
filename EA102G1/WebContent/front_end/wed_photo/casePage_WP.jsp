@@ -29,7 +29,7 @@
 	session.setAttribute("location",url); 
 	
 	if(WPCaseVO == null){
-		response.sendRedirect(request.getContextPath()+"/front_end/wed_photo/wp_home.jsp");
+		response.sendRedirect(request.getContextPath()+"/front_end/wed_photo/home_WP.jsp");
 	    return;
 	}
 	//廠商資訊
@@ -169,7 +169,7 @@ h4 {
 }
 .title2 ol{
     list-style-type: none;    
-    margin-top: 17.5px;
+    margin-top: 18.5px;
     height: 36px;    
     background: -webkit-linear-gradient(#FFFFFFE0,#FFFFFF00);
     background: -o-linear-gradient(#FFFFFFE0,#FFFFFF00);
@@ -200,6 +200,7 @@ a {
 a:hover {
     color: #919191FF;
 }
+/*首圖 開始*/
 .content1 .row {
     margin: 0;
 }
@@ -207,7 +208,7 @@ a:hover {
     margin-top: 30px;
     height: 800px;
     border: dotted 1px #CCCCCCFF;
-    background-image: url("<%=request.getContextPath()%>/img/wp_img/wpbanner01.jpg");
+    background-image: url("<%=request.getContextPath() %>/img/wp_img/wpbanner01.jpg");
     background-position: 40% 50%;
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -221,7 +222,7 @@ a:hover {
     margin-top: 25%;
     margin-left: 42%;
     text-align: center;
-    height: 230px;
+    height: 30%;
     border-color: #FFFFFF00;
     border: 1px solid #FFFFFFFF;
     border-radius: 10px;
@@ -229,15 +230,18 @@ a:hover {
 }
 
 .content1_txt1 img {
-    border-radius: 95px;
+    width: 73%;
+    border-radius: 98%;
     margin-top:8px;
     margin-bottom:8px;
     z-index: 5;
     opacity: 1;
 }
+/*首圖 結束*/
+/*資訊 開始*/
 .content2 {
     padding-top: 30px;
-    padding-bottom: 15px;
+    padding-bottom: 15px;    
     text-align: center;
 }
 .content2 p{
@@ -252,9 +256,6 @@ a:hover {
     border: 1px dotted #545454FF;
     height: 390px;
 }
-
-
-
 .breadcrumb {
     background-color: #FFECFFFF;
     border-radius: 0px;
@@ -270,22 +271,22 @@ a:hover {
     margin-top: 10px;
     margin-bottom: 25px;
 }
+/*資訊 結束*/
 
+/*其他方案 開始*/
 .img_box {
     display: inline-block;
     margin-top: 15px;
-    margin-bottom: 15px;
-    /*border-radius: 5px;*/
-    box-shadow: #EBD0D0FF 3px 3px 3px 3px;
-    height: 420px;
+    margin-bottom: 15px;   
+    box-shadow: #EBD0D0FF 3px 3px 3px 3px;    
     color: #4F4F4FFF;
 }
 .img_box:hover{
     box-shadow: #E0E0E0FF 3px 3px 3px 3px;
 }
 .img_box img {
-    height: 230px;
-    width: 350px;
+    height: auto;
+    width: 99.9%;
     /*border-radius: 5px;*/
 }
 
@@ -316,8 +317,11 @@ a:hover {
 .img_box img:hover{
     opacity: 0.9;   
 }
-
+/*其他方案 結束*/
 /*評價 開始*/
+.review_box{
+    margin-bottom: 30px;
+}
 .review_box p{    
     font-size: 22px;
    text-align:center;
@@ -360,43 +364,63 @@ a:hover {
     text-align: center;
 }
 /*評價 結束*/
-.copyright{
+
+
+/*footer start*/
+.copyright {
     text-align: center;
     background-color: #FFECFFFF;
 }
-.container-fluid {
+
+.footer .col-lg-4 {
+    margin-bottom: 25px;
+}
+
+.footer_con {
     height: 350px;
     background-color: #FFECFFFF;
     border: 3px #FFECFFFF solid;
-    margin-top: 20px;
-    padding-bottom: 20px;    
+    /*margin-top: 20px;*/
+    padding-bottom: 20px;
 }
+
+@media (max-width: 992px) {
+    .footer_con {
+        height: 535px;
+    }
+}
+
 .footer-about ul {
     list-style-type: none;
 }
-.footer-about ul li{
+
+.footer-about ul li {
     line-height: 32px;
 }
-.footer col-md-4{
-    text-align:center;
-}
-.Preview img{
-    width:300px;
-    height: auto;
-    margin:auto;
-    display:block;
-    margin-bottom: 40px;
-}
-.col-3 img{
-    width:50px;
-    height: auto;
-    margin:auto;
-    display:block;
-}
-.contact-info{
+
+.footer col-md-4 {
     text-align: center;
 }
 
+.Preview img {
+    width: 300px;
+    height: auto;
+    margin: auto;
+    display: block;
+    margin-bottom: 40px;
+}
+
+.foo_img img {
+    width: 50px;
+    height: auto;
+    margin: auto;
+    display: block;
+}
+
+.contact-info {
+    text-align: center;
+}
+/*footer end*/
 </style>
 <body>
     <div class="header">
@@ -417,10 +441,10 @@ a:hover {
         </div>
         <div class="title2">
             <ol>
-                <li><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP2.jsp">婚禮攝影</a></li>
-                <li><a href="">禮車租借</a></li>
-                <li><a href="">婚紗租借</a></li>
-                <li><a href="">二手拍賣</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP.jsp">婚禮攝影</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp">禮車租借</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp"">婚紗租借</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp">二手拍賣</a></li>
                 <li><a href="">討論區</a></li>
             </ol>
         </div>
@@ -439,8 +463,8 @@ a:hover {
     </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/front_end/wed_photo/wp_home.jsp">婚禮攝影</a></li>
-            <li class="breadcrumb-item"><a href="#">廠商簡介</a></li>
+            <li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_wp.jsp">婚禮攝影</a></li>
+            <li class="breadcrumb-item"><a href="<%=request.getContextPath() %>/wed/wpcase.do?action=goVenderPage&vender_id=${WPCaseVO.vender_id}">廠商資訊</a></li>
             <li class="breadcrumb-item active" aria-current="page">方案介紹</li>
         </ol>
     </nav>
@@ -481,7 +505,7 @@ a:hover {
 	    </div>
                   <div class="row justify-content-between new_case">
                    	<c:forEach var="other_set" items="${other_set }">                    	
-			           <div class="col-4">
+			           <div class="col-lg-4 col-md-6 col-sm-12">
 			                <a href="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no=${other_set.wed_photo_case_no}" target="_blank">
 			                    <div class="img_box">
 			                        <img src="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_WPImg&wed_photo_case_no=${other_set.wed_photo_case_no}">
@@ -525,27 +549,27 @@ a:hover {
 
 <!-- footer Start -->
     <footer>
-        <section class="container-fluid">
+        <section class="container-fluid footer_con">
             <div class="row footer">
-                <div class="col-md-4 footer-about">
+                <div class="col-md-12 col-lg-4 footer-about">
                     <ul>
                         <li><a href="#" target="_blank">●關於我們</a></li>
                         <li><a href="#" target="_blank">●常見問題</a></li>
                         <li><a href="#" target="_blank">●隱私權條款</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 footer-logo">
+                <div class="col-md-12 col-lg-4 footer-logo">
                     <div class="row justify-content-between">
                         <div class="col-12 Preview">
-                            <img alt="Bootstrap Image Preview" src="../img/logo-transparent(1450_400).png">
+                            <img alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>/img/logo-transparent(1450_400).png">
                         </div>
-                        <div class="col-3"><a href="#" target="_blank"><img alt="fb" src="../img/img_for_footer/FB_8080.png"></a></div>
-                        <div class="col-3"><a href="#" target="_blank"><img alt="ig" src="../img/img_for_footer/IG_8080.jpg"></a></div>
-                        <div class="col-3"><a href="#" target="_blank"><img alt="line" src="../img/img_for_footer/LINE_logo_8080.png"></a></div>
-                        <div class="col-3"><a href=""><img alt="qrcode" src="../img/img_for_footer/lineQR_8080.png"></a></div>
+                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="fb" src="<%=request.getContextPath()%>/img/img_for_footer/FB_8080.png"></a></div>
+                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="ig" src="<%=request.getContextPath()%>/img/img_for_footer/IG_8080.jpg"></a></div>
+                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="line" src="<%=request.getContextPath()%>/img/img_for_footer/LINE_logo_8080.png"></a></div>
+                        <div class="col-3 foo_img"><a href=""><img alt="qrcode" src="<%=request.getContextPath()%>/img/img_for_footer/lineQR_8080.png"></a></div>
                     </div>
                 </div>
-                <div class="col-md-4 contact-info">
+                <div class="col-md-12 col-lg-4 contact-info">
                     <div>
                         ●聯絡我們
                     </div>
@@ -564,9 +588,7 @@ a:hover {
         </section>
     </footer><!-- footer End-->
     <div class="copyright">Copyright(C) WeddingNavi. All Rights Reserved.</div>
-
-
-
+    
 <!-- Modal 直接下訂 區塊-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

@@ -470,7 +470,7 @@ var mymap = new google.maps.Map($('#map').get(0), {
     center: { lat: 25.0479, lng: 121.5170 }
 });
 
-var addr = '台中市南屯區永春路60-7號';
+var addr = '${VenderVO.ven_addr}';
 
 // 用使用者輸入的地址查詢
 gc.geocode({ 'address': addr }, function(result, status) {
