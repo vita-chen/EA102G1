@@ -55,7 +55,7 @@
 							<tr>
 								<td>${venderVO.vender_id}</td>
 								<td>${venderVO.ven_name}</td>
-								<td>
+								<td>${venderVO.ven_addr}
 								<a href="https://www.google.com.tw/maps/place/${venderVO.ven_addr}" title="GOOGLE地圖" target="_blank">
 								<img style="width: 20px; height: 20px;"
 								src="<%=request.getContextPath()%>/img/GOOGLE_MAP.png">
