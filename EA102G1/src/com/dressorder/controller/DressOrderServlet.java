@@ -314,7 +314,7 @@ public class DressOrderServlet extends HttpServlet {
 					failureView.forward(req, res);
 					return;
 				}
-				String url = "/front_end/membre_order/membre_order_dress.jsp";
+				String url = "/front_end/dresscase/OrderSuccess_membre.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);				
 			} catch (Exception e) {

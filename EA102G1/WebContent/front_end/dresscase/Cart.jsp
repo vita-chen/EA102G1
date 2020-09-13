@@ -10,7 +10,7 @@
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>Cart.jsp:瀏覽您的購買清單</title>
   
-<%--  <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/bootstrap/css/bootstrap.min2.css"> --%>
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/bootstrap/css/bootstrap.min2.css">
 <script src="<%=request.getContextPath()%>/vendors/jquery/jquery-3.4.1.min.js"></script>
 
 
@@ -180,7 +180,7 @@ if (map != null && (map.size() > 0)) {%>
 	</div>
 <script>
 $('#check').click(function(){
-	alert("結帳成功，導回訂單頁面");
+	alert("結帳成功");
 	$('#checkoutForm').submit();
 	
 })
