@@ -13,7 +13,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Wed Photo Order 婚禮攝影服務 訂單查詢 - 廠商頁面</title>
-<!-- ....Ajax 查訂單 分頁 排序 待完成....-->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/vendors/bootstrap/css/bootstrap.min.css">
 <style type="text/css">
 	select{	
@@ -115,8 +114,8 @@
                 <div class="content_2">
 	        		<nav aria-label="Page navigation example">
 		            	<ul class="pagination justify-content-center">
-			                <li class="page-item Previous"><a class="page-link" tabindex="-1">Previous</a></li>
-			                <li class="page-item Next"><a class="page-link">Next</a></li>
+			                <li class="page-item Previous"><a class="page-link" tabindex="-1">First</a></li>
+			                <li class="page-item Next"><a class="page-link">Last</a></li>
 		            	</ul>
 	        		</nav>
    		 		</div>
@@ -159,6 +158,7 @@
                <label for="message-text" class="col-form-label">訂單備註 Message:</label>
                <textarea class="form-control" id="message-text" name="order_explain" rows="10"></textarea>
            </div>
+           <a href="" target="_blank" class="case_a"><span class="case_info"></span></a>
        </form>
 	</div>
 	  <div class="tab-pane fade" id="pills-Appraise" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -180,7 +180,6 @@
                <label for="message-text" class="col-form-label">評價內容 Message:</label>
                <textarea class="form-control" id="message-text" name="review_content" rows="10" disabled></textarea>
            </div>
-           <span>查看會員給的評價</span>
        </form>	  
 	  </div>
 	  <div class="tab-pane fade" id="pills-Report" role="tabpanel" aria-labelledby="pills-contact-tab">

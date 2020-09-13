@@ -95,7 +95,7 @@ public class WedPhotoServlet extends HttpServlet {
 				
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("WPCaseVO", WPCaseVO);// 含有輸入格式錯誤的WPCaseVO物件,也存入req
-					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/vender_addWPcase.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/wp/vender_addWPcase.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -123,14 +123,14 @@ public class WedPhotoServlet extends HttpServlet {
 					}
 				}
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/				
-				String url = "/front_end/vender/vender_listAllWPCase.jsp";
+				String url = "/front_end/vender/wp/vender_listAllWPCase.jsp";
 				res.sendRedirect(req.getContextPath() + url);
 
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
-				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/vender_addWPcase.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/wp/vender_addWPcase.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -170,12 +170,12 @@ public class WedPhotoServlet extends HttpServlet {
 				
 				WPCaseService wpcasesvc = new WPCaseService();
 				wpcasesvc.deleteWPImg(WP_IMG_NO);
-				String url = "/front_end/vender/vender_listAllWPCase.jsp";
+				String url = "/front_end/vender/wp/vender_listAllWPCase.jsp";
 				res.sendRedirect(req.getContextPath() + url);
 			
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/vender_listAllWPCase.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/wp/vender_listAllWPCase.jsp");
 				failureView.forward(req, res);
 				
 			}
@@ -190,13 +190,13 @@ public class WedPhotoServlet extends HttpServlet {
 
 				req.setAttribute("WPCaseVO", WPCaseVO);
 				req.setAttribute("imgList", imgList);
-				String url = "/front_end/vender/vender_updateWPCase.jsp";
+				String url = "/front_end/vender/wp/vender_updateWPCase.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/updateWPCase.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/wp/updateWPCase.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -291,7 +291,7 @@ public class WedPhotoServlet extends HttpServlet {
 				req.setAttribute("WPCaseVO", WPCaseVO); // 含有輸入格式錯誤的WPCaseVO物件,也存入req
 				
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/vender_updateWPCase.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/wp/vender_updateWPCase.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -321,13 +321,13 @@ public class WedPhotoServlet extends HttpServlet {
 					}
 				}
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
-				String url = "/front_end/vender/vender_listAllWPCase.jsp";
+				String url = "/front_end/vender/wp/vender_listAllWPCase.jsp";
 				res.sendRedirect(req.getContextPath() + url);
 
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/vender_updateWPCase.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/vender/wp/vender_updateWPCase.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -424,37 +424,31 @@ public class WedPhotoServlet extends HttpServlet {
 		if ("Generate_order".equals(action)) { //填寫訂單頁面 >> 產生訂單 + ajax
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
-			JSONArray array = new JSONArray();
+			JSONObject obj = new JSONObject();
 			System.out.println(req.getParameter("TOOL"));
 			try {
 				String wed_photo_case_no = req.getParameter("WED_PHOTO_CASE_NO");				
-				String vender_id = req.getParameter("VENDER_ID");
-			
+				String vender_id = req.getParameter("VENDER_ID");			
 //				String wed_photo_name = req.getParameter("WED_PHOTO_NAME");
 //				String wed_photo_prices = req.getParameter("WED_PHOTO_PRICE");
 //				Integer wed_photo_price = new Integer(wed_photo_prices);			
 				
-				
-				WPCaseVO wpcasevo = new WPCaseVO();				
+				WPCaseVO wpcasevo = new WPCaseVO();
 				wpcasevo.setWed_photo_case_no(wed_photo_case_no);
 				wpcasevo.setVender_id(vender_id);
 //				wpcasevo.setWed_photo_name(wed_photo_name);
 //				wpcasevo.setWed_photo_price(wed_photo_price);				
 				req.setAttribute("WPCaseVO", wpcasevo);
 				
-				
 				WPOrderVO wpordervo = new WPOrderVO();
 				req.setAttribute("WPOrderVO", wpordervo);
 				
 				String membre_id = req.getParameter("MEMBRE_ID").trim();
-				wpordervo.setMembre_id(membre_id);
-				
-				if (membre_id.trim().length() == 0) {
-					errorMsgs.add("會員編號: 請勿空白");					
-				}
+				wpordervo.setMembre_id(membre_id);				
+				if (membre_id.trim().length() == 0)	errorMsgs.add("會員編號: 請勿空白");				
 				String order_explain = req.getParameter("ORDER_EXPLAIN").trim();
 				wpordervo.setOrder_explain(order_explain);
-				System.out.println(membre_id+" "+order_explain);
+				
 				java.sql.Timestamp current_time = new java.sql.Timestamp(System.currentTimeMillis());
 				java.sql.Timestamp filming_time = new java.sql.Timestamp(System.currentTimeMillis());
 				try {
@@ -463,31 +457,27 @@ public class WedPhotoServlet extends HttpServlet {
 					
 					if((current_time.getTime()+(14*86400000))-(filming_time.getTime()) > 0) {
 						errorMsgs.add("不得輸入過往日期 且請選擇大於14天之後!!");//-值才是正確的 且大於14天
-						array.put("不得輸入過往日期 且請選擇大於14天之後!!");
+						obj.put("time","不得輸入過往日期 且請選擇大於14天之後!!");
 						throw new Exception();
 					};
-				} catch (IllegalArgumentException ie) {
-					System.out.println(filming_time + "這邊是時間錯誤區");
+				} catch (IllegalArgumentException ie) { //時間錯誤不准進資料庫
 					errorMsgs.add("時間錯誤!");
-					array.put("不得輸入過往日期 且請選擇大於14天之後!!");
-					throw ie; //時間錯誤不准進資料庫
+					obj.put("time","不得輸入過往日期 且請選擇大於14天之後!!");
+					throw ie; 
 				}
 								
-				wpordervo.setFilming_time(filming_time);				
-				
-				WPOrderService wpodsvc = new WPOrderService();
+				wpordervo.setFilming_time(filming_time);
+				WPOrderService wpodsvc = new WPOrderService();//返回訂單編號
 				wpordervo = wpodsvc.addWPOrder(membre_id, vender_id, filming_time, order_explain);
-
-				WPDetailVO wpdetailvo = new WPDetailVO();
+				WPDetailVO wpdetailvo = new WPDetailVO();//訂單編號與方案關聯
 				wpdetailvo = wpodsvc.addWPDetail(wpordervo.getWed_photo_order_no(), wed_photo_case_no);
 				
-				if(req.getParameter("TOOL").equals("ajax")) {
-					
+				//訂單生成成功依工具返回
+				if(req.getParameter("TOOL").equals("ajax")) {					
 					res.setContentType("text/plain");
 					res.setCharacterEncoding("UTF-8");			
 					PrintWriter out = res.getWriter();
-					JSONObject obj = new JSONObject();
-					obj.put("text", "成功");
+					obj.put("note", "成功");
 					obj.put("wed_photo_order_no", wpordervo.getWed_photo_order_no());
 					out.print(obj);
 					out.flush();
@@ -497,15 +487,14 @@ public class WedPhotoServlet extends HttpServlet {
 					String url = "/front_end/membre/wp/listAllWPOrder.jsp";
 					res.sendRedirect(req.getContextPath() + url);
 				}
-				
-			} catch (Exception e) {
-				
+				//訂單生成失敗依工具返回
+			} catch (Exception e) {				
 				if(req.getParameter("TOOL").equals("ajax")) {
-					array.put("生成訂單失敗");
+					obj.put("note","失敗");
 					res.setContentType("text/plain");
 					res.setCharacterEncoding("UTF-8");			
 					PrintWriter out = res.getWriter();
-					out.print(array);
+					out.print(obj);
 					out.flush();
 					out.close();
 					return;
@@ -776,12 +765,12 @@ public class WedPhotoServlet extends HttpServlet {
 		
 		if ("getOne_Order_Ajax".equals(action)) {
 			
-			System.out.println(req.getParameter("action"));
-			System.out.println(req.getParameter("wed_photo_order_no"));
 			String wed_photo_order_no = req.getParameter("wed_photo_order_no");
 			String identity = req.getParameter("identity");
 			WPOrderService wpodsvc = new WPOrderService();
 			WPOrderVO ordervo = wpodsvc.getOne(wed_photo_order_no);
+			WPCaseService wpcasvc = new WPCaseService();
+			WPCaseVO casevo = wpcasvc.getOneWPno(wpodsvc.orderChange(wed_photo_order_no));
 			
 			//宣告json物件 put list值
 			JSONObject obj = new JSONObject();
@@ -795,6 +784,8 @@ public class WedPhotoServlet extends HttpServlet {
 				obj.put("order_explain", ordervo.getOrder_explain());
 				obj.put("review_star", ordervo.getReview_star());
 				obj.put("review_content", ordervo.getReview_content());
+				obj.put("wed_photo_case_no", casevo.getWed_photo_case_no());
+				obj.put("wed_photo_name", casevo.getWed_photo_name());
 				if(identity.equals("member")) { // 身分判別 廠商給廠商檢舉資訊 會員給會員檢舉資訊
 					if(ordervo.getWp_mrep_s() == 1) {
 						obj.put("wp_mrep_s", "已提出檢舉 待管理員審核");
@@ -834,7 +825,7 @@ public class WedPhotoServlet extends HttpServlet {
 			String wed_photo_order_no = req.getParameter("wed_photo_order_no");
 			String identity = req.getParameter("identity");
 			WPOrderService wpodsvc = new WPOrderService();
-			WPOrderVO ordervo = wpodsvc.getOne(wed_photo_order_no);
+			WPOrderVO ordervo = wpodsvc.getOne(wed_photo_order_no);			
 			
 			//宣告json物件 put list值
 			JSONObject obj = new JSONObject();
@@ -846,7 +837,7 @@ public class WedPhotoServlet extends HttpServlet {
 				obj.put("wp_mrep_d", ordervo.getWp_mrep_d());
 				obj.put("wp_vrep_s", ordervo.getWp_vrep_s());
 				obj.put("wp_vrep_d", ordervo.getWp_vrep_d());
-			
+							
 			res.setContentType("text/plain");
 			res.setCharacterEncoding("UTF-8");
 			PrintWriter out = res.getWriter();
@@ -855,17 +846,57 @@ public class WedPhotoServlet extends HttpServlet {
 			out.close();
 		}
 		
-		if ("update_order_Ajax".equals(action)) {			
-			System.out.println(req.getParameter("wed_photo_order_no"));
-			System.out.println(req.getParameter("order_explain"));
-			System.out.println(req.getParameter("review_star"));
-			System.out.println(req.getParameter("review_content"));
-//			res.setContentType("text/plain");
-//			res.setCharacterEncoding("UTF-8");
-//			PrintWriter out = res.getWriter();
-//			out.print(obj);
-//			out.flush();
-//			out.close();
+		if ("update_order_Ajax".equals(action)) {
+			
+			String wed_photo_order_no = req.getParameter("wed_photo_order_no");
+			Integer review_star = new Integer(req.getParameter("review_star"));
+			String review_content = req.getParameter("review_content");
+			String order_explain = req.getParameter("order_explain");
+			
+			if(req.getParameter("order_status").equals("訂單取消")) {
+				res.setContentType("text/plain");
+				res.setCharacterEncoding("UTF-8");
+				PrintWriter out = res.getWriter();
+				out.write("訂單取消無法做任何動作哦!");
+				out.flush();
+				out.close();
+				return;
+				
+			}
+			if(req.getParameter("order_status").equals("訂單成立")) {
+				
+				WPOrderService wpordersvc = new WPOrderService();
+				WPOrderVO ordervo = new WPOrderVO();
+				ordervo.setOrder_explain(order_explain);
+				ordervo.setWed_photo_order_no(wed_photo_order_no);
+				wpordersvc.Mem_Explain(ordervo);
+				
+				res.setContentType("text/plain");
+				res.setCharacterEncoding("UTF-8");
+				PrintWriter out = res.getWriter();
+				out.write("馬上為您更新訂單備註 !");
+				out.flush();
+				out.close();
+				return;
+			}			
+			if(req.getParameter("order_status").equals("訂單完成")) {
+				
+				WPOrderService wpordersvc = new WPOrderService();
+				WPOrderVO ordervo = new WPOrderVO();
+				ordervo.setReview_star(review_star);
+				ordervo.setReview_content(review_content);
+				ordervo.setWed_photo_order_no(wed_photo_order_no);
+				wpordersvc.complete_order(ordervo);
+				
+				res.setContentType("text/plain");
+				res.setCharacterEncoding("UTF-8");
+				PrintWriter out = res.getWriter();
+				out.write("評價更新成功囉!");
+				out.flush();
+				out.close();
+				return;
+			}
+
 		}
 		
 		if ("select_order_no_Ajax".equals(action)) {

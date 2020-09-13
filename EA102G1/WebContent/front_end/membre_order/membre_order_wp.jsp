@@ -156,8 +156,8 @@
                 <div class="content_2">
 	        		<nav aria-label="Page navigation example">
 		            	<ul class="pagination justify-content-center">
-			                <li class="page-item Previous"><a class="page-link" tabindex="-1">Previous</a></li>
-			                <li class="page-item Next"><a class="page-link">Next</a></li>
+			                <li class="page-item Previous"><a class="page-link" tabindex="-1">First</a></li>
+			                <li class="page-item Next"><a class="page-link">Last</a></li>
 		            	</ul>
 	        		</nav>
    		 		</div>
@@ -196,7 +196,8 @@
                                     <label for="message-text" class="col-form-label">訂單備註 Message:</label>
                                     <textarea class="form-control" id="message-text" name="order_explain" rows="10"></textarea>
                                 </div>
-                            </form>
+                                <a href="" target="_blank" class="case_a"><span class="case_info"></span></a>
+                            </form>                            
                         </div>
                         <div class="tab-pane fade" id="pills-Appraise" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <form>
@@ -217,7 +218,7 @@
                                     <label for="message-text" class="col-form-label">評價內容 Message:</label>
                                     <textarea class="form-control" id="message-text" name="review_content" rows="10"></textarea>
                                 </div>
-                                <span>(評價可改?)　 歡迎給我們更好的評價與鼓勵　您的支持是我們服務的動力^O^/</span>
+                                <span>歡迎給我們更好的評價與鼓勵　您的支持是我們服務的動力^O^/</span>
                             </form>
                         </div>
                         <div class="tab-pane fade" id="pills-Report" role="tabpanel" aria-labelledby="pills-contact-tab">

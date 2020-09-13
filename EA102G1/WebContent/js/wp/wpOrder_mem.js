@@ -86,7 +86,6 @@ $(document).ready(function(){
 				 action:"getOne_Order_Ajax",
 				 wed_photo_order_no:$(this).attr("value"),
 				 identity:"member"
-				 //點擊button 把按鈕的 value="${wpordervo.wed_photo_order_no }"傳給後端找資料	 
 			 },			
 			 success: function (data){
 				$('[name="order_status"]').val(JSON.parse(data).order_status);
@@ -97,6 +96,8 @@ $(document).ready(function(){
 				$('[name="review_content"]').val(JSON.parse(data).review_content);//review_content
 				$('[name="wp_mrep_s"]').val(JSON.parse(data).wp_mrep_s);//wp_mrep_s
 				$('[name="wp_mrep_d2"]').val(JSON.parse(data).wp_mrep_d);//wp_mrep_d
+				$('.case_info').text(JSON.parse(data).wed_photo_case_no+' '+JSON.parse(data).wed_photo_name)
+				$('.case_a').attr('href',url+'/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no='+JSON.parse(data).wed_photo_case_no)
 			 }
 		 })
 	})
@@ -105,110 +106,148 @@ $(document).ready(function(){
 	})
 	// 點選訂單完成 出現填寫評價表格(非必填) 才進資料庫
 	$(".complete_submit").click(function(){
-
 		$.ajax({
-			 type: "POST",
+			type: "POST",
 			 url: url + "/wed/wpcase.do",
 			 data: {
-				 action:"complete_order",
-				 identity:"member",
+				 action:"getOne_Order_Ajax_2",
 				 wed_photo_order_no:$("[name='wed_photo_order_no']").val(),
-				 review_star:$('.valueSpan').text(),
-				 review_content:$("[name='review_content_submit']").val()
+				 identity:"vender"
 			 },			
-			 success: function (data){	 
-				 alert(data+' 訂單完成囉!');
-					$(":button").each(function(){
-						if(data == $(this).attr("name")){
-							$(this).prop("disabled",true);
-							$(this).nextAll(".btn-secondary").prop("disabled",true);
-						}
-					})				 
+			 success: function (data){
+				 var order_status = JSON.parse(data).order_status;
+				 var wp_vrep_s = JSON.parse(data).wp_vrep_s;
+				 
+				 if(order_status != 2 && wp_vrep_s == 0){
+					 $.ajax({
+						 type: "POST",
+						 url: url + "/wed/wpcase.do",
+						 data: {
+							 action:"complete_order",
+							 identity:"member",
+							 wed_photo_order_no:$("[name='wed_photo_order_no']").val(),
+							 review_star:$('.valueSpan').text(),
+							 review_content:$("[name='review_content_submit']").val()
+						 },			
+						 success: function (data){	 
+							 alert(data+' 訂單完成囉!');
+								$(":button").each(function(){
+									if(data == $(this).attr("name")){
+										$(this).prop("disabled",true);
+										$(this).nextAll(".btn-secondary").prop("disabled",true);
+									}
+								})				 
+						 }
+					 })
+				 }else{
+					 alert('無法完成訂單! 請重新整理');
+				 }
 			 }
-		 })
+		})
 	})
 	
-	$(".cancle").click(function(){ // 想跳個swal2好難...
-		
-		//廠商檢舉狀態
-		var wp_vrep_s_decide = $(this).parent().parent().children().eq(2).attr("value")
-		//會員檢舉狀態
-		var wp_mrep_s_decide = $(this).parent().parent().children().eq(3).attr("value")
-	
+	$(".cancle").click(function(){
+		var wed_photo_order_no = $(this).attr("value");
 		var ans = confirm('確定取消訂單嗎？');
-        console.log(ans); // true or false
 		if(ans){
-			if(wp_vrep_s_decide != 0 || wp_mrep_s_decide != 0){
-			alert('檢舉處理中，無法取消訂單！');
-			return;
-			}else{
-				$.ajax({
-					 type: "POST",
-					 url: url + "/wed/wpcase.do",
-					 data: {
-						 action:"cancel_order",
-						 wed_photo_order_no:$(this).attr("value")
-						 //點擊button 把按鈕的 value="${wpordervo.wed_photo_order_no }"傳給後端把這筆訂單取消
-					 },			
-					 success: function (data){
-						 alert(data+' 訂單取消囉!');
-							$(":button").each(function(){
-								if(data == $(this).attr("name")){
-									$(this).text("訂單取消");
-									$(this).prop("disabled",true);
-									$(this).attr("class","btn btn-danger");
-									$(this).nextAll(".btn-secondary").prop("disabled",true);
-									$(this).nextAll(".btn-secondary").attr("class","btn btn-danger dropdown-toggle px-3");
-								}
-							})
+			$.ajax({
+				 type: "POST",
+				 url: url + "/wed/wpcase.do",
+				 data: {
+					 action:"getOne_Order_Ajax_2",
+					 wed_photo_order_no:wed_photo_order_no
+				 },			
+				 success: function (data){
+					 var order_status = JSON.parse(data).order_status;
+					 var wp_vrep_s = JSON.parse(data).wp_vrep_s;
+					 if(order_status == 1 && wp_vrep_s == 0){
+						 $.ajax({
+							 type: "POST",
+							 url: url + "/wed/wpcase.do",
+							 data: {
+								 action:"cancel_order",
+								 wed_photo_order_no:wed_photo_order_no
+							 },			
+							 success: function (data){
+								 alert(data+' 訂單取消囉!');
+									$(":button").each(function(){
+										if(data == $(this).attr("name")){
+											$(this).text("訂單取消");
+											$(this).prop("disabled",true);
+											$(this).attr("class","btn btn-danger");
+											$(this).nextAll(".btn-secondary").prop("disabled",true);
+											$(this).nextAll(".btn-secondary").attr("class","btn btn-danger dropdown-toggle px-3");
+										}
+									})
+							 }
+						 })
+					 }else{
+						 alert('無法取消訂單! 請重新整理');
 					 }
-				 })
-			}
-		}
-		
+				 }
+			})
+			
+		}		
 	})	
 	$(".report").click(function(){
 		$("[name='wed_photo_order_no']").val($(this).attr("value"));
 	})
 	$(".report_submit").click(function(){
-		
+		var wed_photo_order_no = $("[name='wed_photo_order_no']").val();
+		var wp_mrep_d = $("[name='wp_mrep_d']").val();
 		$.ajax({
 			 type: "POST",
 			 url: url + "/wed/wpcase.do",
 			 data: {
-				 action:"mem_report",
-				 wp_mrep_d:$("[name='wp_mrep_d']").val(),
-				 wed_photo_order_no:$("[name='wed_photo_order_no']").val()
-				 //取得類別為report 的 value="${wpordervo.wed_photo_order_no }"值 傳給後端找資料	 
+				 action:"getOne_Order_Ajax_2",
+				 wed_photo_order_no:wed_photo_order_no
 			 },			
-			 success: function (data){ //retrun wed_photo_order_no
-				 alert(data+' 檢舉內容已送出!');
-				$(":button").each(function(){
-					if(data == $(this).attr("name")){
-						$(this).text("　檢舉　");
-						$(this).prop("disabled",true);
-						$(this).nextAll(".btn-secondary").prop("disabled",true);
-					}
-				})
+			 success: function (data){
+				 var order_status = JSON.parse(data).order_status;
+				 
+				 if(order_status != 1){
+					 alert('無法提出檢舉! 請重新整理');					 
+				 }else{
+					 $.ajax({
+						 type: "POST",
+						 url: url + "/wed/wpcase.do",
+						 data: {
+							 action:"mem_report",
+							 wp_mrep_d:wp_mrep_d,
+							 wed_photo_order_no:wed_photo_order_no
+							 //取得類別為report 的 value="${wpordervo.wed_photo_order_no }"值 傳給後端找資料	 
+						 },			
+						 success: function (data){ //retrun wed_photo_order_no
+							 alert(data+' 檢舉內容已送出!');
+							$(":button").each(function(){
+								if(data == $(this).attr("name")){
+									$(this).text("　檢舉　");
+									$(this).prop("disabled",true);
+									$(this).nextAll(".btn-secondary").prop("disabled",true);
+								}
+							})
+						 }
+					 })
+				 }
 			 }
-		 })
+		})
 	})
-	$(".update_order_Ajax").click(function(){ // 更新評價 更新訂單備註 能進controller還不能進資料庫
-		
+	$(".update_order_Ajax").click(function(){
 		$.ajax({
 			type: "POST",
 			url: url + "/wed/wpcase.do",
 			data: {
 				action:"update_order_Ajax",
+				order_status:$("[name='order_status']").val(),
 				wed_photo_order_no:$("[name='wed_photo_order_no']").val(),
 				order_explain:$("[name='order_explain']").val(),
 				review_star:$('.valueSpan2').text(),
 				review_content:$("[name='review_content']").val()				
 			},
 			success: function(data){
-// 				alert(data+' 訂單更新成功');
+ 				alert(data);
 			}			
-		})		
+		})	
 	})
 	$("[name='select_order_no']").change(function(){
 		var order_no = $("option:selected").attr("value");

@@ -96,7 +96,9 @@ div.form-group2 {
 .col-3{
 display:inline;
 }
-
+.files_ok{
+display:none;
+}
 </style>
 <body>
 	<div class="container1">
@@ -142,15 +144,17 @@ display:inline;
                         <input type="radio" id="customRadioInline2" name="WED_PHOTO_STATUS" value="1" class="custom-control-input">
                         <label class="custom-control-label" for="customRadioInline2">下架狀態</label>
                     </div>
+                    <span class="help">需要幫助嗎？</span>
                 </div>
                 <div class="col-md">
-                    <div class="form-group2" id="preview">                    	
-                        	<label for="upfile1">選擇圖片 choose file</label>
-                        	<input type="file" class="form-control-file" id="upfile1" name="upfile1" multiple>                    	
-                    </div>
-                    <input type="hidden" name="action" value="insert">
+                    <label for="upfile1">選擇圖片 choose file</label>
+                    <input type="file" class="form-control-file" id="upfile1" name="upfile1" multiple>
+                    <div class="form-group2" id="preview"></div>                    
+                    <input type="hidden" name="action" value="insert">                    
                     <button type="button" id="removeA" class="btn btn-outline-danger">delete</button>
                     <button type="submit" class="btn btn-outline-primary">Submit add</button>
+                    <div class="files_ok">
+                    </div>
                 </div>
             </div>
         </form>
@@ -162,44 +166,73 @@ display:inline;
 </body>
 <script type="text/javascript">
 function init() {
+	$('.help').click(function(){
+		$('[name="WED_PHOTO_NAME"]').val('名稱最多可以20個字');
+		$('[name="WED_PHOTO_INTRO"]').text('方案介紹 內容隨便填');
+		$('[name="WED_PHOTO_PRICE"]').val(123456);
+	})
+	
     var upfile1 = document.getElementById("upfile1");
     var preview = document.getElementById('preview');
-    upfile1.addEventListener('change', function(e) { 
-        var files = e.srcElement.files;
-        if (files) {       				
+    var removeA = document.getElementById('removeA');
+    var files = upfile1.files;
+    var files_copy = [];
+
+    //檔案初始化(清空)
+    upfile1.addEventListener('click', function() {
+        var div = document.querySelectorAll('#preview .imgbox');
+        for (var i = 0; i < div.length; i++) {
+            div[i].remove();
+        }
+        $('.files_ok').text('');
+    })
+    //檔案盒子初始化與拷貝
+    function copy() {
+
+        files_copy = [];
+
+        for (var i = 0; i < files.length; i++) {
+            files_copy.push(files[i].name);
+        }
+    }
+    //選擇檔案觸發初始化拷貝
+    upfile1.addEventListener('change', function(e) {
+        files = e.srcElement.files;
+        copy();
+        if (files) {
             for (var i = 0; i < files.length; i++) {
-                var file = files[i];              
-                if (file.type.indexOf('image') > -1) {                 
+                var file = files[i];
+                if (file.type.indexOf('image') > -1) {
                     var reader = new FileReader();
                     // 在FileReader物件上註冊load事件 - 載入檔案完成的意思
                     reader.addEventListener('load', function(e) {
                         // 取得結果 提示：從e.target.result取得讀取到結果
-                        var result = e.srcElement.result;                        
+                        var result = e.srcElement.result;
                         // 新增img元素
                         var row = document.createElement('div');
-                        row.setAttribute('class','row');
+                        row.setAttribute('class', 'row imgbox');
                         var col = document.createElement('div');
-                       	col.setAttribute('class', 'col-3 col-sm-3');
+                        col.setAttribute('class', 'col-3 col-sm-3');
                         var label = document.createElement('label');
-                        label.setAttribute('class','imagecheck mb-4');
+                        label.setAttribute('class', 'imagecheck mb-4');
                         var check = document.createElement('input');
                         check.setAttribute('type', 'checkbox');
                         check.setAttribute('class', 'imagecheck-input');
                         var figure = document.createElement('figure');
-                        figure.setAttribute('class','imagecheck-figure');
+                        figure.setAttribute('class', 'imagecheck-figure');
                         var input = document.getElementsByTagName('input');
                         var img = document.createElement('img');
                         img.setAttribute('class', 'img');
                         // 賦予src屬性
-                        img.src = result;                   
+                        img.src = result;
                         img.style.maxHeight = "100px";
                         // 放到div裡面
-                       	figure.append(img);
-                        label.append(check,figure);
+                        figure.append(img);
+                        label.append(check, figure);
                         col.append(label);
                         row.append(col);
-                        preview.append(row);  
-                    });           
+                        preview.append(row);
+                    });
                     reader.readAsDataURL(file); //trigger!!
                 } else {
                     alert('請上傳圖片！');
@@ -207,20 +240,46 @@ function init() {
             }
         }
     });
+
     removeA.addEventListener('click', function(e) {
         var check = document.getElementsByClassName('imagecheck-input');
-        var img = document.getElementsByClassName('img');
-        var remove = [];
+        var div = document.querySelectorAll('#preview .imgbox');
+        var remove = []; //存放欲刪除的div的暫時陣列
+        var del_copy = []; //存放欲刪除的檔名的暫時陣列
+        var str = '';
+
+//         console.log('初始陣列 ' + files_copy);
+
+
         for (var i = 0; i < check.length; i++) {
             if (check[i].checked) {
-            	remove.push(check[i].parentElement.parentElement.parentElement); //整個div刪除
-            	remove.push(img[i]);
+                remove.push(div[i]);
+                del_copy.push(files_copy[i]);                
             }
         }
+
         for (var j = 0; j < remove.length; j++) {
             remove[j].remove();
         }
+        for(var i=0;i<files_copy.length;i++){
+            for(var j =0;j<del_copy.length;j++){
+                if(files_copy[i] === del_copy[j]){
+                    files_copy.splice(i, 1);
+                }
+            }
+        }
+//         console.log(del_copy);
+//         console.log('最後陣列 ' + files_copy);
+
+        //傳給後端的資訊
+        for(var i=0;i<files_copy.length;i++){
+            str += '<input type="checkbox" name="WP_IMG_NO" value="'+files_copy[i]+'" checked>'+files_copy[i];
+        }
+        $('.files_ok').text('');
+        $('.files_ok').append(str);
     });
+
+
 }
 window.onload = init;
 </script>

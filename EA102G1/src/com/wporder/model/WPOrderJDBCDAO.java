@@ -425,4 +425,10 @@ public class WPOrderJDBCDAO implements WPOrderDAO_Interface{
 		
 	}
 
+	@Override
+	public void Mem_Explain(WPOrderVO WPOrderVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
