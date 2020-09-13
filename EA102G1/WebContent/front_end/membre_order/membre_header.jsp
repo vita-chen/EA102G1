@@ -40,7 +40,7 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#sidebarLayouts">
 								<i class="fas fa-th-list"></i>
-								<p>服務類訂單管理</p>
+								<p>訂單管理</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="sidebarLayouts">
@@ -58,6 +58,11 @@
 									 <li>
 										<a href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_wp.jsp">
 											<span class="sub-item">婚攝訂單</span>
+										</a>
+									</li>
+									 <li>
+										<a href="<%=request.getContextPath()%>/order/order.do?action=getDifferentStatusOrders_seller&order_status=All">
+											<span class="sub-item">商城賣家訂單管理</span>
 										</a>
 									</li>
 									

@@ -5,7 +5,7 @@
 <html>
 <head>
 <jsp:include page="/front_end/prod/head.jsp">
-<jsp:param name="title" value="My orders (seller)"/>
+<jsp:param name="title" value="My orders"/>
 </jsp:include>
 <script src="<%=request.getContextPath() %>/js/prod/myOrders_seller.js" type="text/javascript" charset="utf-8"></script>
 <style>

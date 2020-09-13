@@ -31,32 +31,32 @@ public class AdDAO implements AdDAO_interface {
 	private static final String GET_ONE_STMT = "SELECT * FROM AD where ad_id = ?";
 	private static final String UPDATE = "UPDATE AD set ad_pic=?, ad_detail=? where ad_id = ?";
 
-	public static void main(String[] args) {
-
-		AdDAO dao = new AdDAO();
-
-		// INSERT
-		AdVO adVO1 = new AdVO();
-		adVO1.setAd_id("AD500");
-		adVO1.setAd_pic(null);
-		adVO1.setAd_detail("五百五百");
-		adVO1.setAd_start_time(null);
-		adVO1.setAd_end_time(null);
-		
-		dao.insert(adVO1);
-		System.out.println("=====================");
-
-		// 查全部
-		List<AdVO> list = dao.getAll();
-		for (AdVO ad : list) {
-			System.out.print(ad.getAd_id() + ",");
-			System.out.print(ad.getAd_detail() + ",");
-			System.out.print(ad.getAd_start_time() + ",");
-			System.out.print(ad.getAd_end_time() + ",");
-			System.out.println();
-		}
-
-	}
+//	public static void main(String[] args) {
+//
+//		AdDAO dao = new AdDAO();
+//
+//		// INSERT
+//		AdVO adVO1 = new AdVO();
+//		adVO1.setAd_id("AD500");
+//		adVO1.setAd_pic(null);
+//		adVO1.setAd_detail("五百五百");
+//		adVO1.setAd_start_time(null);
+//		adVO1.setAd_end_time(null);
+//		
+//		dao.insert(adVO1);
+//		System.out.println("=====================");
+//
+//		// 查全部
+//		List<AdVO> list = dao.getAll();
+//		for (AdVO ad : list) {
+//			System.out.print(ad.getAd_id() + ",");
+//			System.out.print(ad.getAd_detail() + ",");
+//			System.out.print(ad.getAd_start_time() + ",");
+//			System.out.print(ad.getAd_end_time() + ",");
+//			System.out.println();
+//		}
+//
+//	}
 
 	@Override
 	public void insert(AdVO adVO) {
