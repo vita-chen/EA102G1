@@ -13,6 +13,7 @@ request.setAttribute("off", off);
 <!-- Topbar Start -->
 <div class="navbar-custom">
 
+
 <div style="z-index:10;position:absolute;top:18px;left:300px;font-size:15px;">
 <a id="vender_off"href="<%=request.getContextPath()%>/back_end/vender/list_all_verification_vender.jsp">${off[0] }名待驗證廠商</a>
 </div>
