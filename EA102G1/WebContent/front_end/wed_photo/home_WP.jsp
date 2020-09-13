@@ -104,7 +104,7 @@ body {
 
 .banner {
     height: 800px;
-    background-image: url('<%=request.getContextPath()%>/img/wp_img/wpbanner02.jpg');
+    background-image: url('<%=request.getContextPath() %>/img/wp_img/wpbanner02.jpg');
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100%;
@@ -144,24 +144,28 @@ body {
     font-family: "微軟正黑體";
     border-bottom: solid 1px #FFEEFFFF;
 }
+
 .title1 {
     display: inline-block;
     position: fixed;
     top: 0px;
     z-index: 1;
 }
+
 .title1 p {
     display: inline;
     float: right;
     margin: 6px;
     font-size: 12px;
 }
+
 h4 {
     float: left;
     font-size: 12px;
     margin-top: 8px;
     font-weight: 500;
 }
+
 .logo img {
     width: 180px;
     height: auto;
@@ -175,6 +179,7 @@ h4 {
     width: 180px;
     height: 63px;
 }
+
 .title2 {
     display: inline;
     width: 100%;
@@ -183,15 +188,17 @@ h4 {
     top: 12px;
     z-index: 2;
 }
+
 .title2 ol {
     list-style-type: none;
-    margin-top: 17.5px;
+    margin-top: 18.5px;
     height: 36px;
     background: -webkit-linear-gradient(#FFFFFFE0, #FFFFFF00);
     background: -o-linear-gradient(#FFFFFFE0, #FFFFFF00);
     background: -moz-linear-gradient(#FFFFFFE0, #FFFFFF00);
     background: linear-gradient(#FFFFFFE0, #FFFFFF00);
 }
+
 .title2 ol li {
     margin-left: 5px;
     width: 80px;
@@ -217,6 +224,7 @@ a {
 a:hover {
     color: #919191FF;
 }
+
 /*title end*/
 
 .search {
@@ -229,7 +237,8 @@ a:hover {
     font-size: 22px;
     margin-top: 15px;
 }
-.new_case_container p span{
+
+.new_case_container p span {
     font-size: 14px;
     margin-top: 15px;
     padding: 1px 8px 1px 8px;
@@ -239,7 +248,8 @@ a:hover {
     font-weight: 300;
     background-color: #FF0000D0;
 }
-.new_case_container p span:hover{
+
+.new_case_container p span:hover {
     box-shadow: #BABABAFF 3px 3px 3px;
     background-color: #FF4747FF;
     color: black;
@@ -260,14 +270,18 @@ a:hover {
     height: 420px;
     color: #4F4F4FFF;
 }
-
+@media (max-width: 768px) {
+    .img_box {
+        height: 530px;
+    }
+}
 .img_box:hover {
     box-shadow: #E0E0E0FF 3px 3px 3px 3px;
 }
 
 .img_box img {
-    height: 230px;
-    width: 350px;
+    height: auto;
+    width: 99.8%;
     border-radius: 5px;
 }
 
@@ -312,11 +326,14 @@ a:hover {
 
 /*最新方案 結束*/
 
-
 /*footer start*/
 .copyright {
     text-align: center;
     background-color: #FFECFFFF;
+}
+
+.footer .col-lg-4 {
+    margin-bottom: 25px;
 }
 
 .footer_con {
@@ -325,6 +342,12 @@ a:hover {
     border: 3px #FFECFFFF solid;
     /*margin-top: 20px;*/
     padding-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+    .footer_con {
+        height: 535px;
+    }
 }
 
 .footer-about ul {
@@ -363,7 +386,7 @@ a:hover {
 /*熱門廠商 開始*/
 .ven_container {
     height: 665px;
-    background-image: url('<%=request.getContextPath()%>/img/wp_img/wpbanner03.jpg');
+    background-image: url('<%=request.getContextPath() %>/img/wp_img/wpbanner03.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -376,49 +399,63 @@ a:hover {
 .col-4 {
     /*border: 1px #FFB1FFFF solid;*/
 }
-.ven_p{
-    height:30px;
+
+.ven_p {
+    height: 30px;
 }
-.ven_p p{
+
+.ven_p p {
     font-size: 22px;
     margin-top: 140px;
     color: #FFF;
     text-shadow: black 0.1em 0.1em 0.2em;
 }
-.ven_p p span{
+
+.ven_p p span {
     float: right;
-    margin-top:10px;
+    margin-top: 10px;
     font-size: 14px;
     font-weight: 300;
-    display:block;
+    display: block;
     color: black;
     background-color: #FFF;
     padding: 1px 8px 1px 8px;
-    text-shadow: 0 0 0 ;
+    text-shadow: 0 0 0;
 
 }
-.ven_p p span:hover{
+
+.ven_p p span:hover {
     background-color: transparent;
     color: #FFF;
     font-weight: 400;
     text-shadow: #FFFFFF3A 0.1em 0.1em 1em;
     border: 1px #FFF solid;
 }
-.popular_vendors{
-    height: 1100px;   
+
+.popular_vendors {
+    height: 1100px;
 }
 
 .ven_box {
     text-align: center;
     color: black;
     border: 0.1px #FFF solid;
-    border-radius: 10px; 
+    border-radius: 10px;
     padding: 3px 5px 3px 5px;
-    height: 280px;
+    /*height: 280px;*/
     opacity: 1;
     z-index: 6;
     background-color: #FFFFFF58;
     text-shadow: #fff 0.1em 0.1em 0.2em;
+}
+.ven_box:hover{
+    border:5px #FFF solid;
+    margin:-5px;
+    padding: 0px;
+    box-shadow: black 0.1em 0.1em 0.2em;
+}
+.img_text3{
+    margin-bottom: 10px;
 }
 
 .ven_icon img {
@@ -430,9 +467,8 @@ a:hover {
     border: 0.5px #FFF solid;
     opacity: 1;
 }
+
 /*熱門廠商 結束*/
-
-
 </style>
 <body>
 	<div class="header">
@@ -453,10 +489,11 @@ a:hover {
         </div>
         <div class="title2">
             <ol>
-                <li><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP2.jsp">婚禮攝影</a></li>
-                <li><a href="">禮車租借</a></li>
-                <li><a href="">婚紗租借</a></li>
-                <li><a href="">二手拍賣</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP.jsp">婚禮攝影</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp">禮車租借</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp"">婚紗租借</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp">二手拍賣</a></li>
+                <li><a href="">討論區</a></li>
                 <li><a href="">討論區</a></li>
             </ol>
         </div>
@@ -468,7 +505,7 @@ a:hover {
     </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">婚禮導航</a></li>
+            <li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/front_end/home/home.jsp">婚禮導航</a></li>
             <li class="breadcrumb-item active" aria-current="page">婚禮攝影</li>
         </ol>
     </nav>
@@ -476,7 +513,7 @@ a:hover {
         <p>最新方案 New case <a href="<%=request.getContextPath()%>/front_end/wed_photo/find_WPCase.jsp"><span>看更多</span></a></p>
         <div class="row justify-content-between new_case">
         <c:forEach var="new_list" items="${new_list }">
-            <div class="col-4">
+            <div class="col-lg-4 col-md-6 col-sm-12">
                 <a href="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no=${new_list.wed_photo_case_no}" target="_blank">
                     <div class="img_box">
                         <div class="new_case_icon">New</div>
@@ -503,16 +540,18 @@ a:hover {
         <div class="container xx">            
             <div class="row popular_vendors">
                 <div class="col-12 ven_p"><p>熱門廠商 Popular vendors<a href="<%=request.getContextPath()%>/front_end/wed_photo/find_WPVender.jsp"><span>看更多</span></a></p></div>
+                <jsp:useBean id ="service" class="com.wpcase.model.WPCaseService"/>
                 <c:forEach var="vender" items="${list_vender }" end="2">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <a href="<%=request.getContextPath() %>/wed/wpcase.do?action=goVenderPage&vender_id=${vender.vender_id}">
                         <div class="ven_box">
                             <div class="ven_icon"><img src="<%=request.getContextPath() %>/vender/vender.do?action=getphot&vender_id=${vender.vender_id}" alt=""></div>
                             <div class="ven_text">
                                 <h5>${vender.ven_name }</h5>
-                                <div class="">
-                                    在相愛的過程裡 你們選擇了用影像記錄當下<br>
-                                    新北市 5筆方案 ${vender.ven_review_count }則評價
+                                <div class="img_text3">
+                                  <span class="review">${vender.ven_review_count }則評價</span>
+                                    <span class="case">${service.countCase(vender.vender_id)}筆方案</span>
+                                    <span class="addr">${vender.ven_addr }</span>
                                 </div>
                             </div>
                         </div>
@@ -526,14 +565,14 @@ a:hover {
     <footer>
         <section class="container-fluid footer_con">
             <div class="row footer">
-                <div class="col-md-4 footer-about">
+                <div class="col-md-12 col-lg-4 footer-about">
                     <ul>
                         <li><a href="#" target="_blank">●關於我們</a></li>
                         <li><a href="#" target="_blank">●常見問題</a></li>
                         <li><a href="#" target="_blank">●隱私權條款</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 footer-logo">
+                <div class="col-md-12 col-lg-4 footer-logo">
                     <div class="row justify-content-between">
                         <div class="col-12 Preview">
                             <img alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>/img/logo-transparent(1450_400).png">
@@ -544,7 +583,7 @@ a:hover {
                         <div class="col-3 foo_img"><a href=""><img alt="qrcode" src="<%=request.getContextPath()%>/img/img_for_footer/lineQR_8080.png"></a></div>
                     </div>
                 </div>
-                <div class="col-md-4 contact-info">
+                <div class="col-md-12 col-lg-4 contact-info">
                     <div>
                         ●聯絡我們
                     </div>
@@ -585,6 +624,12 @@ $(document).ready(function() {
             var str_new = text_new[i].innerText.replace(str, '...read more');
             text_new[i].innerText = str_new;
         }
+    }
+    
+    var addr = document.querySelectorAll('.addr');
+    for (var i = 0; i < addr.length; i++) {
+        var str = addr[i].innerText.substring(0, 3) + ' ' + addr[i].innerText.substring(3, (addr[i].innerText.indexOf('區') + 1 || addr[i].innerText.indexOf('鄉') + 1));
+        addr[i].innerHTML = str;
     }
 });
 </script>
