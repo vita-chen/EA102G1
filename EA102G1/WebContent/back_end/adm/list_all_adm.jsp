@@ -40,6 +40,10 @@
 						<th>管理員編號</th>
 						<th>Email</th>
 						<th>姓名</th>
+						<th>登入權限</th>
+						<th>開通廠商權限</th>
+						<th>檢舉&廣告權限</th>
+						<th>權限管理</th>
 					</tr>
 					<%@ include file="page1.file"%>
 					<c:forEach var="admVO" items="${list}" begin="<%=pageIndex%>"
@@ -49,7 +53,53 @@
 							<td>${admVO.adm_id}</td>
 							<td>${admVO.adm_account}</td>
 							<td>${admVO.adm_name}</td>
+							<th>${admVO.adm_1=="1" ? "有":"無"}</th>
+							<th>${admVO.adm_2=="1" ? "有":"無"}</th>
+							<th>${admVO.adm_3=="1" ? "有":"無"}</th>
+							<th>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  權限設定
+</button>
+							
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">權限設定</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
+     <form action="/action_page.php" method="get">
+      <div class="modal-body">
+        
+<a>登入權限　　　　:　</a><select name="off_1">
+　<option value="1">開啟</option>
+　<option value="0">關閉</option>
+</select><br><br>
+<a>開通廠商權限　　:　</a><select name="off_2">
+　<option value="1">開啟</option>
+　<option value="0">關閉</option>
+</select><br><br>
+<a>檢舉&廣告權限　:　</a><select name="off_3">
+　<option value="1">開啟</option>
+　<option value="0">關閉</option>
+</select><br><br>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-primary">確認修改</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+							
+							
+							</th>
 						</tr>
 					</c:forEach>
 				</table>

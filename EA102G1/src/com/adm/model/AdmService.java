@@ -20,6 +20,8 @@ public class AdmService {
 		return admvo;
 	}
 	
+	//修改後臺管理員
+	
 	//查單個管理員帳號
 	public AdmVO findByPrimaryKey(String adm_id) {
 		return dao.findByPrimaryKey(adm_id);

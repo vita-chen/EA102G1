@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vender.model.VenderVO;
-
 public class AdmJDBCDAO implements AdmDAO_interface{
 
 	private static final String driver = "oracle.jdbc.driver.OracleDriver";
@@ -23,7 +21,7 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 			"VALUES('ADM'|| LPAD(SEQ_ADM_ID.NEXTVAL, 3,'0'),?,?,?,0,0,0,0)";
 	//修改管理員
 	private static final String UPDATE_ADM =
-			"";
+			"UPDATE ADM SET ADM_ACCOUNT=?,ADM_PWD=?,ADM_NAME=?,ADM_0=?,ADM_1=?,ADM_2=?,ADM_3=? WHERE ADM_ID=?";
 	//刪除管理員
 	private static final String DELETE_ADM = 
 			"";	
@@ -41,7 +39,7 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 	
 	//查詢全部管理員
 	private static final String GET_ALL_ADM =
-			"SELECT ADM_ID,ADM_ACCOUNT,ADM_PWD,ADM_NAME FROM ADM order by ADM_ID";
+			"SELECT ADM_ID,ADM_ACCOUNT,ADM_PWD,ADM_NAME,ADM_0,ADM_1,ADM_2,ADM_3 FROM ADM order by ADM_ID";
 	
 	public static void main(String[]args) {
 		
@@ -55,6 +53,19 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 //		admvo1.setAdm_name("00狗");//管理員名稱
 //		
 //		dao.insert(admvo1);
+		
+//		//修改後臺管理員
+//		AdmVO admVO0 = new AdmVO();
+//		
+//		admVO0.setAdm_account("123");
+//		admVO0.setAdm_pwd("123");
+//		admVO0.setAdm_name("123");
+//		admVO0.setAdm_0(1);
+//		admVO0.setAdm_1(1);
+//		admVO0.setAdm_2(1);
+//		admVO0.setAdm_3(1);
+//		admVO0.setAdm_id("ADM002");
+//		dao.update(admVO0);
 		
 //		//用單個管理員編號查資料
 //		AdmVO admvo2 = dao.findByPrimaryKey("ADM001");	
@@ -84,6 +95,10 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 //			System.out.println("帳號:"+admvo.getAdm_account());
 //			System.out.println("密碼:"+admvo.getAdm_pwd());
 //			System.out.println("姓名:"+admvo.getAdm_name());
+//			System.out.println("權限:"+admvo.getAdm_0());
+//			System.out.println("權限:"+admvo.getAdm_1());
+//			System.out.println("權限:"+admvo.getAdm_2());
+//			System.out.println("權限:"+admvo.getAdm_3());
 //			System.out.println();
 //		}		
 		
@@ -137,7 +152,52 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 
 	@Override
 	public void update(AdmVO admVO) {
-		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(UPDATE_ADM);
+//UPDATE ADM SET ADM_ACCOUNT=?,ADM_PWD=?,ADM_NAME=?,ADM_0=?,ADM_1=?,ADM_2=?,ADM_3=? WHERE ADM_ID=?"
+			pstmt.setString(1, admVO.getAdm_account());
+			pstmt.setString(2, admVO.getAdm_pwd());
+			pstmt.setString(3, admVO.getAdm_name());
+			pstmt.setInt(4, admVO.getAdm_0());
+			pstmt.setInt(5, admVO.getAdm_1());
+			pstmt.setInt(6, admVO.getAdm_2());
+			pstmt.setInt(7, admVO.getAdm_3());
+			pstmt.setString(8, admVO.getAdm_id());
+					
+			pstmt.executeUpdate();
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		}
+		  finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
 		
 	}
 
@@ -296,6 +356,10 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 				admVO.setAdm_account(rs.getString("adm_account"));
 				admVO.setAdm_pwd(rs.getString("adm_pwd"));
 				admVO.setAdm_name(rs.getString("adm_name"));
+				admVO.setAdm_0(rs.getInt("adm_0"));
+				admVO.setAdm_1(rs.getInt("adm_1"));
+				admVO.setAdm_2(rs.getInt("adm_2"));
+				admVO.setAdm_3(rs.getInt("adm_3"));
 				list.add(admVO);
 			}
 
