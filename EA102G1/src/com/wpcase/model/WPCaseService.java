@@ -163,7 +163,24 @@ public class WPCaseService {
 		
 		return result_list;
 	}
-	public List<VenderVO> list_vender(){
+	public Set<VenderVO> set_vender(){ //首頁隨機顯示用
+		List<WPCaseVO> list_case = getAll(); //從全部婚攝方案查廠商編號
+		
+		Set<String> set = new HashSet<String>(); //利用set不重複特性 找出全部廠商
+		for(WPCaseVO list : list_case){
+			set.add(list.getVender_id());
+		}
+		VenderJDBCDAO venderdao = new VenderJDBCDAO();
+		Set<VenderVO> set_vender = new HashSet<VenderVO>();
+		
+		Iterator<String> objs = set.iterator();
+		while (objs.hasNext()){		
+			VenderVO vendervo = venderdao.findByPrimaryKey(objs.next());
+			set_vender.add(vendervo);		
+		}		
+		return set_vender;		
+	}
+	public List<VenderVO> list_vender(){ //篩選用
 		List<WPCaseVO> list_case = getAll(); //從全部婚攝方案查廠商編號
 		
 		Set<String> set = new HashSet<String>(); //利用set不重複特性 找出全部廠商
@@ -221,5 +238,23 @@ public class WPCaseService {
 		 
 		return bg.doubleValue();
 	}
-	
+	public WPImgVO imgForVender(String vender_id) {
+		Set<WPImgVO> set_vo = new HashSet<WPImgVO>();
+		List<WPCaseVO> list = getAll();
+		for(WPCaseVO vo : list) {
+			if(vo.getVender_id().equals(vender_id)) {
+				List<WPImgVO> imgvo = wpimgdao.selImg(vo.getWed_photo_case_no());
+				for(WPImgVO img : imgvo) {
+					set_vo.add(img);
+				}
+			}			
+		}
+		Iterator<WPImgVO> objs = set_vo.iterator();
+		WPImgVO wpimgvo = null;
+		while(objs.hasNext()) {
+			wpimgvo = objs.next();
+			break;			
+		}
+		return wpimgvo;
+	}
 }

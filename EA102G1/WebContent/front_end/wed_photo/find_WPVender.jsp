@@ -231,12 +231,22 @@ a:hover {
     background-color: #FFECFFFF;
 }
 
+.footer .col-lg-4 {
+    margin-bottom: 25px;
+}
+
 .footer_con {
     height: 350px;
     background-color: #FFECFFFF;
     border: 3px #FFECFFFF solid;
     /*margin-top: 20px;*/
     padding-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+    .footer_con {
+        height: 535px;
+    }
 }
 
 .footer-about ul {
@@ -287,16 +297,30 @@ a:hover {
     margin-top: 20px;
     margin-bottom: 5px;
     font-size: 20px;
-    text-align: center;
+    margin-left: 30%;
+}
+
+.img_text1 p span {
+    font-size: 16px;
+}
+
+.img_text1 p span svg {
+    font-size: 20px;
+    color: #F8E506FF;
+
 }
 
 .img_text3 {
-    margin: 20px 5px 5px 8px;
+    text-align: left;
+    margin: 15px 8px 8px 8px;
 }
 
-.img_text3 span {
+.addr {
     float: right;
-    margin-right: 5px;
+}
+
+.addr svg {
+    font-size: 23px;
 }
 
 .img_box img {
@@ -332,7 +356,7 @@ a:hover {
 }
 
 .join_our_text {
-    position: relative;
+    position: absolute;
     top: 60%;
     left: 39%;
     font-size: 130px;
@@ -342,26 +366,50 @@ a:hover {
 }
 
 /*加入我們 結束*/
-.form-control-yy {
-    width: 75px;
+/*搜尋區塊 開始*/
+.condition_area h7 {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 8px;    
 }
 
-.form-control-xx {
-    width: 125px;
+.btn-warning {
+    margin-left: 15px;
+    margin-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 8%;
 }
 
+h7 label{
+    margin-bottom: 0;
+}
+.form_text {
+    margin-left: 15px;
+    margin-right: 5px;
+    margin-bottom: 8px;
+    width: 67%;
+}
 .Pagination {
     margin-top: 30px;
     margin-bottom: 30px;
     height: 50px;
 }
 
+.content {
+    margin-top: 40px;
+}
 .condition {
-    height: 120px;
+    margin-top: 40px;
+
+}
+@media (max-width: 767px) {
+    .condition {
+        height: 240px;
+    }
 }
 
-
-
+/*搜尋區塊 結束/
 </style>
 <body>
     <div class="header">
@@ -382,14 +430,14 @@ a:hover {
         </div>
         <div class="title2">
             <ol>
-                <li><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP2.jsp">婚禮攝影</a></li>
-                <li><a href="">禮車租借</a></li>
-                <li><a href="">婚紗租借</a></li>
-                <li><a href="">二手拍賣</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP.jsp">婚禮攝影</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp">禮車租借</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp"">婚紗租借</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp">二手拍賣</a></li>
                 <li><a href="">討論區</a></li>
             </ol>
         </div>
-        <div class="logo"><a href=""><img alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>/img/logo-transparent(1450_400).png"></a></div>
+        <div class="logo"><a href="<%=request.getContextPath()%>/front_end/home/home.jsp"><img alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>/img/logo-transparent(1450_400).png"></a></div>
     </div>
     <div class="service">TOP</div>
     <div class="banner">
@@ -398,7 +446,7 @@ a:hover {
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/front_end/home/home.jsp">婚禮導航</a></li>
-            <li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP2.jsp">婚禮攝影</a></li>
+            <li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP.jsp">婚禮攝影</a></li>
             <li class="breadcrumb-item active" aria-current="page"><a href="<%=request.getContextPath()%>/front_end/wed_photo/find_WPVender.jsp">廠商總覽</a></li>
         </ol>
     </nav>
@@ -409,54 +457,50 @@ a:hover {
                 <div class="row">
                     <div class="col-12 condition">                        
                         <div class="row">
-                            <div class="col-3">
-                                廠商名稱
+                            <div class="col-lg-3 col-sm-12 condition_area">
+                               <h7><label for="inquireVender">廠商名稱</label></h7>
                                 <form METHOD="post" ACTION="<%=request.getContextPath()%>/wed/wpcase.do">
                                     <div class="row">
-                                        <div class="col">
-                                            <input class="form-control form-control-sm form-control-xx" type="text" name="search_vender" value="Pon">
+                                        <div class="form_text">
+                                            <input class="form-control" type="text" name="search_vender" 
+                                            value="Pon" id="inquireVender">
                                         </div>
-                                        <div class="col yy">
-                                            <button type="submit" class="btn btn-warning xx">送出</button>
+                                            <button type="submit" class="btn btn-warning">送出</button>
                                             <input type="hidden" name="action" value="inquireVender">
-                                        </div>
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-3">
-                                
+                            <div class="col-lg-3 col-sm-12 condition_area">
+                                <h7><label for="inquireVenderbyStar">評價篩選</label></h7>
                                 <form METHOD="post" ACTION="<%=request.getContextPath()%>/wed/wpcase.do">
                                     <div class="row">
-                                        <div class="col">
-                                                <label for="exampleFormControlSelect1">評價篩選</label>
-											    <select class="form-control" id="exampleFormControlSelect1" name="select_star">
-											      <option  value="5">5</option>
-											      <option  value="4">4</option>
-											      <option  value="3">3</option>
-											      <option  value="2">2</option>
-											      <option  value="1">1</option>
-											    </select>
-                                        </div>                                        
+										    <select class="form-control form_text" id="inquireVenderbyStar" 
+										    name="select_star">
+										      <option  value="5">5</option>
+										      <option  value="4">4</option>
+										      <option  value="3">3</option>
+										      <option  value="2">2</option>
+										      <option  value="1">1</option>
+										    </select>
                                         <button type="submit" class="btn btn-warning">送出</button>
                                         <input type="hidden" name="action" value="inquireVenderbyStar">
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-3">
-                                地區篩選
+                            <div class="col-lg-3 col-sm-12 condition_area">
+                            	<h7><label for="inquireVenderbyAddr">地區篩選</label></h7>
                                 <form METHOD="post" ACTION="<%=request.getContextPath()%>/wed/wpcase.do">
                                     <div class="row">
-                                        <div class="col">
-                                            <input class="form-control form-control-sm form-control-xx" type="text" name="search_vender_addr" value="台南">
+                                        <div class="form_text">
+                                            <input class="form-control" type="text" name="search_vender_addr" 
+                                            value="台南" id="inquireVenderbyAddr">
                                         </div>
-                                        <div class="col yy">
-                                            <button type="submit" class="btn btn-warning xx">送出</button>
+                                            <button type="submit" class="btn btn-warning">送出</button>
                                             <input type="hidden" name="action" value="inquireVenderbyAddr">
-                                        </div>
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-3">排序條件</div>
+                            <div class="col-lg-3 col-sm-12 condition_area"><h7></h7></div>
                         </div>
                     </div>
                     <div class="col-12 content">
@@ -467,18 +511,26 @@ a:hover {
                                 <div class="row content_row">
                                 <jsp:useBean id ="service" class="com.wpcase.model.WPCaseService"/>
                                 <c:forEach var="vendervo" items="${list_vender }">
-                                    <div class="col-4">
-                                        <a href="">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <a href="<%=request.getContextPath() %>/wed/wpcase.do?action=goVenderPage&vender_id=${vendervo.vender_id}" target="_blank">
                                             <div class="img_box">
-                                                <img src="<%=request.getContextPath()%>/img/wp_img/v0103.jpg">
+                                                <img src="<%=request.getContextPath()%>/wed/wpcase.do?action=GetImgForVender&vender_id=${vendervo.vender_id}">
                                                 <div class="img_box_ven">
                                                     <img src="<%=request.getContextPath() %>/vender/vender.do?action=getphot&vender_id=${vendervo.vender_id}">
                                                 </div>
                                                 <div class="img_text1">
-                                                    <p>${vendervo.ven_name }</p>
+                                                    <p>${vendervo.ven_name }<span>
+                                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                            </svg>${service.ven_star(vendervo.vender_id) }</span>
+                                                    </p>
                                                 </div>
-                                                <div class="img_text3"><span>${vendervo.ven_addr } - ${vendervo.ven_review_count }則評價                                     
-                                             ${service.countCase(vendervo.vender_id)}筆方案- ${service.ven_star(vendervo.vender_id) }</span></div>
+                                                <div class="img_text3">
+                                             		<span class="review">${vendervo.ven_review_count }則評價</span>
+                                                    <span class="case">${service.countCase(vendervo.vender_id)}筆方案</span>
+                                                    <span class="addr">${vendervo.ven_addr }</span>
+                                             
+                                             </div>
                                             </div>
                                         </a>
                                     </div>
@@ -487,8 +539,8 @@ a:hover {
                                     <div class="col-12 Pagination">
                                         <nav aria-label="Page navigation example">
                                             <ul class="pagination justify-content-center">
-                                                <li class="page-item Previous"><a class="page-link" tabindex="-1">Previous</a></li>
-                                                <li class="page-item Next"><a class="page-link">Next</a></li>
+                                                <li class="page-item Previous"><a class="page-link" tabindex="-1">Firtst</a></li>
+                                                <li class="page-item Next"><a class="page-link">Last</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -508,14 +560,14 @@ a:hover {
     <footer>
         <section class="container-fluid footer_con">
             <div class="row footer">
-                <div class="col-md-4 footer-about">
+                <div class="col-md-12 col-lg-4 footer-about">
                     <ul>
                         <li><a href="#" target="_blank">●關於我們</a></li>
                         <li><a href="#" target="_blank">●常見問題</a></li>
                         <li><a href="#" target="_blank">●隱私權條款</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 footer-logo">
+                <div class="col-md-12 col-lg-4 footer-logo">
                     <div class="row justify-content-between">
                         <div class="col-12 Preview">
                             <img alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>/img/logo-transparent(1450_400).png">
@@ -526,7 +578,7 @@ a:hover {
                         <div class="col-3 foo_img"><a href=""><img alt="qrcode" src="<%=request.getContextPath()%>/img/img_for_footer/lineQR_8080.png"></a></div>
                     </div>
                 </div>
-                <div class="col-md-4 contact-info">
+                <div class="col-md-12 col-lg-4 contact-info">
                     <div>
                         ●聯絡我們
                     </div>
@@ -569,10 +621,18 @@ $(document).ready(function() {
         }
     }
 
+    var addr = document.querySelectorAll('.addr');
+    for (var i = 0; i < addr.length; i++) {
+        var str = `<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+  <path fill-rule="evenodd" d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+	</svg>` + addr[i].innerText.substring(0, 3) + ' ' + addr[i].innerText.substring(3, (addr[i].innerText.indexOf('區') + 1 || addr[i].innerText.indexOf('鄉') + 1));
+        addr[i].innerHTML = str;
+    }
 
     var content_row = document.getElementsByClassName("content_row");
 
-    var col_row = document.querySelectorAll(".content_row .col-4"); //抓取所有內容格
+    var col_row = document.querySelectorAll(".content_row .col-lg-4"); //抓取所有內容格
     var num = col_row.length; //區域內所有格數 
     var ary = [];
 

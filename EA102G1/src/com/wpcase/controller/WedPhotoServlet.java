@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.MultipartConfig;
@@ -56,7 +58,6 @@ public class WedPhotoServlet extends HttpServlet {
 			try {
 				/*********************** 1.接收請求參數 - 輸入格式的錯誤處理 *************************/
 				String vender_id = req.getParameter("VENDER_ID");
-				System.out.println(vender_id);
 				String vender_idReg = "^[(A-Z)]{1}[(0-9)]{3}$";
 				if (vender_id == null || vender_id.trim().length() == 0) {
 					errorMsgs.add("廠商編號: 請勿空白");
@@ -102,12 +103,23 @@ public class WedPhotoServlet extends HttpServlet {
 				WPCaseService WPSvc = new WPCaseService();
 				WPCaseVO = WPSvc.addWPCase(vender_id, wed_photo_name, wed_photo_intro, wed_photo_price,
 						wed_photo_status);
-
-				System.out.println("servlet return: " + WPCaseVO.getWed_photo_case_no());
+				String[] img_num = req.getParameterValues("WP_IMG_NO");
+//				System.out.println("servlet return: " + WPCaseVO.getWed_photo_case_no());
+				
 				Collection<Part> parts = req.getParts();
 				for (Part part : parts) {
 					if (part.getName().equals("upfile1")) {
-						WPSvc.addCaseImg(WPCaseVO, part);
+						if(img_num == null) {							
+							WPSvc.addCaseImg(WPCaseVO, part);														
+						}else {							
+							String filename = part.getSubmittedFileName();							
+							for(int i =0;i<img_num.length;i++) {
+								if(filename.equals(img_num[i])) {
+//									System.out.println(filename+" 此圖保留");
+									WPSvc.addCaseImg(WPCaseVO, part);
+								}
+							}
+						}
 					}
 				}
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/				
@@ -209,7 +221,7 @@ public class WedPhotoServlet extends HttpServlet {
 				failureView.forward(req, res);
 			}
 		}
-		// 
+		
 		if ("goVenderPage".equals(action)) { //抓取廠商編號 導至廠商頁面
 			try {
 				String vender_id = new String(req.getParameter("vender_id"));
@@ -225,7 +237,7 @@ public class WedPhotoServlet extends HttpServlet {
 						.collect(Collectors.toList());
 				
 				req.setAttribute("list_case", list_case);
-				req.setAttribute("VenderVO", list_vender.get(0));
+				req.setAttribute("VenderVO", list_vender);
 				String url = "/front_end/wed_photo/venderPage_WP.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
@@ -257,7 +269,6 @@ public class WedPhotoServlet extends HttpServlet {
 
 				String wed_photo_statuss = req.getParameter("WED_PHOTO_STATUS");
 				Integer wed_photo_status = new Integer(wed_photo_statuss);
-
 				String wed_photo_prices = req.getParameter("WED_PHOTO_PRICE");
 				String wed_photo_priceReg = "^[(0-9)]{3,6}$";
 				if (wed_photo_prices == null || wed_photo_prices.trim().length() == 0) {
@@ -290,10 +301,23 @@ public class WedPhotoServlet extends HttpServlet {
 						wed_photo_case_no);
 				System.out.println("servlet " + WPCaseVO.getWed_photo_case_no());
 
+				String[] img_num = req.getParameterValues("WP_IMG_NO");
+//				System.out.println("servlet return: " + WPCaseVO.getWed_photo_case_no());
+				
 				Collection<Part> parts = req.getParts();
 				for (Part part : parts) {
 					if (part.getName().equals("upfile1")) {
-						WPSvc.addCaseImg(WPCaseVO, part);
+						if(img_num == null) {							
+							WPSvc.addCaseImg(WPCaseVO, part);														
+						}else {							
+							String filename = part.getSubmittedFileName();							
+							for(int i =0;i<img_num.length;i++) {
+								if(filename.equals(img_num[i])) {
+//									System.out.println(filename+" 此圖保留");
+									WPSvc.addCaseImg(WPCaseVO, part);
+								}
+							}
+						}
 					}
 				}
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
@@ -308,7 +332,7 @@ public class WedPhotoServlet extends HttpServlet {
 			}
 		}
 		
-		if ("Get_WPImg".equals(action)) {
+		if ("Get_WPImg".equals(action)) { //單一方案用 查全部圖片
 			
 			WPCaseService wpcsv = new WPCaseService();
 			List<WPImgVO> imglist = wpcsv.getAllImg(req.getParameter("wed_photo_case_no"));
@@ -360,6 +384,24 @@ public class WedPhotoServlet extends HttpServlet {
 			}
 			
 		}
+		if ("GetImgForVender".equals(action)) {
+			
+			WPCaseService wpcsv = new WPCaseService();
+			WPImgVO imgvo = wpcsv.imgForVender(req.getParameter("vender_id"));
+			
+			ByteArrayInputStream bis = new ByteArrayInputStream(imgvo.getWed_photo_img());
+			ServletOutputStream sos = res.getOutputStream();
+			byte[] buffer = new byte[8*1024];
+			int length = 0;
+			while ((length = bis.read(buffer)) != -1) {
+				sos.write(buffer, 0, length);
+			}					
+			sos.close();
+			bis.close();				
+			return;
+			
+		}
+		
 		if ("place_an_order".equals(action)) { //抓取方案編號 導至填寫訂單頁面
 			try {
 				String wed_photo_case_no = new String(req.getParameter("wed_photo_case_no"));
@@ -583,8 +625,6 @@ public class WedPhotoServlet extends HttpServlet {
 				String wed_photo_case_no = new String(req.getParameter("wed_photo_case_no"));
 				String membre_id = new String(req.getParameter("membre_id"));
 				
-				System.out.println(wed_photo_case_no+" / "+membre_id);
-				
 				wpcollectvo.setWed_photo_case_no(wed_photo_case_no);
 				wpcollectvo.setMembre_id(membre_id);
 				
@@ -778,7 +818,34 @@ public class WedPhotoServlet extends HttpServlet {
 					}				
 					obj.put("wp_vrep_d", ordervo.getWp_vrep_d());
 				}
-				
+			
+			res.setContentType("text/plain");
+			res.setCharacterEncoding("UTF-8");
+			PrintWriter out = res.getWriter();
+			out.print(obj);
+			out.flush();
+			out.close();
+		}
+		
+		if ("getOne_Order_Ajax_2".equals(action)) { //Ajax 狀態數字版
+			
+			System.out.println(req.getParameter("action"));
+			System.out.println(req.getParameter("wed_photo_order_no"));
+			String wed_photo_order_no = req.getParameter("wed_photo_order_no");
+			String identity = req.getParameter("identity");
+			WPOrderService wpodsvc = new WPOrderService();
+			WPOrderVO ordervo = wpodsvc.getOne(wed_photo_order_no);
+			
+			//宣告json物件 put list值
+			JSONObject obj = new JSONObject();
+				obj.put("order_status", ordervo.getOrder_status());
+				obj.put("order_explain", ordervo.getOrder_explain());
+				obj.put("review_star", ordervo.getReview_star());
+				obj.put("review_content", ordervo.getReview_content());
+				obj.put("wp_mrep_s", ordervo.getWp_mrep_s());
+				obj.put("wp_mrep_d", ordervo.getWp_mrep_d());
+				obj.put("wp_vrep_s", ordervo.getWp_vrep_s());
+				obj.put("wp_vrep_d", ordervo.getWp_vrep_d());
 			
 			res.setContentType("text/plain");
 			res.setCharacterEncoding("UTF-8");
@@ -802,7 +869,6 @@ public class WedPhotoServlet extends HttpServlet {
 		}
 		
 		if ("select_order_no_Ajax".equals(action)) {
-			System.out.println("ok!");
 			WPOrderVO wpordervo = new WPOrderVO();
 			WPOrderService wpordersvc = new WPOrderService();			
 			List<WPOrderVO> list = wpordersvc.getAll();
@@ -831,9 +897,6 @@ public class WedPhotoServlet extends HttpServlet {
 			WPCaseService wpcsv = new WPCaseService();
 			List<WPCaseVO> casename_list = wpcsv.search_case(search_case_name);
 			
-//			for (WPCaseVO casevo : casename_list) {
-//				System.out.println(casevo.getWed_photo_case_no()+" "+casevo.getWed_photo_name());						
-//			}
 			req.setAttribute("location", "search");//前版本跳區塊用
 			req.setAttribute("casename_list", casename_list);
 			RequestDispatcher failureView = req.getRequestDispatcher("/front_end/wed_photo/find_WPCase.jsp");
@@ -847,9 +910,6 @@ public class WedPhotoServlet extends HttpServlet {
 			WPCaseService wpcsv = new WPCaseService();
 			List<WPCaseVO> casename_list = wpcsv.search_case(min,max);
 			
-//			for (WPCaseVO casevo : casename_list) {
-//				System.out.println(casevo.getWed_photo_case_no()+" "+casevo.getWed_photo_name());						
-//			}
 			req.setAttribute("location", "search");
 			req.setAttribute("casename_list", casename_list);
 			RequestDispatcher failureView = req.getRequestDispatcher("/front_end/wed_photo/find_WPCase.jsp");
@@ -862,9 +922,6 @@ public class WedPhotoServlet extends HttpServlet {
 			WPCaseService wpcsv = new WPCaseService();
 			List<WPCaseVO> casename_list = wpcsv.search_case_addr(addr);
 			
-			for (WPCaseVO casevo : casename_list) {
-				System.out.println(casevo.getWed_photo_case_no()+" "+casevo.getWed_photo_name());						
-			}
 			req.setAttribute("location", "search");
 			req.setAttribute("casename_list", casename_list);
 			RequestDispatcher failureView = req.getRequestDispatcher("/front_end/wed_photo/find_WPCase.jsp");

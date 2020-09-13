@@ -38,11 +38,11 @@ public class WPImgDAO implements WPImgDAO_Interface {
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(INSERT_STMT);
-			System.out.println("連線成功!");
+//			System.out.println("連線成功!");
 			pstmt.setString(1, WPImgVO.getWed_photo_case_no());
 			pstmt.setBytes(2, WPImgVO.getWed_photo_img());
 			pstmt.executeUpdate();
-			System.out.println("新增成功!");
+//			System.out.println("新增成功!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
