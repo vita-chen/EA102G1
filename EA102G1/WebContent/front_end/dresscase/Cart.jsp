@@ -51,8 +51,6 @@
 	label {
 	  font-size: 30px;
 	}
-	
-	
 </style>
  <!--設定element相對位置 -->
 </head>
