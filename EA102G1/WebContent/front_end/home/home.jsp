@@ -23,10 +23,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-       	<ul>
+      <div class="modal-body" style="font-size:16px; text-align:center">
 				註冊成功 ! 請至信箱收取驗證信。
-	</ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -49,10 +47,8 @@ $('#regisModal').modal('show');
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-       	<ul>
+      <div class="modal-body" style="font-size:16px; text-align:center">
 				帳號驗證成功 ! 已將您登入。
-	</ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

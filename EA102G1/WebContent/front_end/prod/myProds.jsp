@@ -42,7 +42,10 @@ tr:nth-child(odd) {background: #bbe6ff}
 <tr>
 	<td>
 		<figure class="itemside">
-			<div class="aside"><img src="<%= request.getContextPath() %>/prod/prod.do?action=getOne&prod_no=${prodvo.prod_no}&number=one" class="img-sm"></div>
+			<a href="<%=request.getContextPath() %>/prod/prod.do?action=getOne&prod_no=${prodvo.prod_no}" class="img-wrap">
+			<div class="aside"><img src="<%= request.getContextPath() %>/prod/prod.do?action=getOne&prod_no=${prodvo.prod_no}&number=one" class="img-sm">
+			</div>
+			</a>
 			<figcaption class="info  d-flex flex-column ">
 				<div href="#" class="title text-dark my-auto">${prodvo.prod_name }</div>
 			</figcaption>

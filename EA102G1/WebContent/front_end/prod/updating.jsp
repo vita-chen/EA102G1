@@ -6,6 +6,22 @@
 <jsp:include page="head.jsp">
 <jsp:param name="title" value="Edit product"/>
 </jsp:include>
+<style>
+ #addPic, input[value="送出修改"] {
+    margin: 10px;
+    width: 90%;
+    margin-left: 15px;
+    color: white;
+    background-color: #52a3ea;
+    letter-spacing: 0.5rem;
+    font-weight: 800;
+ }
+  label.btn {
+ 	width: 90%;
+    margin-top: 20px;
+    letter-spacing: 0.5rem;
+ }
+</style>
 </head>
 <body>
 <%@ include file="/front_end/prod/header.jsp" %>
