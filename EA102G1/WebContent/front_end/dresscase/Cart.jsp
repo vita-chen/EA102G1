@@ -10,7 +10,7 @@
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>Cart.jsp:瀏覽您的購買清單</title>
   
- <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/bootstrap/css/bootstrap.min2.css">
+<%--  <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/bootstrap/css/bootstrap.min2.css"> --%>
 <script src="<%=request.getContextPath()%>/vendors/jquery/jquery-3.4.1.min.js"></script>
 
 
@@ -171,6 +171,7 @@ if (map != null && (map.size() > 0)) {%>
 	<%}%>
 	<br><br>
 	<div>
+	<iframe width="100%" height="100%" src="https://www.youtube.com/embed/36YgDDJ7XSc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	<div id="imgDiv">
 	<img src="<%=request.getContextPath()%>/img/img_for_drcase/WDC001_1.jpg" width="300px" height="200px">
 	<img src="<%=request.getContextPath()%>/img/img_for_drcase/WDC001_2.jpg" width="300px" height="200px">
