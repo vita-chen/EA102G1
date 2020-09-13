@@ -13,42 +13,59 @@
 <head>
 <meta charset="UTF-8">
 <title>Wed Photo Order 婚禮攝影服務 訂單查詢 - 廠商頁面</title>
-<!-- ....Ajax 查訂單 分頁 排序 待完成....-->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/vendors/bootstrap/css/bootstrap.min.css">
 <style type="text/css">
-	select{	
-		cursor: pointer;
-		-webkit-appearance: none;			
-		border-radius: 4px;		 
-		border: 1px solid #dcdfe6;
-		box-sizing: border-box;		 
-		color: #606266;		 
-		font-size: inherit;		 
-		height: 35px;		 
-		line-height: 35px;	 
-		padding: 0 15px;		 
-		width: 20%;		
-	}
-	.btn-outline-info{
-		padding: 1px 20px 0px 20px;
-	}
-	.btn-info{
-		padding: 1px 20px 0px 20px;
-	}
-	.btn-danger{
-		padding: 1px 20px 0px 20px;
-	}
-	.range_wei{
-		padding-right:0;
-		padding-left:0;
-	}
-	.container{
-		margin-top:10px;
-		margin-left: 0px;
-	}
+select{	
+	cursor: pointer;
+	-webkit-appearance: none;			
+	border-radius: 4px;		 
+	border: 1px solid #dcdfe6;
+	box-sizing: border-box;		 
+	color: #606266;		 
+	font-size: inherit;		 
+	height: 35px;		 
+	line-height: 35px;	 
+	padding: 0 15px;		 
+	width: 20%;		
+}
+.btn-outline-info{
+	padding: 1px 20px 0px 20px;
+}
+.btn-info{
+	padding: 1px 20px 0px 20px;
+}
+.btn-danger{
+	padding: 1px 20px 0px 20px;
+}
+.range_wei{
+	padding-right:0;
+	padding-left:0;
+}
+.container{
+	margin-top:10px;
+	margin-left: 0px;
+}
+.fixright{
+   display: block;
+   width: 300px; 
+   padding: 5px 5px 5px 5px;   
+   position: fixed;
+   right: 20px;
+   top: 80px;
+  border: 1px dotted #545454FF;
+}
+.WStest{
+    height: 50px;
+    border: #A89898 1px dotted;
+    border-radius: 8px;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 </style>
 <body>
 <div class="container">
+<div class="fixright"></div>
         <div class="row">
             <div class="col-12">
                 <ul>
@@ -115,8 +132,8 @@
                 <div class="content_2">
 	        		<nav aria-label="Page navigation example">
 		            	<ul class="pagination justify-content-center">
-			                <li class="page-item Previous"><a class="page-link" tabindex="-1">Previous</a></li>
-			                <li class="page-item Next"><a class="page-link">Next</a></li>
+			                <li class="page-item Previous"><a class="page-link" tabindex="-1">First</a></li>
+			                <li class="page-item Next"><a class="page-link">Last</a></li>
 		            	</ul>
 	        		</nav>
    		 		</div>
@@ -159,6 +176,7 @@
                <label for="message-text" class="col-form-label">訂單備註 Message:</label>
                <textarea class="form-control" id="message-text" name="order_explain" rows="10"></textarea>
            </div>
+           <a href="" target="_blank" class="case_a"><span class="case_info"></span></a>
        </form>
 	</div>
 	  <div class="tab-pane fade" id="pills-Appraise" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -180,7 +198,6 @@
                <label for="message-text" class="col-form-label">評價內容 Message:</label>
                <textarea class="form-control" id="message-text" name="review_content" rows="10" disabled></textarea>
            </div>
-           <span>查看會員給的評價</span>
        </form>	  
 	  </div>
 	  <div class="tab-pane fade" id="pills-Report" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -218,17 +235,9 @@
                 </div>
                 <div class="modal-body">
                     <form METHOD="post" ACTION="<%=request.getContextPath()%>/wed/wpcase.do">
-                    	<div class="form-row">
-    						<div class="col-6">
-                            	<label for="recipient-name" class="col-form-label">會員編號 Member:</label>
-                            	<input type="text" class="form-control" id="recipient-name-mem" name="membre_id" disabled>
-                        	</div>
-                        	<div class="col-6">
-                            	<label for="recipient-name" class="col-form-label">廠商編號 Vender:</label>
-                            	<input type="text" class="form-control" id="recipient-name-ven" name="vender_id" disabled>
-                        	</div>                   
+                    	<div class="form-row">    						                   
                         	<div class="col-12">
-                            	<label for="message-text" class="col-form-label">檢舉內容描述 Message :</label>
+                            	<label for="message-text-rep" class="col-form-label">檢舉內容描述 Message :</label>
                             	<textarea class="form-control" id="message-text-rep" placeholder="請勿空白" name="wp_vrep_d" rows="10"></textarea>
                         	</div>
                         </div>

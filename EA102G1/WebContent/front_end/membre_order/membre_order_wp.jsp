@@ -156,8 +156,8 @@
                 <div class="content_2">
 	        		<nav aria-label="Page navigation example">
 		            	<ul class="pagination justify-content-center">
-			                <li class="page-item Previous"><a class="page-link" tabindex="-1">Previous</a></li>
-			                <li class="page-item Next"><a class="page-link">Next</a></li>
+			                <li class="page-item Previous"><a class="page-link" tabindex="-1">First</a></li>
+			                <li class="page-item Next"><a class="page-link">Last</a></li>
 		            	</ul>
 	        		</nav>
    		 		</div>
@@ -196,7 +196,8 @@
                                     <label for="message-text" class="col-form-label">訂單備註 Message:</label>
                                     <textarea class="form-control" id="message-text" name="order_explain" rows="10"></textarea>
                                 </div>
-                            </form>
+                                <a href="" target="_blank" class="case_a"><span class="case_info"></span></a>
+                            </form>                            
                         </div>
                         <div class="tab-pane fade" id="pills-Appraise" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <form>
@@ -217,7 +218,7 @@
                                     <label for="message-text" class="col-form-label">評價內容 Message:</label>
                                     <textarea class="form-control" id="message-text" name="review_content" rows="10"></textarea>
                                 </div>
-                                <span>(評價可改?)　 歡迎給我們更好的評價與鼓勵　您的支持是我們服務的動力^O^/</span>
+                                <span>歡迎給我們更好的評價與鼓勵　您的支持是我們服務的動力^O^/</span>
                             </form>
                         </div>
                         <div class="tab-pane fade" id="pills-Report" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -255,15 +256,7 @@
                 </div>
                 <div class="modal-body">
                     <form METHOD="post" ACTION="<%=request.getContextPath()%>/wed/wpcase.do">
-                    	<div class="form-row">
-    						<div class="col-6">
-                            	<label for="recipient-name" class="col-form-label">會員編號 Member:</label>
-                            	<input type="text" class="form-control" id="recipient-name-mem" name="membre_id" disabled>
-                        	</div>
-                        	<div class="col-6">
-                            	<label for="recipient-name" class="col-form-label">廠商編號 Vender:</label>
-                            	<input type="text" class="form-control" id="recipient-name-ven" name="vender_id" disabled>
-                        	</div>                   
+                    	<div class="form-row">    						                
                         	<div class="col-12">
                             	<label for="message-text-rep" class="col-form-label">檢舉內容描述 Message :</label>
                             	<textarea class="form-control" id="message-text-rep" placeholder="請勿空白" name="wp_mrep_d" rows="10"></textarea>

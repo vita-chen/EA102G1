@@ -19,4 +19,6 @@ public interface WPOrderDAO_Interface {
 	public void Ven_Report(WPOrderVO WPOrderVO);//廠商檢舉
 	
 	public void Mem_Review(WPOrderVO WPOrderVO);//會員才可以評價
+	
+	public void Mem_Explain(WPOrderVO WPOrderVO);//會員改訂單備註
 }

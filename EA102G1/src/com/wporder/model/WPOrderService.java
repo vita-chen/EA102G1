@@ -2,6 +2,7 @@ package com.wporder.model;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.wpcase.model.WPCaseDAO;
 import com.wpcase.model.WPCaseDAO_Interface;
@@ -63,5 +64,24 @@ public class WPOrderService {
 	}
 	public void Ven_Report(WPOrderVO WPOrderVO) {
 		wporderdao.Ven_Report(WPOrderVO);
-	}	
+	}
+	public void Mem_Explain(WPOrderVO WPOrderVO) {
+		wporderdao.Mem_Explain(WPOrderVO);
+	}
+	public String orderChange(String wed_photo_order_no) {
+		List<WPDetailVO> list = wpdetaildao.getAll();
+		list = list.stream()
+				.filter(vo -> vo.getWed_photo_order_no().equals(wed_photo_order_no))
+				.collect(Collectors.toList());
+		
+		return list.get(0).getWed_photo_case_no();
+	}
+	public List<WPDetailVO> caseChange(String wed_photo_case_no) {
+		List<WPDetailVO> list = wpdetaildao.getAll();
+		list = list.stream()
+				.filter(vo -> vo.getWed_photo_case_no().equals(wed_photo_case_no))
+				.collect(Collectors.toList());
+		
+		return list;
+	}
 }
