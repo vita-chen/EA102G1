@@ -19,8 +19,8 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 
 	//新增管理員
 	private static final String ADD_ADM =
-			"INSERT INTO ADM(ADM_ID, ADM_ACCOUNT, ADM_PWD, ADM_NAME)"+
-			"VALUES('ADM'|| LPAD(SEQ_ADM_ID.NEXTVAL, 3,'0'),?,?,?)";
+			"INSERT INTO ADM(ADM_ID, ADM_ACCOUNT, ADM_PWD, ADM_NAME,ADM_0,ADM_1,ADM_2,ADM_3)"+
+			"VALUES('ADM'|| LPAD(SEQ_ADM_ID.NEXTVAL, 3,'0'),?,?,?,0,0,0,0)";
 	//修改管理員
 	private static final String UPDATE_ADM =
 			"";
