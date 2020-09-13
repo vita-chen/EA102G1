@@ -94,7 +94,13 @@ body {
     margin: 6px;
     font-size: 12px;
 }
-
+.float_right{    
+    display: inline;
+    float: right;
+}
+.btn-link{
+    font-size: 13px;
+}
 h4 {
     float: left;
     font-size: 12px;
@@ -332,16 +338,24 @@ a:hover {
 	<div class="header">
         <div class="title1">
             <h4></h4>
+            <c:if test="${membrevo.mem_name != null}">
+            <div class="float_right">
+                <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/vender/vender.do">
+                    <input type="hidden" name="action" value="session_off">
+                    <button type="submit" class="btn btn-link" href="<%=request.getContextPath()%>/front_end/home/home.jsp">登出</button>
+                </FORM>
+            </div>
+            </c:if>
             <p>
             	<c:if test="${membrevo.mem_name != null}">
             	你好 ${membrevo.mem_name }
-            	<a href="<%=request.getContextPath()%>/front_end/membre/wp/listAllCollectWP.jsp" id="link1">　我的收藏</a>
-            	<a href="<%=request.getContextPath()%>/front_end/membre/wp/listAllWPOrder.jsp" id="link1">　訂單查詢</a>
+            	<a href="<%=request.getContextPath()%>/front_end/membre_order/membre_wp_listall_track.jsp">　我的收藏</a>
+            	<a href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_wp.jsp">　訂單查詢</a>
             	</c:if>
             	<c:if test="${membrevo.mem_name == null}">
                 <a href="<%=request.getContextPath()%>/front_end/membre/login.jsp" id="link1" id="link1">　會員登入</a>
-                <a href="" id="link1">　我要註冊</a>
-                <a href="" id="link1">　廠商專區</a>
+                <a href="<%=request.getContextPath()%>/front_end/membre/regis.jsp">　我要註冊</a>
+                <a href="<%=request.getContextPath()%>/front_end/vender/vender_login.jsp">　廠商專區</a>
                 </c:if>
             </p>
         </div>
@@ -351,10 +365,10 @@ a:hover {
                 <li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp">禮車租借</a></li>
                 <li><a href="<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp"">婚紗租借</a></li>
                 <li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp">二手拍賣</a></li>
-                <li><a href="">討論區</a></li>
+                <li><a href="<%=request.getContextPath()%>/front_end/forum/listAllForum.jsp">討論區</a></li>
             </ol>
         </div>
-        <div class="logo"><a href="<%=request.getContextPath()%>/front_end/home/home.jsp"><img alt="Bootstrap Image Preview" src="../img/logo-transparent(1450_400).png"></a></div>
+        <div class="logo"><a href="<%=request.getContextPath()%>/front_end/home/home.jsp"><img alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>/img/logo-transparent(1450_400).png"></a></div>
     </div>
     <div class="service">TOP</div>
     <div class="ven_info">廠商資訊區塊</div>
@@ -397,7 +411,7 @@ a:hover {
          </div>
    </div>
    
-   <!-- footer Start -->
+<!-- footer Start -->
     <footer>
         <section class="container-fluid footer_con">
             <div class="row footer">
@@ -411,12 +425,12 @@ a:hover {
                 <div class="col-md-12 col-lg-4 footer-logo">
                     <div class="row justify-content-between">
                         <div class="col-12 Preview">
-                            <img alt="Bootstrap Image Preview" src="../img/logo-transparent(1450_400).png">
+                            <img alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>/img/logo-transparent(1450_400).png">
                         </div>
-                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="fb" src="../img/img_for_footer/FB_8080.png"></a></div>
-                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="ig" src="../img/img_for_footer/IG_8080.jpg"></a></div>
-                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="line" src="../img/img_for_footer/LINE_logo_8080.png"></a></div>
-                        <div class="col-3 foo_img"><a href=""><img alt="qrcode" src="../img/img_for_footer/lineQR_8080.png"></a></div>
+                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="fb" src="<%=request.getContextPath()%>/img/img_for_footer/FB_8080.png"></a></div>
+                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="ig" src="<%=request.getContextPath()%>/img/img_for_footer/IG_8080.jpg"></a></div>
+                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="line" src="<%=request.getContextPath()%>/img/img_for_footer/LINE_logo_8080.png"></a></div>
+                        <div class="col-3 foo_img"><a href=""><img alt="qrcode" src="<%=request.getContextPath()%>/img/img_for_footer/lineQR_8080.png"></a></div>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-4 contact-info">
