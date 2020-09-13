@@ -54,7 +54,7 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="http://example.com">${membrevo.mem_name}</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="<%=request.getContextPath()%>/order/order.do?action=getDifferentStatusOrders_buyer&order_status=All">我的訂單</a>
-            <a class="dropdown-item" href="<%=request.getContextPath()%>/order/order.do?action=getDifferentStatusOrders_seller&order_status=All">我的訂單(賣家 開發用)</a>
+<%--             <a class="dropdown-item" href="<%=request.getContextPath()%>/order/order.do?action=getDifferentStatusOrders_seller&order_status=All">我的訂單(賣家 開發用)</a> --%>
             <a class="dropdown-item" href="<%=request.getContextPath()%>/front_end/prod/myProds.jsp">我的商品</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="<%=request.getContextPath()%>/membre/membre.do?action=logOut">登出</a>
