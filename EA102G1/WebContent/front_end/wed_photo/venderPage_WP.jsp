@@ -397,7 +397,7 @@ a:hover {
          </div>
    </div>
    
-   <!-- footer Start -->
+<!-- footer Start -->
     <footer>
         <section class="container-fluid footer_con">
             <div class="row footer">
@@ -411,12 +411,12 @@ a:hover {
                 <div class="col-md-12 col-lg-4 footer-logo">
                     <div class="row justify-content-between">
                         <div class="col-12 Preview">
-                            <img alt="Bootstrap Image Preview" src="../img/logo-transparent(1450_400).png">
+                            <img alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>/img/logo-transparent(1450_400).png">
                         </div>
-                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="fb" src="../img/img_for_footer/FB_8080.png"></a></div>
-                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="ig" src="../img/img_for_footer/IG_8080.jpg"></a></div>
-                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="line" src="../img/img_for_footer/LINE_logo_8080.png"></a></div>
-                        <div class="col-3 foo_img"><a href=""><img alt="qrcode" src="../img/img_for_footer/lineQR_8080.png"></a></div>
+                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="fb" src="<%=request.getContextPath()%>/img/img_for_footer/FB_8080.png"></a></div>
+                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="ig" src="<%=request.getContextPath()%>/img/img_for_footer/IG_8080.jpg"></a></div>
+                        <div class="col-3 foo_img"><a href="#" target="_blank"><img alt="line" src="<%=request.getContextPath()%>/img/img_for_footer/LINE_logo_8080.png"></a></div>
+                        <div class="col-3 foo_img"><a href=""><img alt="qrcode" src="<%=request.getContextPath()%>/img/img_for_footer/lineQR_8080.png"></a></div>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-4 contact-info">

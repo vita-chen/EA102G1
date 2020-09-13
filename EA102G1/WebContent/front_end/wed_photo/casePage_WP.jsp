@@ -17,12 +17,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%
 	
-	/*	java檔大改(訂單 明細 servlet service)
-		ajax生成訂單 漏產生明細 導致抓不到評價
-		方案頁新增 評價資訊
-		訂單生成通知
-	*/
-
 	MembreVO membrevo = (MembreVO)session.getAttribute("membrevo");
 	WPCaseVO WPCaseVO =(WPCaseVO)request.getAttribute("WPCaseVO");
 	String url = request.getContextPath()+"/wed/wpcase.do?"+request.getQueryString();	
@@ -363,6 +357,12 @@ a:hover {
 .review_text_0{
     text-align: center;
 }
+span svg{
+    margin-left: 3px;
+    margin-right: 3px;
+    font-size: 18px;
+    color: #F6F608FF;
+}
 /*評價 結束*/
 
 
@@ -463,7 +463,7 @@ a:hover {
     </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_wp.jsp">婚禮攝影</a></li>
+            <li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP.jsp">婚禮攝影</a></li>
             <li class="breadcrumb-item"><a href="<%=request.getContextPath() %>/wed/wpcase.do?action=goVenderPage&vender_id=${WPCaseVO.vender_id}">廠商資訊</a></li>
             <li class="breadcrumb-item active" aria-current="page">方案介紹</li>
         </ol>
@@ -533,11 +533,13 @@ a:hover {
                    <c:if test="${order_list.review_content != null }">			            
 			            <div class="col-12 review">
 			                <div class="review_img">
-			                    <img src="<%=request.getContextPath()%>/img/wp_img/c1.jpg" alt="">
+			                    <img src="<%=request.getContextPath() %>/membre/membre.do?action=getphoto&membre_id=${order_list.membre_id }" alt="">
 			                </div>
 			                <div class="review_text">
-			                    <span>會員姓名${order_list.membre_id } 星星 ${order_list.review_star }</span>
-			                    <div>評論內容${order_list.review_content }</div>
+			                    <span>${order_list.membre_id }<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                        </svg>${order_list.review_star }</span>
+			                    <div>${order_list.review_content }</div>
 			                </div>
 			                <div class="review_time" style="font-style:oblique;"><fmt:formatDate value="${order_list.filming_time }" pattern="yyyy-MM-dd HH:mm" /></div>
 			            </div>
