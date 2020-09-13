@@ -179,7 +179,7 @@
 			<li><a href="<%=request.getContextPath()%>/back_end/back_end_home.jsp" >後台</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/vender/vender_home.jsp" >廠商專區</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp" >禮車租借</a></li>
-			<li><a href="<%=request.getContextPath()%>/front_end/wed_photo/wp_home.jsp" >婚禮攝影</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP.jsp" >婚禮攝影</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp" >婚紗租借</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/forum/listAllForum.jsp" >討論區</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp" >商場</a></li>
