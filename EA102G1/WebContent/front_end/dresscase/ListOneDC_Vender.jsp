@@ -18,7 +18,6 @@
 	.mid{
 		margin:0px auto;
 	}
-	
 	.container{
 		margin-top:50px;
 	}
