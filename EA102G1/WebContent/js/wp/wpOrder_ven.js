@@ -8,7 +8,7 @@ $(document).ready(function(){
 	var webCtx = path.substring(0, path.indexOf('/', 1));
 	var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
 	var webSocket;
-
+	
 	function connect() {
 		webSocket = new WebSocket(endPointURL);
 
@@ -18,7 +18,6 @@ $(document).ready(function(){
 
 		webSocket.onmessage = function(event) {
 			var jsonObj = JSON.parse(event.data);
-			console.log(event);
 			var wed_photo_order_no = jsonObj.wed_photo_order_no;
 			var strWS = '<div class="WStest" value="'+wed_photo_order_no+'">'+wed_photo_order_no+'<a href="">您有一筆新訂單</a></div>';
 			$('.fixright').append(strWS);

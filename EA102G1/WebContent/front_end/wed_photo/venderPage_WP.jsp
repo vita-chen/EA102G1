@@ -133,7 +133,7 @@ h4 {
 
 .title2 ol {
     list-style-type: none;
-    margin-top: 18.5px;
+    margin-top: 17.5px;
     height: 36px;
     background: -webkit-linear-gradient(#FFFFFFE0, #FFFFFF00);
     background: -o-linear-gradient(#FFFFFFE0, #FFFFFF00);

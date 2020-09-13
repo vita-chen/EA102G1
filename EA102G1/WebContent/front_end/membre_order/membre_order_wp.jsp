@@ -256,15 +256,7 @@
                 </div>
                 <div class="modal-body">
                     <form METHOD="post" ACTION="<%=request.getContextPath()%>/wed/wpcase.do">
-                    	<div class="form-row">
-    						<div class="col-6">
-                            	<label for="recipient-name" class="col-form-label">會員編號 Member:</label>
-                            	<input type="text" class="form-control" id="recipient-name-mem" name="membre_id" disabled>
-                        	</div>
-                        	<div class="col-6">
-                            	<label for="recipient-name" class="col-form-label">廠商編號 Vender:</label>
-                            	<input type="text" class="form-control" id="recipient-name-ven" name="vender_id" disabled>
-                        	</div>                   
+                    	<div class="form-row">    						                
                         	<div class="col-12">
                             	<label for="message-text-rep" class="col-form-label">檢舉內容描述 Message :</label>
                             	<textarea class="form-control" id="message-text-rep" placeholder="請勿空白" name="wp_mrep_d" rows="10"></textarea>

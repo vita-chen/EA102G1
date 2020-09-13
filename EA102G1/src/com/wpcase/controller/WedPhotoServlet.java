@@ -388,17 +388,32 @@ public class WedPhotoServlet extends HttpServlet {
 			
 			WPCaseService wpcsv = new WPCaseService();
 			WPImgVO imgvo = wpcsv.imgForVender(req.getParameter("vender_id"));
-			
-			ByteArrayInputStream bis = new ByteArrayInputStream(imgvo.getWed_photo_img());
-			ServletOutputStream sos = res.getOutputStream();
-			byte[] buffer = new byte[8*1024];
-			int length = 0;
-			while ((length = bis.read(buffer)) != -1) {
-				sos.write(buffer, 0, length);
-			}					
-			sos.close();
-			bis.close();				
-			return;
+			try {
+				
+				ByteArrayInputStream bis = new ByteArrayInputStream(imgvo.getWed_photo_img());
+				ServletOutputStream sos = res.getOutputStream();
+				byte[] buffer = new byte[8*1024];			
+				int length = 0;
+				
+				while ((length = bis.read(buffer)) != -1) {
+					sos.write(buffer, 0, length);
+				}
+				sos.close();
+				bis.close();				
+				return;
+				
+			}catch(NullPointerException n) {
+				
+				InputStream is = getServletContext().getResourceAsStream("/img/wp_img/v0204.jpg");
+				ServletOutputStream sos = res.getOutputStream();
+				byte[] buffer = new byte[is.available()];
+				is.read(buffer);
+				sos.write(buffer);
+				sos.close();
+				is.close();				
+				return;
+				
+			}
 			
 		}
 		
