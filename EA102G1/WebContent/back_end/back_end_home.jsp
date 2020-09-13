@@ -10,11 +10,7 @@
     if (account == null) {                                             
       response.sendRedirect(request.getContextPath()+"/back_end/adm/adm_login.jsp");   
       return;
-    }
-	VenderJDBCDAO dao = new VenderJDBCDAO();
-	
-
-	
+    }		
 %>
 <!DOCTYPE html>
 <html lang="en">
