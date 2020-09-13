@@ -52,9 +52,6 @@
 	  font-size: 30px;
 	}
 	
-	#imgDiv {
-		text-align:center;
-	}
 	
 </style>
  <!--設定element相對位置 -->
@@ -170,12 +167,11 @@ if (map != null && (map.size() > 0)) {%>
 	</table>
 	<%}%>
 	<br><br>
-	<div>
-	<iframe width="100%" height="100%" src="https://www.youtube.com/embed/36YgDDJ7XSc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	<div id="imgDiv">
-	<img src="<%=request.getContextPath()%>/img/img_for_drcase/WDC001_1.jpg" width="300px" height="200px">
-	<img src="<%=request.getContextPath()%>/img/img_for_drcase/WDC001_2.jpg" width="300px" height="200px">
-	<img src="<%=request.getContextPath()%>/img/img_for_drcase/WDC001_3.jpg" width="300px" height="200px">
+	<div id="vidDiv">
+	<video autoplay muted loop width="480" height="320">  
+	    <source src="../video/bouquet.mp4" type="video/mp4">
+	    Your browser does not support the video tag.  
+	</video>
 	</div>
 	</div>
 <script>

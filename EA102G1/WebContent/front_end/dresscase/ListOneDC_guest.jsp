@@ -131,7 +131,7 @@ if(dcVO == null){
 </style>
 </head>
 <body>
-
+<%@ include file="/front_end/home/Header_Cart.jsp"%>
 
 <!--SECTION1 -->
 <section class="header4 cid-s8YeJDqMKj mbr-parallax-background" id="header4-z">
