@@ -94,6 +94,7 @@ if(dcVO == null){
 <!--  -->
 .ratings {
     position: relative;
+    left:15px;
     vertical-align: middle;
     display: inline-block;
     color: #b1b1b1;
@@ -121,15 +122,6 @@ if(dcVO == null){
     height: 250px;
     width:100%;
     text-align: center;
-}
-.po{
-	padding-bottom:20px;
-	margin-bottom:50px;
-}
-
-#footerDiv{
-	margin-top:50px;
-	padding-top:100px;
 }
 /* Webkit-text-stroke is not supported on firefox or IE */
 
@@ -183,7 +175,7 @@ if(dcVO == null){
 					</c:if>
 				</c:forEach>
             <!--購買(其實是跳出加購項目)按鈕:ajax觸發SeeAddOn -->
-            <div>
+            <div style="margin-left:0px;">
 	            <FORM method="post">
 					<input type="button" name="action" value="我要購買" id="seeAO" class="btn btn-md btn-primary display-4 align-center">
 					<input type="hidden" name="membre_id2" value="${membrevo.membre_id}" id="membre_id2">
@@ -255,24 +247,29 @@ if(dcVO == null){
 	 		<%=contact%><%=phone%><br><%=mail%><br><%=addr%><br>
 	 </div>
 	 </div>
+	 <br><br>
+	 
+	 <!-- row2-->
+	 <div class="row row justify-content-md-center">
+	 		<div class="col-xs-12 col-md-12 col-lg-12 ven_map">
+           <iframe width="90%" height="100%" frameborder="0" style="border:0;text-align:left;" src="" allowfullscreen></iframe>               
+     		</div>
+	 </div>
+	  <!-- row-->
 	 <div class="row">
-	 <!-- 空div -->
 	 <div class="col-xs-1 col-md-1 col-lg-1"></div>
 	 <div class="col-xs-10 col-md-10 col-lg-10 mbr-white bord align-left">
 	 <br>
 	 
-	 <div class="col-12 ven_map">
-           <iframe width="100%" height="100%" frameborder="0" style="border:0" src="" allowfullscreen></iframe>               
-     </div>
 	 <br>
 	 <div class="col-12 row po" >
 	 	<h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-5">熱門評價</h1>
-	 		<div class="ratings">
+	 		<div class="mbr-section-title ratings row ">
 			    <div class="empty-stars"></div>
 			    <div class="full-stars" style="width:${percent}%"></div>
 			</div>
 			<br>
-		<div >
+		<div>
 	 	<h5><%=revContent%></h5>
 	 	</div>
 	 </div>
