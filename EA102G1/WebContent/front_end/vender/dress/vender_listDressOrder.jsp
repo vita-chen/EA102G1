@@ -177,14 +177,14 @@ if (account == null) {                                             // 如為 nul
              <div class="planel_boxs">
                  <div class="row"> 
                      <div class="row_line col-md-12 col-sm-12 col-xs-12" id="repState">
+                     <div style="text-align:left;">
                      	<!-- 內容：隱藏按鈕區，視各種狀況會出現不同的按鈕 -->
                      	<label style="display:none;" id="showinfo"></label>
        
         			<form method="post" action="<%=request.getContextPath()%>/front_end/dressorder/order.do" id="venRepForm">
         			<div style="text-align:left;"> 
         			<label style="display:none;" id="labelRep" class="wid">若要檢舉，請輸入您的檢舉原因:</label>
-        			</div>
-        			<div style="text-align:left;"> 
+        			
                          <input type="text" class="form-controls content" style="display:none; width:400px;" name="vrep_de" id="textRep">
                          <label style="display:none;" id="repState" class="wid"></label>
                     </div>
@@ -257,16 +257,18 @@ $('#orderContent').on('show.bs.modal', function (event) {
 		var dePrArr = JSON.parse(data.dePr);
 		
 		  $("#new_content").html('');
-		  $("#new_content").append('<div class="table-responsive"><table class="table table-hover">');
+		  $("#new_content").append('<div class="table-responsive" style="text-align:left;"><table class="table table-hover">');
 		  $("#new_content").append('<thead><tr>');
 		  $("#new_content").append('<th width="220" height="40" bgcolor="white">  方案名稱</th><th width="80">方案價格</th><th width="300">加購項目</th><th width="80">小計</th>');
 		  $("#new_content").append('</tr></thead><tbody>');
 		  
 		  for(var i=0; i<n;i++){
-			  if (!Array.isArray(addNaArr) || !addNaArr.length) {
-				  addNaArr[i] = "無";
-			  }
-			  $("#new_content").append('<tr bgcolor="white" height="40"><th width="220">  '+caseNaArr[i]+'</th><td width="80">'+casePrArr[i]+'</td><td width="300">'+addNaArr[i]+'</td><td width="80">'+dePrArr[i]+'</td></tr>');
+			  if(addNaArr[i].length===0){
+					$("#new_content").append('<tr bgcolor="white" height="40"><th width="220">'+caseNaArr[i]+'</th><td width="80">'+casePrArr[i]+'</td><td width="300">無 </td><td width="80">'+dePrArr[i]+'</td></tr>');
+				}
+			  else{
+					$("#new_content").append('<tr bgcolor="white" height="40"><th width="220">'+caseNaArr[i]+'</th><td width="80">'+casePrArr[i]+'</td><td width="300">'+addNaArr[i]+'</td><td width="80">'+dePrArr[i]+'</td></tr>');
+				}
 		  }
 		  $("#new_content").append('</tbody></table>');
 	
@@ -320,7 +322,7 @@ function seeReport(data){
 	}
 	//廠商檢舉成功
 	else if(vst ===2){
-		$("#con_final").hide();
+		$("#but").hide();
 		$("#showinfo").html('恭喜您，檢舉成功');
 		$("#showinfo").show();
 		
@@ -364,10 +366,7 @@ $('#confirmFin2').click(function(){
   <script src="<%=request.getContextPath() %>/vendors/bootstrap/js/bootstrap.min.js"></script>
   <script src="<%=request.getContextPath() %>/js/wp/wpOrder_mem.js" charset="utf-8" type="text/javascript"></script>
 
-
 </div>
-<!-- 塞資料的地方 -->
-<!-- 塞資料的地方 -->
 </div>
 </div>
 
