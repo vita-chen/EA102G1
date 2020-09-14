@@ -734,9 +734,10 @@ public class WedPhotoServlet extends HttpServlet {
 				String identity = new String(req.getParameter("identity"));
 				String wed_photo_order_no = new String(req.getParameter("wed_photo_order_no"));
 				String vender_id = new String(req.getParameter("vender_id"));
+
 				if(identity.equals("vender")) {
 					WPOrderVO wpordervo = new WPOrderVO();
-					wpordervo.setWed_photo_order_no(wed_photo_order_no);//只給訂單編號 其他給null
+					wpordervo.setWed_photo_order_no(wed_photo_order_no);
 					wpordervo.setVender_id(vender_id);
 					WPOrderService wpordersvc = new WPOrderService();
 					wpordersvc.complete_order(wpordervo);

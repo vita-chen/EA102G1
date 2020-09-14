@@ -139,7 +139,7 @@ body {
     font-size: 10px;
     font-weight: 400;
     background-color: #FFECFFFF;
-    font-family: "微軟正黑體";
+    font-width: 600;
     border-bottom: solid 1px #FFEEFFFF;
 }
 

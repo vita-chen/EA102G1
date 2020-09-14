@@ -46,10 +46,102 @@
             // 返回到最頂上
             // return false;
         });
+        $('.new_case').each(function() {
+
+            $(this).hover(function() {
+                $(this).find('img').css('width', '34%');
+            }, function() {
+                $(this).find('img').css('width', '35%');
+            })
+        })
     });
     </script>
 </head>
 <style type="text/css">
+/*最新方案 開始*/
+.row .col-12 {
+    margin-bottom: 45px;
+}
+
+.new_case {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background-color: #FFFFFF8A;
+    /*border: 1px solid #FF7FB60B;*/
+    color: #000000FF;
+}
+
+.new_case:hover {
+    border: 5px solid #FFF;
+    text-shadow: #FFFFFFFF 0.1em 0.1em 0.2em;
+    width: 99.9%;
+    /*height:97.5%;*/
+}
+
+.img_box img {
+    float: left;
+    height: auto;
+    width: 35%;
+    border-radius: 3px;
+}
+
+.img_text {
+    display: inline-block;
+    width: 64%;
+    float: right;
+
+}
+
+.img_text:hover {
+    color: black;
+}
+
+.img_text h5 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.text_time {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.text_new {
+    margin-left: 35px;
+    margin-right: 5px;
+    height: 150px;
+    text-align: justify;
+    letter-spacing: 1px;
+    line-height: 25px;
+}
+
+.img_text:hover {
+    opacity: 0.87;
+}
+
+.img_box img:hover {
+    opacity: 0.9;
+}
+
+.right_case .img_box img {
+    float: right;
+    height: auto;
+    width: 35%;
+    border-radius: 3px;
+}
+
+.right_case .img_text {
+    display: inline-block;
+    width: 64%;
+    float: left;
+
+}
+
+/*最新方案 結束*/
 body {
     margin: 0px;
 }
@@ -76,23 +168,21 @@ body {
     height: 30px;
     font-size: 10px;
     font-weight: 400;
-    background-color: #FFECFFFF;
-    /*font-family: "微軟正黑體";*/
+    background-color: #FFECFFFF;    
     border-bottom: solid 1px #FFEEFFFF;
+    font-width: 600;
 }
-
 .title1 {
     display: inline-block;
     position: fixed;
     top: 0px;
     z-index: 1;
 }
-
 .title1 p {
     display: inline;
     float: right;
     margin: 6px;
-    font-size: 12px;
+    font-size: 13px;
 }
 .float_right{    
     display: inline;
@@ -108,40 +198,37 @@ h4 {
     font-weight: 500;
 }
 
-.logo img {
-    width: 180px;
+.logo img{
+    width:180px;
     height: auto;
 }
-
-.logo {
+.logo{
     position: fixed;
     top: 4px;
     left: 10px;
     z-index: 5;
-    width: 180px;
+    width:180px;
     height: 63px;
 }
-
-.title2 {
-    display: inline;
+.title2{
+    display:inline;
     width: 100%;
-    text-align: right;
+    text-align:right;
     position: fixed;
     top: 12px;
     z-index: 2;
-}
 
-.title2 ol {
-    list-style-type: none;
+}
+.title2 ol{
+    list-style-type: none;    
     margin-top: 17.5px;
-    height: 36px;
-    background: -webkit-linear-gradient(#FFFFFFE0, #FFFFFF00);
-    background: -o-linear-gradient(#FFFFFFE0, #FFFFFF00);
-    background: -moz-linear-gradient(#FFFFFFE0, #FFFFFF00);
-    background: linear-gradient(#FFFFFFE0, #FFFFFF00);
+    height: 36px;    
+    background: -webkit-linear-gradient(#FFFFFFE0,#FFFFFF00);
+    background: -o-linear-gradient(#FFFFFFE0,#FFFFFF00);
+    background: -moz-linear-gradient(#FFFFFFE0,#FFFFFF00);
+    background: linear-gradient(#FFFFFFE0,#FFFFFF00);
 }
-
-.title2 ol li {
+.title2 ol li{
     margin-left: 5px;
     width: 80px;
     line-height: 34.5px;
@@ -150,7 +237,6 @@ h4 {
     margin-right: 0px;
     display: inline-block;
 }
-
 .title2 ol li:hover {
     color: #DDDDDDFF;
 }
@@ -166,7 +252,6 @@ a {
 a:hover {
     color: #919191FF;
 }
-
 /*title end*/
 
 /*footer start*/
@@ -181,9 +266,9 @@ a:hover {
 
 .footer_con {
     height: 350px;
+    margin-top: 50px;
     background-color: #FFECFFFF;
     border: 3px #FFECFFFF solid;
-    /*margin-top: 20px;*/
     padding-bottom: 20px;
 }
 
@@ -226,90 +311,6 @@ a:hover {
 
 /*footer end*/
 
-/*最新方案 開始*/
-.row .col-12 {
-    margin-bottom: 30px;
-}
-
-.new_case {
-    width: 100%;
-    height: 100%;
-    border-radius: 3px;
-    background-color: #FF7FB60B;
-    border: 1px solid #FF7FB60B;
-
-    /*box-shadow: #EBD0D0FF 3px 3px 3px 3px;*/
-    color: #4F4F4FFF;
-}
-
-.new_case:hover {
-    border: 1px solid #B6486AFF;
-    background-color: #FFF;
-}
-
-.img_box img {
-    float: left;
-    height: auto;
-    width: 35%;
-    border-radius: 3px;
-}
-
-.img_text {
-    display: inline-block;
-    width: 64%;
-    float: right;
-
-}
-
-.img_text:hover {
-    color: black;
-}
-
-.img_text h5 {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.text_time {
-    margin-top: 20px;
-    margin-bottom: 0;
-    margin-right: 5px;
-    text-align: right;
-    font-size: 14px;
-}
-
-.text_new {
-    margin-left: 35px;
-    margin-right: 5px;
-    height: 150px;
-    text-align: justify;
-    letter-spacing: 1px;
-    line-height: 25px;
-}
-
-.img_text:hover {
-    opacity: 0.87;
-}
-
-.img_box img:hover {
-    opacity: 0.9;
-}
-
-.right_case .img_box img {
-    float: right;
-    height: auto;
-    width: 35%;
-    border-radius: 3px;
-}
-
-.right_case .img_text {
-    display: inline-block;
-    width: 64%;
-    float: left;
-
-}
-
-/*最新方案 結束*/
 .con2head {
     text-align: center;
     color: #D1005AFF;
@@ -318,23 +319,103 @@ a:hover {
     font-size: 24px;
     font-weight: 400;
 }
+
 /*廠商資訊 開始*/
-.ven_map {    
+
+.disappear {
+    margin-top: 30px;
+    height: 820px;
+    width: 100%;    
+    background-image: url('<%=request.getContextPath()%>/img/wp_img/wpbanner05.jpg');
+    background-repeat: no-repeat;
+    background-position: 90% 60%;
+    background-attachment: fixed;
+    background-size: 100%;
+    opacity: 0.4;
+    position: sticky;
+    top: 0;
+    z-index: 0;
+}
+
+.dis_dis {
+    height: 300px;    
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2;    
+}
+
+.ven_map {
     height: 400px;
-    width:100%;
-    border: 1px #C13DB3FF solid;
+    width: 100%;   
     text-align: center;
 }
+
 .ven_info {
-    margin-top: 50px;
-    height: 300px;
-    border: 1px #8C8C8CFF solid;
+    margin-top: 30px;
+    height: 280px;    
+}
+
+.info img {
+    width: 50%;
+    display: block;
+    margin: auto;
+    border-radius: 98%;
+    margin-top: 8%;
+}
+.info img:hover{
+    opacity: 0.94;
+}
+.info_text:hover{
+    opacity: 0.8;
+    color:#212121FF;
+    text-shadow: #FFF 0.1em 0.1em 0.1em;
+}
+.info_text{
+    border:1.5px #FFF solid;
+    text-align: center;
+    margin-top: 6%;
+    color: #FFFFFFFF;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-color: #FFFFFF3A;
+    border-radius: 8px;
+    text-shadow: #2B2B2BFF 0.1em 0.1em 0.1em;
+}
+.info_text p {
+    font-size: 28px;
 }
 
 
 /*廠商資訊 結束*/
 </style>
 <body>
+	<div class="container">
+        <div class="dis_dis">
+            <div class="row ven_info">
+                <div class="col-4 info"><img src="<%=request.getContextPath() %>/vender/vender.do?action=getphot&vender_id=${VenderVO.vender_id}"></div>
+                <div class="col-8 info">
+                    <div class="info_text">
+                        <p>${VenderVO.ven_name}</p>
+                        ${VenderVO.ven_addr}<br>
+                        <c:if test="${membrevo == null }">
+                        登入後查看其他聯絡資訊
+                        </c:if>
+                        <c:if test="${membrevo != null }">
+                        ${VenderVO.ven_phone} ${VenderVO.ven_contact}<br>
+                        ${VenderVO.ven_mail}
+                        </c:if>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 ven_map">
+                    <iframe width="100%" height="100%" frameborder="0" style="border:0" src="" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 	<div class="header">
         <div class="title1">
             <h4></h4>
@@ -353,7 +434,7 @@ a:hover {
             	<a href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_wp.jsp">　訂單查詢</a>
             	</c:if>
             	<c:if test="${membrevo.mem_name == null}">
-                <a href="<%=request.getContextPath()%>/front_end/membre/login.jsp" id="link1" id="link1">　會員登入</a>
+                <a href="<%=request.getContextPath()%>/front_end/membre/login.jsp">　會員登入</a>
                 <a href="<%=request.getContextPath()%>/front_end/membre/regis.jsp">　我要註冊</a>
                 <a href="<%=request.getContextPath()%>/front_end/vender/vender_login.jsp">　廠商專區</a>
                 </c:if>
@@ -368,25 +449,11 @@ a:hover {
                 <li><a href="<%=request.getContextPath()%>/front_end/forum/listAllForum.jsp">討論區</a></li>
             </ol>
         </div>
-        <div class="logo"><a href="<%=request.getContextPath()%>/front_end/home/home.jsp"><img alt="Bootstrap Image Preview" src="<%=request.getContextPath()%>/img/logo-transparent(1450_400).png"></a></div>
+        <div class="logo"><a href="<%=request.getContextPath()%>/front_end/home/home.jsp"><img alt="Bootstrap Image Preview" src="<%=request.getContextPath() %>/img/logo-transparent(1450_400).png"></a></div>
     </div>
     <div class="service">TOP</div>
-    <div class="ven_info">廠商資訊區塊</div>
+    <div class="disappear"></div>
     <div class="container">
-    	${VenderVO.vender_id } - ${VenderVO.ven_name} - ${VenderVO.ven_addr} - ${VenderVO.ven_phone} - ${VenderVO.ven_mail}
-    	<div class="con2head">
-            <p>廠商位置</p>
-        </div>
-        <div class="row">            
-            <div class="col-12 ven_map">
-                <iframe width="100%" height="100%" frameborder="0" style="border:0" src="" allowfullscreen>
-                </iframe>               
-            </div>
-             <!-- <div class="ven_map" id="map"></div> -->
-        </div>
-        <div class="con2head">
-            <p>全部方案</p>
-        </div>
         <div class="row justify-content-between">
         <c:forEach var="list" items="${list_case }">
             <div class="col-12">
@@ -475,7 +542,7 @@ $('.new_case').each(function(i){
 
 var addr2 = '${VenderVO.ven_addr}';
 var addr = addr2.substring(0,addr2.lastIndexOf('號')+1);
-$('iframe').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyD7LkDHulMgpoqnxVDobzNsfX0Ceb26t1Y&q=' + addr)
+// $('iframe').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyD7LkDHulMgpoqnxVDobzNsfX0Ceb26t1Y&q=' + addr)
 
 // 建立 Geocoder() 物件
 var gc = new google.maps.Geocoder();

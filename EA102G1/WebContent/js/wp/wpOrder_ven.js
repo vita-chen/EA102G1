@@ -261,22 +261,7 @@ $(document).ready(function(){
 		})
 	})
 
-	$(".update_order_Ajax").click(function(){ // 更新評價 更新訂單備註 能進controller還不能進資料庫
-		$.ajax({
-			type: "POST",
-			url: url + "/wed/wpcase.do",
-			data: {
-				action:"update_order_Ajax",
-				wed_photo_order_no:$("[name='wed_photo_order_no']").val(),
-				order_explain:$("[name='order_explain']").val(),
-				review_star:$('.valueSpan2').text(),
-				review_content:$("[name='review_content']").val()				
-			},
-			success: function(data){
-// 				alert(data+' 訂單更新成功');
-			}			
-		})		
-	})
+
 	$("[name='select_order_no']").change(function(){
 		var order_no = $("option:selected").attr("value");
 
