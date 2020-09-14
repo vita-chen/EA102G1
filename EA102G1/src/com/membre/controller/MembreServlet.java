@@ -172,7 +172,7 @@ public class MembreServlet extends HttpServlet{
 			}
 			context.setAttribute("keyMap", keyMap);
 			keyMap.put(key, newMembrevo.getMembre_id());
-			String url = "http://localhost:8081/EA102G1/membre/membre.do?action=verifyAccount&key="+key;
+			String url = "http://weddingnavi.tk/EA102G1/membre/membre.do?action=verifyAccount&key="+key;
 			MailService.sendMail(email, mem_name, url);
 			request.setAttribute("success", "success");
 //			http://weddingnavi.tk/EA102G1/front_end/home/home.jsp
