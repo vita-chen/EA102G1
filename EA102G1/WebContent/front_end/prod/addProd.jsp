@@ -86,12 +86,13 @@
 						<option value="${typevo.type_no }" ${(prodvo.type_no==typevo.type_no)?'selected':'' }>${typevo.type_name }
 					</c:forEach>
 				</select>
-			<label class="btn btn-info" style="margin-left:100px">
+			<label class="btn btn-info" style="margin-left:60px">
 			<input type = "file" style="display:none" name="pic" id="myFile" multiple/>
 			<i class="fa fa-photo"></i> 上傳圖片
 			</label>
 			<input type="hidden" name="action" value="add">
-			<input type="hidden" name="pass" value="" id="picToPass">
+			<input type="hidden" name="pass" value="" id="picToPass"><p>
+			<small>最多上傳5張不含有貓貓的圖片</small>
 			<input type="submit"  class="form-control" value="新增商品">	
 				</div> <!-- form-group end.// -->
       </form>

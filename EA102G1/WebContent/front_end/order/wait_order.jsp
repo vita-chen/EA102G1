@@ -27,7 +27,7 @@
 <script type="text/javascript">
 $('.modal').show();
 //設定倒數秒數
-var t = 3;
+var t = 4;
 console.log(path);
 //顯示倒數秒收
 function showTime()

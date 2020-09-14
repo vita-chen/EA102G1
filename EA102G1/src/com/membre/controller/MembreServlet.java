@@ -139,10 +139,10 @@ public class MembreServlet extends HttpServlet{
 			}
 			List<String> accountList = memSvc.getAllAccount();
 			if (accountList.contains(compte)) {
-				errors.add("此帳號已被註冊");
+				errors.add("此信箱已被註冊");
 				RequestDispatcher view = request.getRequestDispatcher("/front_end/membre/regis.jsp");
 				request.setAttribute("errors", errors);
-				request.setAttribute("membrevo", membrevo);
+				request.setAttribute("errorMembrevo", membrevo);
 				view.forward(request, response);
 				return;
 			}
