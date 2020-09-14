@@ -620,10 +620,8 @@ public class DressOrderServlet extends HttpServlet {
 
     		dSvc.updateDrOrder(drord_id, membre_id, vender_id, drord_time, drord_pr, drord_depo, drord_ini, drord_pay_st, drord_fin_st,
     				mrep_st,vrep_st, mrep_de,vrep_de, dr_mrep_res, dr_vrep_res, 0,review );
-    		RequestDispatcher view = req.getRequestDispatcher("/back_end/dressorder/listOrder.jsp");
+    		RequestDispatcher view = req.getRequestDispatcher("/back_end/dressorder/list_dress_order.jsp");
     		view.forward(req, res);
         } 
-        
-        
 	}
 }

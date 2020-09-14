@@ -47,9 +47,9 @@
 			<li><a href="<%=request.getContextPath()%>/back_end/back_end_home.jsp" target="_blank">後台</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/vender/vender_home.jsp" target="_blank">廠商專區</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/carOrder/browseAllCar.jsp" target="_blank">禮車租借</a></li>
-			<li><a href="<%=request.getContextPath()%>/front_end/wed_photo/wp_home.jsp" target="_blank">婚禮攝影</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/wed_photo/home_WP.jsp" target="_blank">婚禮攝影</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp" target="_blank">婚紗租借</a></li>
-			<li><a href="index.html" target="_blank">討論區</a></li>
+			<li><a href="<%=request.getContextPath()%>/front_end/forum/listAllForum.jsp" target="_blank">討論區</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/prod/select_page.jsp" target="_blank">商場</a></li>
 			<li><a href="<%=request.getContextPath()%>/front_end/membre_order/membre_order_home.jsp" target="_blank">會員訂單</a></li>
 			

@@ -126,13 +126,13 @@
                             <td><fmt:formatDate value="${wpordervo.filming_time }" pattern="yyyy-MM-dd HH:mm" /></td>
                             <td><fmt:formatDate value="${wpordervo.wed_photo_odtime }" pattern="yyyy-MM-dd HH:mm" /></td>
                             <td>
-	                            <button type="button" class="btn btn-secondary btnw" data-toggle="modal" data-target="#exampleModal"
-	                            value="${wpordervo.wed_photo_order_no }" name="read_more">查看詳情
+	                            <button type="button" class="btn btn-secondary btnw read_more" data-toggle="modal" data-target="#exampleModal"
+	                            value="${wpordervo.wed_photo_order_no }" name="${wpordervo.vender_id }">查看詳情
 								</button></td>
                             <td>
                              	<div class="btn-group">
                              		<button type="button" class="btn btn-secondary complete btnw" name="${wpordervo.wed_photo_order_no }"
-                                     data-toggle="modal" data-target="#exampleModal3"> 完成訂單 </button>
+                                     data-toggle="modal" data-target="#exampleModal3" value="${wpordervo.vender_id }"> 完成訂單 </button>
                              		<input type="hidden" name="order_status_decide" value="${wpordervo.order_status }">
 									<input type="hidden" name="wp_vrep_s_decide" value="${wpordervo.wp_vrep_s }">
 									<input type="hidden" name="wp_mrep_s_decide" value="${wpordervo.wp_mrep_s }">
@@ -237,6 +237,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="wed_photo_order_no" value="">
+                    <input type="hidden" name="vender_id" value="">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary update_order_Ajax" data-dismiss="modal">Save changes</button>
                 </div>
@@ -309,6 +310,7 @@
                 </div>
                 <div class="modal-footer">
                 	<input type="hidden" name="wed_photo_order_no" value="">
+                	<input type="hidden" name="vender_id" value="">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                    
                     <button type="button" class="btn btn-primary complete_submit" data-dismiss="modal">Complete Order</button>
                 </div>

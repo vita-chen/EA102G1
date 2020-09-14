@@ -71,9 +71,10 @@ $(document).ready(function(){
 		})
 		
 		// 查詢更多訂單資訊
-	$("[name='read_more']").click(function(){
+	$(".read_more").click(function(){
 		
 		$("[name='wed_photo_order_no']").val($(this).attr("value"));
+		$("[name='vender_id']").val($(this).attr("name"));
 		 const $valueSpan = $('.valueSpan2');
 		 const $value = $('#customRange2'); //input type=range 的	 
 		 $value.on('input change', () => {	//range出現的奇怪錯誤訊息 但是可以執行
@@ -103,6 +104,7 @@ $(document).ready(function(){
 	})
 	$(".complete").click(function(){
 		$("[name='wed_photo_order_no']").val($(this).attr("name"));
+		$("[name='vender_id']").val($(this).attr("value"));
 	})
 	// 點選訂單完成 出現填寫評價表格(非必填) 才進資料庫
 	$(".complete_submit").click(function(){
@@ -112,7 +114,8 @@ $(document).ready(function(){
 			 data: {
 				 action:"getOne_Order_Ajax_2",
 				 wed_photo_order_no:$("[name='wed_photo_order_no']").val(),
-				 identity:"vender"
+				 vender_id:$("[name='vender_id']").val(),
+				 identity:"member"
 			 },			
 			 success: function (data){
 				 var order_status = JSON.parse(data).order_status;
@@ -125,6 +128,7 @@ $(document).ready(function(){
 						 data: {
 							 action:"complete_order",
 							 identity:"member",
+							 vender_id:$("[name='vender_id']").val(),
 							 wed_photo_order_no:$("[name='wed_photo_order_no']").val(),
 							 review_star:$('.valueSpan').text(),
 							 review_content:$("[name='review_content_submit']").val()
@@ -240,6 +244,7 @@ $(document).ready(function(){
 				action:"update_order_Ajax",
 				order_status:$("[name='order_status']").val(),
 				wed_photo_order_no:$("[name='wed_photo_order_no']").val(),
+				vender_id:$("[name='vender_id']").val(),
 				order_explain:$("[name='order_explain']").val(),
 				review_star:$('.valueSpan2').text(),
 				review_content:$("[name='review_content']").val()				

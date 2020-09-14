@@ -733,10 +733,11 @@ public class WedPhotoServlet extends HttpServlet {
 			try {
 				String identity = new String(req.getParameter("identity"));
 				String wed_photo_order_no = new String(req.getParameter("wed_photo_order_no"));
-				
+				String vender_id = new String(req.getParameter("vender_id"));
 				if(identity.equals("vender")) {
 					WPOrderVO wpordervo = new WPOrderVO();
 					wpordervo.setWed_photo_order_no(wed_photo_order_no);//只給訂單編號 其他給null
+					wpordervo.setVender_id(vender_id);
 					WPOrderService wpordersvc = new WPOrderService();
 					wpordersvc.complete_order(wpordervo);
 					
@@ -751,10 +752,10 @@ public class WedPhotoServlet extends HttpServlet {
 				}else {
 					String review_stars = new String(req.getParameter("review_star"));
 					String review_content = new String(req.getParameter("review_content").trim());				
-					System.out.println(review_stars +" / "+review_content);
 					Integer review_star = new Integer(review_stars);
 					
 					WPOrderVO wpordervo = new WPOrderVO();
+					wpordervo.setVender_id(vender_id);
 					wpordervo.setWed_photo_order_no(wed_photo_order_no);				
 					wpordervo.setReview_star(review_star);
 					wpordervo.setReview_content(review_content);
@@ -867,7 +868,7 @@ public class WedPhotoServlet extends HttpServlet {
 			Integer review_star = new Integer(req.getParameter("review_star"));
 			String review_content = req.getParameter("review_content");
 			String order_explain = req.getParameter("order_explain");
-			
+			String vender_id = req.getParameter("vender_id");
 			if(req.getParameter("order_status").equals("訂單取消")) {
 				res.setContentType("text/plain");
 				res.setCharacterEncoding("UTF-8");
@@ -901,6 +902,7 @@ public class WedPhotoServlet extends HttpServlet {
 				ordervo.setReview_star(review_star);
 				ordervo.setReview_content(review_content);
 				ordervo.setWed_photo_order_no(wed_photo_order_no);
+				ordervo.setVender_id(vender_id);
 				wpordersvc.complete_order(ordervo);
 				
 				res.setContentType("text/plain");

@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
-<%@ page import="com.dresscase.model.*"%>
+<%@ page import="com.dresscase.model.*,com.vender.model.*"%>
+
 
 <%
     DressCaseService drSvc = new DressCaseService();
@@ -130,7 +131,8 @@
           	   	<tr>
           	   		<th width="200">方案圖片</th>
           	   		<th width="150">廠商名稱</th>
-          	   		<th width="250">方案名稱</th>
+          	   		<th width="70">地區</th>
+          	   		<th width="180">方案名稱</th>
           	   		<th width="120">方案價格</th>
           	   		<th width="350">方案簡介</th>
           	   	</tr>
@@ -146,6 +148,7 @@
                         	<c:forEach var="venVO"  items="${venSvc.all}">
                         		<c:if test="${venVO.vender_id eq DressCaseVO.vender_id }">
                         		 	<td><p class="card-title mbr-fonts-style display-6">${venVO.ven_name}</p></td>
+                        		 	<td><p class="card-title mbr-fonts-style display-6 address">${venVO.ven_addr}</p></td>
                         		</c:if>
                         		
                         	</c:forEach>
@@ -318,8 +321,18 @@
   </div>
 </section>
 
-
 <script>
+$(document).ready(function() {
+	var longaddr = document.querySelectorAll('.address');
+    for (var i = 0; i < (longaddr.length +1) ; i++) {
+        var str = longaddr[i].innerHTML.substring(0, 3);
+        longaddr[i].innerHTML = str;
+    }
+})
+
+</script>
+<script>
+
 //篩選table資料，勿動!!
 (function(document){
 	'use strict'; //使用嚴謹寫法
@@ -362,14 +375,15 @@
 		}
 	});
 })(document);
+
 $('#seeVen').click(function(){
 	$('#submitForm').submit();
 })
+
 /* Map  */
 var map;
 function init() 
- 	{
-	$('#vid').hide();
+ 	{	
      var marker = new google.maps.Marker({
          position: { lat: 25.019649, lng: 121.546674 },
          map: map,

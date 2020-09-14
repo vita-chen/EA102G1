@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.vender.model.VenderService;
 import com.wpcase.model.WPCaseDAO;
 import com.wpcase.model.WPCaseDAO_Interface;
 import com.wpcase.model.WPCaseVO;
@@ -57,7 +58,20 @@ public class WPOrderService {
 		wporderdao.cancel_order(wed_photo_order_no);
 	}
 	public void complete_order(WPOrderVO WPOrderVO) {
-		wporderdao.complete_order(WPOrderVO);
+		VenderService vendersvc = new VenderService();
+		WPOrderVO detail = getOne(WPOrderVO.getWed_photo_order_no());
+		
+		if(detail.getOrder_status() == 1) {
+			//新訂單  wp改內容與分數 vender改廠商評價數&total *小心廠商帶來null 數字+null=null
+			wporderdao.complete_order(WPOrderVO);
+			vendersvc.update_review(WPOrderVO.getVender_id(), WPOrderVO.getReview_star(), true);
+		}else {
+			//舊訂單 wp改內容與分數 vender改total&評價數不+1 *會員來修改舊訂單 舊訂單的分數可能為null
+			wporderdao.complete_order(WPOrderVO);
+			Integer ii = (detail.getReview_star() == null) ? 0: detail.getReview_star();
+			Integer gap = WPOrderVO.getReview_star() - ii;
+			vendersvc.update_review(WPOrderVO.getVender_id(), gap, false);
+		}
 	}
 	public void Mem_Report(WPOrderVO WPOrderVO) {
 		wporderdao.Mem_Report(WPOrderVO);
