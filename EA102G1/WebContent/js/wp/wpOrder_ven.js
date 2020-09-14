@@ -151,6 +151,7 @@ $(document).ready(function(){
 						 data: {
 							 action:"complete_order",
 							 identity:"vender",
+							 vender_id:vender_id,
 							 wed_photo_order_no:$("[name='wed_photo_order_no']").val()
 						 },			
 						 success: function (data){	 

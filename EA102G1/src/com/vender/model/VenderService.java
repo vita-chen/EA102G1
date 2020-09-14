@@ -101,4 +101,18 @@ public class VenderService {
 		}
 		return allVenderMap;
 	}
+	
+	public void update_review(String vender_id,Integer review_star,Boolean isnew) {
+		VenderVO vendervo = dao.findByPrimaryKey(vender_id);
+		if(isnew) {
+			Integer count = vendervo.getVen_review_count();
+			vendervo.setVen_review_count(count+1);
+		}
+		if(review_star == null) {
+			review_star = 0;
+		}
+		Integer total = vendervo.getVen_stars_total();
+		vendervo.setVen_stars_total(total+review_star);
+		dao.update_review(vendervo);		
+	}
 }

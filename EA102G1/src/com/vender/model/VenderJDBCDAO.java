@@ -84,6 +84,8 @@ public class VenderJDBCDAO implements VenderDAO_interface{
 			"select COUNT(IS_ENABLE) from vender WHERE IS_ENABLE = 0";
 	private static final String GET_ALL_ADM_OFF=
 			"select COUNT(ADM_1) from ADM WHERE ADM_1 = 0";
+	//更新評價分數
+	private static final String UPDATE_REV = "UPDATE vender set ven_review_count = ? , ven_stars_total = ? where vender_id =?";
 	public static void main (String[]args) {
 			
 		VenderJDBCDAO dao = new VenderJDBCDAO();
@@ -845,5 +847,49 @@ public class VenderJDBCDAO implements VenderDAO_interface{
 			}
 		}
 		return offf;
+	}
+
+
+	@Override
+	public void update_review(VenderVO vendervo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(UPDATE_REV);			
+			pstmt.setInt(1, vendervo.getVen_review_count());
+			pstmt.setInt(2, vendervo.getVen_stars_total());
+			pstmt.setString(3, vendervo.getVender_id());			
+			pstmt.executeQuery();
+			
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		
 	}
 }

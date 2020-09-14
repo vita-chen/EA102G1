@@ -16,6 +16,8 @@ public interface VenderDAO_interface {
     public List<VenderVO> get_all_blockade(); //查全部已封鎖廠商
     public List<String> getAllVender();//查所有廠商帳號
 
+    public void update_review(VenderVO vendervo);//修改評價數與總分數
+    
     //  public List<EmpVO> getAll(Map<String, String[]> map); 
 
 
