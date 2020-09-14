@@ -83,7 +83,8 @@ request.setAttribute("phone", phone);
 <select id="鄉鎮市區1"name="addr2"></select>
 <input class="form-input w-full" type="TEXT" name="addr3" size="45"
 			  value="<%= (venderVO==null)?  "": venderVO.getVen_addr()%>" />
-
+ 
+ 
 							</div>
 
 							<div class="flex flex-wrap mb-6">
