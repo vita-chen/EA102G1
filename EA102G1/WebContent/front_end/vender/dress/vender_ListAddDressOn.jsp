@@ -125,15 +125,15 @@
 		<tr>
 			<th scope="row" width="5"><span>${count.count}</span></th>
 			<td width="20">${addonVO.dradd_id}</td>
-			<td width="100">${addonVO.dradd_na}</td>
+			<td width="200">${addonVO.dradd_na}</td>
 			<td>${addonVO.dradd_pr}</td>
-			<td width="150">
+			<td width="200">
 			<c:if test="${addonVO.dradd_st==0}">下架中</c:if>
 			<c:if test="${addonVO.dradd_st==1}">上架中</c:if>
-			<td width="150">${addonVO.dradd_type}</td>
+			<td width="200">${addonVO.dradd_type}</td>
 			<td>
 			<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front_end/addon/addon.do">
-			  <input type="submit" class="btn btn-primary" value="更新項目資料">
+			  <input type="submit" class="btn btn-primary" value="更新加購方案">
 			   <input type="hidden" name="dradd_id" value="${addonVO.dradd_id}">
 			   <input type="hidden" name="action"	value="getOne_For_Update">
 			 </FORM>

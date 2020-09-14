@@ -72,7 +72,7 @@
                  <div class="col-md-4  form-group" data-for="drcase_pr">
                             <label for="email-form1-11" class="form-control-label mbr-fonts-style display-7">婚紗方案價格</label>
                             <input type="number" name="drcase_pr" required="required" class="form-control display-7" id="drPrice"
-                            placeholder="至多六位數" min="1" max="999999">
+                            placeholder="至多六位數" min="999" max="999999">
                   </div>
 				
   						<div data-for="drcase_st" class="col-md-4  form-group">
@@ -113,7 +113,6 @@
     
 <script>
 function addDress(){
-	
 	//1.已檢查各欄位不為空
 	//2.檢查價格欄位<= 999999
 	

@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-md-4  form-group" data-for="drcase_pr2">
                             <label for="email-form1-11" class="form-control-label mbr-fonts-style display-7">婚紗方案價格</label>
-                            <input type="text" name="drcase_pr2" required="required" class="form-control display-7" id="email-form1-11" value="<%=dcVO.getDrcase_pr()%>" disabled="true">
+                            <input type="number" name="drcase_pr2" required="required" class="form-control display-7" id="email-form1-11" value="<%=dcVO.getDrcase_pr()%>" disabled="true">
                         </div>
                         
                         <div data-for="drcase_st" class="col-md-4  form-group">
@@ -68,9 +68,11 @@
       							<option value="0" ${(dcVO.drcase_st ==0)?'selected':''}>下架</option>
                            	</select>
                         </div>
+                        
+                        
                         <div data-for="message" class="col-md-12 form-group">
                             <label for="message-form1-11" class="form-control-label mbr-fonts-style display-7">婚紗方案簡介</label>
-                            <textarea name="drcase_br" class="form-control display-7" id="message-form1-11" ><%=dcVO.getDrcase_br()%></textarea>
+                            <textarea name="drcase_br" class="form-control display-7" required="required" id="message-form1-11" ><%=dcVO.getDrcase_br()%></textarea>
                         </div>
                         <div class="col-md-12 input-group-btn align-center">
                             <button type="submit" class="btn btn-primary btn-form display-4">確定更新</button>

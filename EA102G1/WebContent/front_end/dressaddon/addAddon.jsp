@@ -58,11 +58,12 @@ if (account == null) {                                             // 如為 nul
                     <div class="dragArea row">
                         <div class="col-md-4  form-group" data-for="drcase_na">
                             <label for="name-form1-11" class="form-control-label mbr-fonts-style display-7">加購項目名稱</label>
-                            <input type="text" name="dradd_na" required="required" class="form-control display-7" id="name-form1-11">
+                            <input type="text" name="dradd_na" required="required" class="form-control display-7" id="name-form1-11" placeholder="至多10字">
                         </div>
                         <div class="col-md-4  form-group" data-for="drcase_pr">
                             <label for="email-form1-11" class="form-control-label mbr-fonts-style display-7">加購項目價格</label>
-                            <input type="text" name="dradd_pr" required="required" class="form-control display-7" id="email-form1-11">
+                            <input type="number" name="dradd_pr" required="required" class="form-control display-7" id="email-form1-11" 
+                            placeholder="至多5位數" min="99" max="99999" >
                         </div>
                         
                         <!--下拉式選單:上架狀態 -->

@@ -5,6 +5,7 @@
 <%
   DressAddOnVO daoVO = (DressAddOnVO) request.getAttribute("addonVO"); 
   String dradd_id = daoVO.getDradd_id();
+  pageContext.setAttribute("daoVO",daoVO);
 %>
 <!DOCTYPE html>
 <!--87行的vender_id要改 -->
@@ -68,6 +69,19 @@
                             <select name="dradd_st"  class="form-control display-7" id="phone-form1-11">
                             	<option value="1">上架</option>
       							<option value="0">下架</option>
+                           	</select>
+                        </div>
+                        
+                        
+                        <!--更新加購項目種類 -->
+                         <div data-for="dradd_st" class="col-md-4  form-group">
+                            <label for="phone-form1-11" class="form-control-label mbr-fonts-style display-7">加購項目種類</label>
+                            <select name="dradd_type"  class="form-control display-7" id="dradd_type">
+                            	<option value="nubra" ${(daoVO.dradd_type eq "nubra")? 'selected':''} >nubra</option>
+      							<option value="捧花" ${(daoVO.dradd_type eq  "捧花")? 'selected':''}>捧花</option>
+      							<option value="頭飾" ${(daoVO.dradd_type eq "頭飾")? 'selected':''} >頭飾</option>
+      							<option value="鞋墊" ${(daoVO.dradd_type eq  "鞋墊")? 'selected':''}>鞋墊</option>
+      							<option value="其他" ${(daoVO.dradd_type eq "其他")? 'selected':''} >其他</option>
                            	</select>
                         </div>
                         
