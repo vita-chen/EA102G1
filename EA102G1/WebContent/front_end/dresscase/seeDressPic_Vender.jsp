@@ -15,6 +15,7 @@
   <meta name="generator" content="Mobirise v5.0.29, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <!--mobirise  -->
+  
   <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/images/logo5.png" type="image/x-icon">
   <meta name="description" content="">
   <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/bootstrap/css/bootstrap.min.css">
@@ -74,7 +75,7 @@ body {
             	<!-- 在所有圖片中，若drcase_id與本頁面的drcase_id相同，則將其drpic_id用getParameter的方式傳入dress.do，以show出該方案的圖片 -->
 					<c:if test="${dpVO.drcase_id == dcVO.drcase_id}" var="result"> 
                 		<div class="img-item">
-                    	<img src="dress.do?drpic_id=${dpVO.drpic_id}" width=70%>
+                    	<img src="dress.do?drpic_id=${dpVO.drpic_id}"  width="70%" >
                     	<div class="img-caption">
                         <p class="mbr-fonts-style align-center mbr-black display-7"></p>
                         
@@ -99,7 +100,7 @@ body {
     </div>
   </section>
 
-<script src="<%=request.getContextPath()%>/assets/web/assets/jquery/jquery.min.js"></script>
+ <script src="<%=request.getContextPath()%>/assets/web/assets/jquery/jquery.min2.js"></script>
   <script src="<%=request.getContextPath()%>/assets/popper/popper.min.js"></script>
   <script src="<%=request.getContextPath()%>/assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="<%=request.getContextPath()%>/assets/tether/tether.min.js"></script>
