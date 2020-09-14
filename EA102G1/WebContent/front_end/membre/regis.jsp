@@ -23,16 +23,16 @@
 				<div class="form-row">
 					<div class="col form-group">
 						<label>姓名</label>
-					  	<input type="text" class="form-control" name="mem_name" value="${errorMembrevo.mem_name }">
+					  	<input type="text" class="form-control" name="mem_name" value="${errorMembrevo.mem_name }" maxlength="10">
 					</div> <!-- form-group end.// -->
 					<div class="col form-group">
 						<label>電話</label>
-					  	<input type="text" class="form-control" name="phone" value="${errorMembrevo.phone }">
+					  	<input type="text" class="form-control" name="phone" value="${errorMembrevo.phone }" maxlength="10">
 					</div> <!-- form-group end.// -->
 				</div> <!-- form-row end.// -->
 				<div class="form-group">
 					<label>Email</label>
-					<input type="email" class="form-control" placeholder="email" name="email" value="${errorMembrevo.email }">
+					<input type="email" class="form-control" placeholder="email" name="email" value="${errorMembrevo.email }" maxlength="20">
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
 					<label class="custom-control custom-radio custom-control-inline">
@@ -53,7 +53,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>密碼</label>
-					    <input class="form-control" type="password" name="passe" id="passe" value="${errorMembrevo.passe }">
+					    <input class="form-control" type="password" name="passe" id="passe" value="${errorMembrevo.passe }" maxlength="20">
 					</div> <!-- form-group end.// --> 
 					<div class="form-group col-md-6">
 						<label class="btn btn-info form-control" style="margin-top:34px">

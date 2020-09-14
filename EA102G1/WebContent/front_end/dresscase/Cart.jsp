@@ -9,12 +9,21 @@
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>Cart.jsp:瀏覽您的購買清單</title>
-  
- <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/bootstrap/css/bootstrap.min2.css">
-<script src="<%=request.getContextPath()%>/vendors/jquery/jquery-3.4.1.min.js"></script>
-
 
 <style>
+	#order_master {
+	box-sizing: border-box;
+	box-shadow: 1px 1px 1px 2px #aaaaaa;
+	border-radius:5px;
+	}
+	#order_detail, #total{
+		box-sizing: border-box;
+		border-radius:5px;
+	}
+	.table th, .table td {
+	 vertical-align:middle;
+	}
+
 	/*讓最底部的button置中*/
 	.mid{
 		margin:0px auto;
@@ -25,49 +34,39 @@
 	.rt{
 		margin-right:10px;
 		}
-	.container{
-		margin-top:50px;
+	.pp{
+		color:deeppink;
 	}
-	div.container {
-    border: 2px solid pink;
+	#myContainer{
+		position:relative;
+		padding-bottom:30px;
+		clear:both;
 	}
-	.btn {
-		padding: 2px 10px 10px 10px;
-	  	background-color: pink;
-	  	border: 1px;
-	  	color: grey;
-	  	text-align: center;
-	  	text-decoration: none;
-	  	display: inline-block;
-	  	font-size: 14px;
-	}
-	.range{
-		padding-right:0;
-		padding-left:0;
-	} 
-	input {
-	  display: none;
-	}
-	label {
-	  font-size: 30px;
-	}
+	#vidDiv{
+	position:absolute;
+	left:50%;
+	right:50%;
+	transform:translateX(-50%);
+}
+#footerDiv{
+	margin-top:200px;
+	padding-top:100px;
+}
 </style>
- <!--設定element相對位置 -->
 </head>
 
 <body>
 
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<%@ include file="/front_end/home/Header_Cart.jsp"%>
+<div style="height:10%;margin-top:10px;"></div>
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;height:30px;" >
   	溫馨小提醒：確認結帳前，請先與廠商預約時試穿確認尺寸與禮服檔期呦    
 </nav>
 
-<div class="container">
-    	<div class="row">
-       		<div class="col-12">
-       		<h5>您的購物清單如下：</h5><br>
-		<table class="table table-hover">
-
-
+<div class="container accordion mx-auto" id="myContainer">
+       		<h5><span class="pp">${membrevo.mem_name }</span> 您好，您的購物清單如下</h5>
+				<table class="table table-hover">
 <%
 @SuppressWarnings("unchecked")
 LinkedHashMap<DressCaseVO,List<DressAddOnVO>> map = (LinkedHashMap<DressCaseVO,List<DressAddOnVO>>)session.getAttribute("dresscart");
@@ -136,26 +135,23 @@ if (map != null && (map.size() > 0)) {%>
  	  }
 	  }%>
 </table>
-</div>
-
-<div class="col-12">
 		 <form name="checkoutForm" action="<%=request.getContextPath()%>/front_end/dressorder/order.do" method="POST" id="checkoutForm">
               <input type="hidden" name="action" value="CHECKOUT"> 
-               總金額為:新台幣<font color="deeppink"><%=amount%>元</font><br>
+              <div class="bgpink  justify-content-end" id="total" class="py-2 pr-3">
+              <h5>訂單總金額為新台幣 <font color="deeppink"><%=amount%></font>元</h5></div>
+             
                <br>
                <input type="hidden" name="amount" value="<%=amount%>"> 
                <input type="hidden" name="vender_id" value="<%=vender_id%>">
                <input type="hidden" name="membre_id" value="${membrevo.membre_id}">
               		<div style="text-align:right">
                <!--繼續購物 -->
-               <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp'">繼續購物</button> 
+               <button type="button" class="btn btn-primary bg" onclick="location.href='<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp'">繼續購物</button> 
                <!--我要結帳 -->
-			    <button type="button" value="我要結帳" id="check" class="rt btn btn-primary">我要結帳</button>
+			    <button type="button" value="我要結帳" id="check" class="rt btn btn-primary bg">我要結帳</button>
 					</div>
                
           </form>
-</div>
-</div>
 </div>
 
 <%} else{%>  
@@ -164,14 +160,23 @@ if (map != null && (map.size() > 0)) {%>
       <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath()%>/front_end/dresscase/DressHome.jsp'">繼續購物</button>
 	</table>
 	<%}%>
+	
+	
+	
 	<br><br>
-	<div id="vidDiv">
-	<video autoplay muted loop width="480" height="320">  
-	    <source src="../video/bouquet.mp4" type="video/mp4">
-	    Your browser does not support the video tag.  
-	</video>
+			<div id="vidDiv">
+			<video autoplay muted loop width="480" height="320">  
+			    <source src="../video/bouquet.mp4" type="video/mp4">
+			    Your browser does not support the video tag.  
+			</video>
+			</div>
+	
 	</div>
-	</div>
+	
+<div id="footerDiv">
+<%@ include file="/front_end/home/home_footer.jsp" %>
+</div>
+
 <script>
 $('#check').click(function(){
 	alert("結帳成功");

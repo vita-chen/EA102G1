@@ -3,8 +3,6 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.dresscase.model.*"%>
 
-<!-- To冠亞：360行的key= 到 &callback之間 需換成你的GOOGLEMAP API金鑰，你才看得到，
-我用我的所以我看得到 -->
 <%
     DressCaseService drSvc = new DressCaseService();
     List<DressCaseVO> list = drSvc.getAll();
@@ -32,7 +30,8 @@
   <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/theme/css/style.css">
   <link rel="preload" as="style" href="<%=request.getContextPath()%>/assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
   <style>
   
   /*分隔流程*/
@@ -370,7 +369,6 @@ $('#seeVen').click(function(){
 var map;
 function init() 
  	{
-	
 	$('#vid').hide();
      var marker = new google.maps.Marker({
          position: { lat: 25.019649, lng: 121.546674 },

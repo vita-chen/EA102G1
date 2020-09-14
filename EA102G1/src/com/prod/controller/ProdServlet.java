@@ -236,7 +236,17 @@ public class ProdServlet extends HttpServlet {
 			}
 			//檢查商品圖片
 			Collection<Part> parts = request.getParts();
-			 String picToPass = request.getParameter("pass");
+			String picToPass = request.getParameter("pass");
+			if (parts.size() - picToPass.length() > 11) {
+				errors.add("圖片請勿超過五張");
+			}
+			if (!errors.isEmpty()) {
+				request.setAttribute("prodvo", prodvo);
+				RequestDispatcher failView = request.getRequestDispatcher("/front_end/prod/addProd.jsp");
+				failView.forward(request, response);
+				return;
+			}
+			
 			 int index= 0;
 			PicDetector detector = new PicDetector();
 			if (picToPass.trim().length() > 0) {

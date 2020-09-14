@@ -38,12 +38,12 @@ public class MailService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(myGmail));
 			message.setContent(
-							"<div>"
-							+ "<H1>Hello  " + mem_name +"</H1>"
-							+"<div style='font-size : 16px;'>感謝您加入婚禮導航的會員</div>"
-							+"<div style='font-size : 16px;'>請點選以下連結進行驗證</div>"
-							+ "<a style='font-size : 16px;' href=" + url + ">"
-							+ "驗證去</a></div>",
+					"<div style='background-color: #edf0f3;'><div style='margin: 0 auto; background-image:url(https://lh3.googleusercontent.com/proxy/3SH5GWT2TtpnEOtLg3TKGcj_64cv2xvmg6oNx2LcMIRWZCc_oi7U3LIskY4xxrdpJqliq-Zdx3CxQ2ffIrpdvv7Xxin8j_v0M6F16Q8R5m6gWv6GbJs8vhIz_Rxe1t8wj-fRbaOLFQ);"
+							+ "background-repeat:no-repeat;" 
+							+ "background-size:cover; width:500px; height:200px'>"
+							+ "<div style='backdrop-filter: blur(2px); padding: 20px;'><H1 style='text-align:center; color: white;'>Hello!" + mem_name + "</H1>"
+							+ "<p style='color: white; text-align: center;'>感謝您加入婚禮導航，請點選按鈕進行驗證</p>"
+							+ "<div style='margin-top:10px;'><a href=" + url + " style='text-decoration:none;'><div style='border: 1px solid white; width:fit-content; margin:0 auto; background-color:white; border-radius:2px; line-height:40px; font-size:15px; color:#202124;'><div style='margin: 0 12px;'>驗證去</div></div></a></div></div></div>",
 							"text/html; charset=UTF-8");
 
 			

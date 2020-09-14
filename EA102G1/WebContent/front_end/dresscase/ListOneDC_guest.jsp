@@ -41,11 +41,13 @@ if(dcVO == null){
    
   VenderService vSvc = new VenderService();
   VenderVO vVO = vSvc.findByPrimaryKey(dcVO.getVender_id());
+  pageContext.setAttribute("vVO",vVO);
   String venNa = vVO.getVen_name();
   String contact = vVO.getVen_contact();
   String phone = vVO.getVen_phone();
   String mail = vVO.getVen_mail();
   String addr = vVO.getVen_addr();
+  pageContext.setAttribute("addr",addr);
   
   Integer times = vVO.getVen_review_count();
   Integer totStar = vVO.getVen_stars_total();
@@ -92,6 +94,7 @@ if(dcVO == null){
 <!--  -->
 .ratings {
     position: relative;
+    left:15px;
     vertical-align: middle;
     display: inline-block;
     color: #b1b1b1;
@@ -114,6 +117,11 @@ if(dcVO == null){
 }
 .full-stars:before {
     -webkit-text-stroke: 1px orange;
+}
+.ven_map {    
+    height: 250px;
+    width:100%;
+    text-align: center;
 }
 /* Webkit-text-stroke is not supported on firefox or IE */
 
@@ -167,7 +175,7 @@ if(dcVO == null){
 					</c:if>
 				</c:forEach>
             <!--購買(其實是跳出加購項目)按鈕:ajax觸發SeeAddOn -->
-            <div>
+            <div style="margin-left:0px;">
 	            <FORM method="post">
 					<input type="button" name="action" value="我要購買" id="seeAO" class="btn btn-md btn-primary display-4 align-center">
 					<input type="hidden" name="membre_id2" value="${membrevo.membre_id}" id="membre_id2">
@@ -239,21 +247,37 @@ if(dcVO == null){
 	 		<%=contact%><%=phone%><br><%=mail%><br><%=addr%><br>
 	 </div>
 	 </div>
+	 <br><br>
+	 
+	 <!-- row2-->
+	 <div class="row row justify-content-md-center">
+	 		<div class="col-xs-12 col-md-12 col-lg-12 ven_map">
+           <iframe width="90%" height="100%" frameborder="0" style="border:0;text-align:left;" src="" allowfullscreen></iframe>               
+     		</div>
+	 </div>
+	  <!-- row-->
 	 <div class="row">
-	 <!-- 空div -->
 	 <div class="col-xs-1 col-md-1 col-lg-1"></div>
 	 <div class="col-xs-10 col-md-10 col-lg-10 mbr-white bord align-left">
-	 <br><br>
+	 <br>
+	 
+	 <br>
+	 <div class="col-12 row po" >
 	 	<h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-5">熱門評價</h1>
-	 		<div class="ratings">
+	 		<div class="mbr-section-title ratings row ">
 			    <div class="empty-stars"></div>
 			    <div class="full-stars" style="width:${percent}%"></div>
 			</div>
-	 	<p><%=revContent%></p>
+			<br>
+		<div>
+	 	<h5><%=revContent%></h5>
+	 	</div>
 	 </div>
-	 <div></div>
+	 
+	 <div><br><br></div>
      </div>
      </div>
+     
 </section>	
 
 <script src="<%=request.getContextPath()%>/assets/web/assets/jquery/jquery.min2.js"></script>
@@ -265,8 +289,10 @@ if(dcVO == null){
 <script src="<%=request.getContextPath()%>/assets/parallax/jarallax.min.js"></script>
 <script src="<%=request.getContextPath()%>/assets/theme/js/script.js"></script>
 
-
+<div id="footerDiv">
 <%@ include file="/front_end/home/home_footer.jsp" %>
+</div>
+
 <div id="scrollToTop" class="scrollToTop mbr-arrow-up">
 <a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
  <input name="animation" type="hidden">
@@ -414,6 +440,33 @@ if(dcVO == null){
 				})
 		}
 	} // end of track
+	
+// googlemap
+var addr2 = '${addr}';
+var addr = addr2.substring(0,addr2.lastIndexOf('號')+1);
+$('iframe').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC69295DV4r4wMm45k1fy0jaKHpgFehCpI&q=' + addr)
+
+var gc = new google.maps.Geocoder();
+var mymap = new google.maps.Map($('#map').get(0), {
+    zoom: 13,
+    center: { lat: 25.0479, lng: 121.5170 }
+});
+
+var addr = '${addr}';
+gc.geocode({ 'address': addr }, function(result, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+        var latlng = result[0].geometry.location;
+        mymap.setCenter(latlng); 
+
+        var marker = new google.maps.Marker({
+            position: { lat: latlng.lat(), lng: latlng.lng() },
+            map: mymap,
+            animation: google.maps.Animation.DROP, 
+            draggable: true 
+        });
+    }
+});
+
 </script>
 <!--連Sweetalert2  -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

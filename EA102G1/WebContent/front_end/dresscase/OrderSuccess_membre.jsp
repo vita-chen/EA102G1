@@ -31,7 +31,7 @@ border-radius:5px;
 
 #myContainer{
 	position:relative;
-	padding-bottom:100px;
+	padding-bottom:30px;
 	clear:both;
 }
 #vidDiv{
@@ -44,6 +44,7 @@ border-radius:5px;
 
 #footerDiv{
 	margin-top:200px;
+	padding-top:100px;
 }
 </style>
 </head>
@@ -144,6 +145,4 @@ pageContext.setAttribute("detailList", detailList);
 <%@ include file="/front_end/home/home_footer.jsp" %>
 </div>
 </body>
-<script>
-</script>
 </html>
