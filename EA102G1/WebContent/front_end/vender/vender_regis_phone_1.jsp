@@ -6,13 +6,11 @@
 	VenderVO venderVO = (VenderVO) request.getAttribute("venderVO");
 
 	Object phonesession = session.getAttribute("phonesession"); // 從 session內取出 (key) account的值
-	Object phonee = session.getAttribute("phone");
 
 	String [] phone_session = {phonesession.toString()};
 	request.setAttribute("phone_session", phone_session);
 	
-	String [] phone = {phonee.toString()};
-	request.setAttribute("phone", phone);
+
 	
 %>
 
@@ -52,18 +50,19 @@
 								</c:if>
 							</div>
 
-							${phone_session[0] }
-							${phone[0] }
+							
+
 							<div class="flex flex-wrap mb-6">
+								<input style="display:none;" type="TEXT" name="phone_session1" value="${phone_session[0] }"> 
 								<label for="password-confirm"
-									class="block text-gray-700 text-sm font-bold mb-2"> 手機:
-								</label> <input class="form-input w-full"type="TEXT" name="ven_phone" size="45"
+									class="block text-gray-700 text-sm font-bold mb-2"> 請輸入驗證碼:
+								</label> <input class="form-input w-full"type="TEXT" name="phone_session" size="45"
 			 value="<%= (venderVO==null)? "" : venderVO.getVen_phone()%>" />
 							</div>
 
 
 									<div class="flex flex-wrap">
-										<button type="hidden" name="action" value="insert_phone"
+										<button type="hidden" name="action" value="insert_phone_session"
 											class="inline-block align-middle text-center select-none border font-bold whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 ml-auto">
 											驗證手機</button>
 									</div>

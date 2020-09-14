@@ -137,7 +137,7 @@ public class Email{
 	}
 	
 	public String genAuthCode() {
-		String str = "0123456789abcdefghijkmnopqrstuvwxyz";
+		String str = "0123456789";
 		StringBuffer sb = new StringBuffer();
 		
 		for(int x=0;x<=3;x++) {

@@ -60,7 +60,7 @@
 								<p class="w-full text-xs text-center text-gray-700 mt-8 -mb-4">
 									還沒有帳號? <a
 										class="text-blue-500 hover:text-blue-700 no-underline"
-										href="<%=request.getContextPath()%>/front_end/vender/vender_regis.jsp">
+										href="<%=request.getContextPath()%>/front_end/vender/vender_regis_phone.jsp">
 										點我註冊</a>
 								</p>
 							</div>

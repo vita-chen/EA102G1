@@ -4,6 +4,12 @@
 
 <%
 	VenderVO venderVO = (VenderVO) request.getAttribute("venderVO");
+
+Object phonee = session.getAttribute("phone");
+
+String [] phone = {phonee.toString()};
+request.setAttribute("phone", phone);
+
 %>
 
 <!DOCTYPE html>
@@ -46,7 +52,7 @@
 							
 								<label for="name"
 									class="block text-gray-700 text-sm font-bold mb-2"> 帳號:
-								</label> <input class="form-input w-full"type="TEXT" name="ven_account" size="45"
+								</label> <input class="form-input w-full"type="TEXT" name="ven_account" size="45" 
 			 value="<%= (venderVO==null)? "123456" : venderVO.getVen_account()%>" />
 
 							</div>
@@ -83,8 +89,8 @@
 							<div class="flex flex-wrap mb-6">
 								<label for="password-confirm"
 									class="block text-gray-700 text-sm font-bold mb-2"> 手機:
-								</label> <input class="form-input w-full"type="TEXT" name="ven_phone" size="45"
-			 value="<%= (venderVO==null)? "0908280731" : venderVO.getVen_phone()%>" />
+								</label> <input readonly="readonly" class="form-input w-full"type="TEXT" name="ven_phone" size="45"
+			 value="${phone[0]}" />
 							</div>
 
 							<div class="flex flex-wrap mb-6">

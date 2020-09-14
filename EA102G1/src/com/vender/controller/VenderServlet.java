@@ -145,7 +145,28 @@ public class VenderServlet extends HttpServlet {
 				return;
 			}
 			
-			String phone_verification = "123";
+			String phone_verification = genAuthCode();
+			System.out.println(phone_verification);
+			
+			//串接手機驗證API
+//			SMSHttpService sms=new SMSHttpService();
+//			String userID="0908280731";	//帳號
+//			String password="tvev";	//密碼
+//			String subject="手機驗證";	//簡訊主旨，主旨不會隨著簡訊內容發送出去。用以註記本次發送之用途。可傳入空字串。
+//			String content="驗證碼為:"+phone_verification;	//簡訊發送內容
+//			String mobile=ven_phone;	//接收人之手機號碼。格式為: +886912345678或09123456789。多筆接收人時，請以半形逗點隔開( , )，如0912345678,0922333444。
+//			String sendTime="";	//簡訊預定發送時間。-立即發送：請傳入空字串。-預約發送：請傳入預計發送時間，若傳送時間小於系統接單時間，將不予傳送。格式為YYYYMMDDhhmnss；例如:預約2009/01/31 15:30:00發送，則傳入20090131153000。若傳遞時間已逾現在之時間，將立即發送。
+//			
+//			if(sms.getCredit(userID, password)){
+//				System.out.println(new StringBuffer("取得餘額成功，餘額：").append(String.valueOf(sms.getCreditValue())).toString());
+//			}else{
+//				System.out.println(new StringBuffer("取得餘額失敗，失敗原因：").append(sms.getProcessMsg()).toString());
+//			}
+//			if(sms.sendSMS(userID, password, subject, content, mobile, sendTime)){
+//				System.out.println(new StringBuffer("發送簡訊成功，餘額：").append(String.valueOf(sms.getCreditValue())).append("，簡訊批號：").append(sms.getBatchID()).toString());
+//			}else{
+//				System.out.println(new StringBuffer("發送簡訊失敗，失敗原因：").append(sms.getProcessMsg()).toString());
+//			}
 			
 			//手機session傳值
 		    HttpSession session = req.getSession();
@@ -162,6 +183,45 @@ public class VenderServlet extends HttpServlet {
 			} 
 			
 		}
+		
+		//廠商手機session
+		if ("insert_phone_session".equals(action)) {
+			
+			//錯誤顯示紅字
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
+			//錯誤顯示紅字
+			
+			String phone_session1 = req.getParameter("phone_session1");
+			String phone_session = req.getParameter("phone_session");
+			
+			if (phone_session == null || phone_session.trim().length() == 0) {
+				errorMsgs.add("請輸入驗證碼");
+			}
+			
+
+			if (!phone_session.equals(phone_session1)) {
+				errorMsgs.add("驗證碼錯誤");
+			}
+			
+			
+			if (!errorMsgs.isEmpty()) {
+				
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/front_end/vender/vender_regis_phone_1.jsp");
+				failureView.forward(req, res);
+				return;
+			}
+			
+			String url = "/front_end/vender/vender_regis.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmp.jsp
+			successView.forward(req, res);
+
+			
+		}
+		
 		
 		//廠商註冊
         if ("insert".equals(action)) { // 來自addVender.jsp的請求  
@@ -518,5 +578,19 @@ public class VenderServlet extends HttpServlet {
 			}
 
 		}
+		
+		
+	}
+	
+	public String genAuthCode() {
+		String str = "0123456789";
+		StringBuffer sb = new StringBuffer();
+		
+		for(int x=0;x<=3;x++) {
+			int y =(int)(Math.random()*str.length());
+
+			sb.append(str.charAt(y));
+		}		
+		return sb.toString();
 	}
 }

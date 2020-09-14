@@ -262,19 +262,19 @@
 	var ptp001 = document.getElementById("PTP001");
 	ptp001.addEventListener("click",href1,false);
 	function href1(e){
-		window.open("https://www.google.com/");//待補 禮車方案路徑
+		window.open("http://weddingnavi.tk/EA102G1/front_end/carOrder/browseAllCar.jsp");//待補 禮車方案路徑
 	}
 	
 	var ptp002 = document.getElementById("PTP002");
 	ptp002.addEventListener("click",href2,false);
 	function href2(e){
-		window.open("https://tw.yahoo.com/");//待補 婚紗方案路徑
+		window.open("http://weddingnavi.tk/EA102G1/front_end/dresscase/DressHome.jsp");//待補 婚紗方案路徑
 	}
 	
 	var ptp003 = document.getElementById("PTP003");
 	ptp003.addEventListener("click",href3,false);
 	function href3(e){
-		window.open("https://www.baidu.com/");//待補 婚攝方案路徑
+		window.open("http://weddingnavi.tk/EA102G1/front_end/wed_photo/home_WP.jsp");//待補 婚攝方案路徑
 	}
 	
 	</script>
