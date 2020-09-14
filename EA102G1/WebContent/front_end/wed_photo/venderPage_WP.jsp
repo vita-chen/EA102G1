@@ -11,6 +11,12 @@
 	session.setAttribute("location",url); 
 
 	List<VenderVO> list_vender = (List<VenderVO>)request.getAttribute("VenderVO");
+	
+	if(list_vender == null){
+		response.sendRedirect(request.getContextPath()+"/front_end/wed_photo/home_WP.jsp");
+	    return;
+	}
+	
 	pageContext.setAttribute("VenderVO",list_vender.get(0));
 
 %>
@@ -519,57 +525,13 @@ a:hover {
         </section>
     </footer><!-- footer End-->
     <div class="copyright">Copyright(C) WeddingNavi. All Rights Reserved.</div>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/popper.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
 </body>
-<!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD7LkDHulMgpoqnxVDobzNsfX0Ceb26t1Y&callback=initMap"></script> -->
-<script type="text/javascript">
-var text_new = document.querySelectorAll('.text_new');
-for (var i = 0; i < text_new.length; i++) {
-    if (text_new[i].innerText.length > 108) {
-        var str = text_new[i].innerText.substring(108);
-        var str_new = text_new[i].innerText.replace(str, '...read more');
-        text_new[i].innerText = str_new;
-    }
-}
+<script src="<%=request.getContextPath()%>/js/wp/wpVender.js" type="text/javascript"></script>
 
-$('.new_case').each(function(i){
-    if(i % 2 == 0){
-        $(this).addClass('right_case');
-    }
-})
-
+<script>
 var addr2 = '${VenderVO.ven_addr}';
-var addr = addr2.substring(0,addr2.lastIndexOf('號')+1);
-// $('iframe').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyD7LkDHulMgpoqnxVDobzNsfX0Ceb26t1Y&q=' + addr)
-
-// 建立 Geocoder() 物件
-var gc = new google.maps.Geocoder();
-var mymap = new google.maps.Map($('#map').get(0), {
-    zoom: 15,
-    center: { lat: 25.0479, lng: 121.5170 }
-});
-
-var addr = '${VenderVO.ven_addr}';
-
-// 用使用者輸入的地址查詢
-gc.geocode({ 'address': addr }, function(result, status) {
-    // 確認 OK
-    if (status == google.maps.GeocoderStatus.OK) {
-        var latlng = result[0].geometry.location;
-        //  取得查詢結果第0筆中的經緯度物件
-        mymap.setCenter(latlng); //將查詢結果設為地圖的中心
-
-        var marker = new google.maps.Marker({
-            position: { lat: latlng.lat(), lng: latlng.lng() },
-            map: mymap,
-            animation: google.maps.Animation.DROP, // DROP掉下來、BOUNCE一直彈跳
-            draggable: true // true、false可否拖拉
-        });
-
-    }
-});
-
 </script>
 </html>
