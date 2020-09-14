@@ -28,10 +28,22 @@ border-radius:5px;
 .bgpink{
 	background-color:pink;
 }
+
+#myContainer{
+	position:relative;
+	padding-bottom:100px;
+	clear:both;
+}
 #vidDiv{
-	position: absolute;
-	left: 50%;
-	margin-left:-50px;
+	position:absolute;
+	left:50%;
+	right:50%;
+	transform:translateX(-50%);
+	height:300px;
+}
+
+#footerDiv{
+	margin-top:200px;
 }
 </style>
 </head>
@@ -56,10 +68,12 @@ pageContext.setAttribute("detailList", detailList);
 
 <%@ include file="/front_end/home/Header_Cart.jsp"%>
 <div style="height:10%"></div>
-<div class="container accordion mx-auto"  id="myContainer">
-<h4>親愛的<span class="pp">${membrevo.mem_name }</span> 您好，以下是您下訂的訂單</h4>
 
-<div class="bgpink" id="order_detail"><h3 class="py-2 ml-3">購物明細</h3></div>
+
+<div class="container accordion mx-auto"  id="myContainer">
+<h5><span class="pp">${membrevo.mem_name }</span> 您好，以下是您下訂的訂單</h5>
+
+<div class="bgpink" id="order_detail"><h5 class="py-2 ml-3">購物明細</h5></div>
 
 
 <table class="table table-responsive table-hover">
@@ -113,9 +127,8 @@ pageContext.setAttribute("detailList", detailList);
 </tr>
 </tbody>
 </table>
-<br><br>
-<div class="bgpink w-100  justify-content-end" id="total" class="py-2 pr-3"><h3>總金額 : NT$  ${doVO.drord_pr }元</h3></div>
-</div>
+<br>
+<div class="bgpink  justify-content-end" id="total" class="py-2 pr-3"><h4>訂單總金額 : NT$  ${doVO.drord_pr }元</h4></div>
 
 <div id="vidDiv">
 <video autoplay muted loop width="480" height="320">  
@@ -123,8 +136,11 @@ pageContext.setAttribute("detailList", detailList);
     Your browser does not support the video tag.  
 </video>
 </div>
+</div>
 
-<div>
+
+
+<div id="footerDiv">
 <%@ include file="/front_end/home/home_footer.jsp" %>
 </div>
 </body>
