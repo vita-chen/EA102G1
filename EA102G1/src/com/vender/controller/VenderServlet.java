@@ -146,7 +146,7 @@ public class VenderServlet extends HttpServlet {
 			}
 			
 			String phone_verification = genAuthCode();
-			System.out.println(phone_verification);
+			System.out.println("手機驗證碼:"+phone_verification);
 			
 			//串接手機驗證API
 //			SMSHttpService sms=new SMSHttpService();
