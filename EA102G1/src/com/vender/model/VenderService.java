@@ -3,6 +3,8 @@ package com.vender.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 
 public class VenderService {
 	
@@ -91,6 +93,15 @@ public class VenderService {
 	
 	public List<String> getAllVender() {
 		return dao.getAllVender();
+	}
+	
+	//查全部手機
+	public List<String> getAllVen_phone() {
+		List<VenderVO> vendervoList = dao.getAll();
+		List<String> phoneList= vendervoList.stream()
+												.map(vo ->vo.getVen_phone())
+												.collect(Collectors.toList());
+		return phoneList;
 	}
 	
 	// 搭配getAll()查所有廠商名字

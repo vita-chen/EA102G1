@@ -28,6 +28,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class VenderJDBCDAO implements VenderDAO_interface{
 	
@@ -86,7 +87,16 @@ public class VenderJDBCDAO implements VenderDAO_interface{
 			"select COUNT(ADM_1) from ADM WHERE ADM_1 = 0";
 	public static void main (String[]args) {
 			
-		VenderJDBCDAO dao = new VenderJDBCDAO();
+//		VenderJDBCDAO dao = new VenderJDBCDAO();
+//		
+//		VenderService venderSvc = new VenderService();
+//		List<String> phoneList = venderSvc.getAllVen_phone();
+//		if (phoneList.contains("0973-318-520")) {
+//			System.out.println("被註冊囉");
+//		}
+//		Iterator objs = phoneList.iterator();
+//		while (objs.hasNext())
+//		System.out.println(objs.next());
 		
 //		System.out.println(dao.get_all_off());
 		

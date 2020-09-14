@@ -112,6 +112,57 @@ public class VenderServlet extends HttpServlet {
 			}		
 		}
 		
+		//手機驗證
+		if ("insert_phone".equals(action)) {
+			//錯誤顯示紅字
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
+			//錯誤顯示紅字
+			try {
+			String ven_phone = req.getParameter("ven_phone").trim();
+			String ven_phoneReg = "^[(0-9)]{10}$";
+			if (ven_phone == null || ven_phone.trim().length() == 0) {
+				errorMsgs.add("手機號碼請勿空白");
+			} else if(!ven_phone.trim().matches(ven_phoneReg)) { //以下練習正則(規)表示式(regular-expression)
+				errorMsgs.add("請輸入正確的手機號碼");
+            }
+			
+			VenderService venderSvc = new VenderService();
+			List<String> phoneList = venderSvc.getAllVen_phone();
+			
+			if (phoneList.contains(ven_phone)) {
+				errorMsgs.add("此手機已被註冊");
+			}
+			
+			
+			if (!errorMsgs.isEmpty()) {
+				
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/front_end/vender/vender_regis_phone.jsp");
+				failureView.forward(req, res);
+				return;
+			}
+			
+			String phone_verification = "123";
+			
+			//手機session傳值
+		    HttpSession session = req.getSession();
+		    session.setAttribute("phonesession", phone_verification);
+		    session.setAttribute("phone", ven_phone);
+		    RequestDispatcher view = req.getRequestDispatcher("/front_end/vender/vender_regis_phone_1.jsp");
+		    view.forward(req, res);
+			
+			}catch (Exception e) {
+				errorMsgs.add("手機重複囉");
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/front_end/vender/vender_regis_phone.jsp");
+				failureView.forward(req, res);
+			} 
+			
+		}
+		
 		//廠商註冊
         if ("insert".equals(action)) { // 來自addVender.jsp的請求  
 			//錯誤顯示紅字
@@ -157,7 +208,7 @@ public class VenderServlet extends HttpServlet {
 				if (ven_phone == null || ven_phone.trim().length() == 0) {
 					errorMsgs.add("手機號碼請勿空白");
 				} else if(!ven_phone.trim().matches(ven_phoneReg)) { //以下練習正則(規)表示式(regular-expression)
-					errorMsgs.add("請輸入正確的手機號碼");
+					errorMsgs.add("請輸入正確的手機號碼 09開頭");
 	            }	
 				
 				String ven_contact = req.getParameter("ven_contact").trim();
