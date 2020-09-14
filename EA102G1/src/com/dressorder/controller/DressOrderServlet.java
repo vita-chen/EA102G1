@@ -519,6 +519,7 @@ public class DressOrderServlet extends HttpServlet {
         	DressOrderService dSvc = new DressOrderService();
         	DressOrderVO doVO = dSvc.findByPrimaryKey(drord_id);
         	Integer drord_fin_st = doVO.getDrord_fin_st();
+        	System.out.println("我是訂單完成狀態"+drord_fin_st);
         	
 //        	如果訂單狀態為3，廠商才能完成(訂單狀態改為4)，才有必要更新此訂單;其他情形無效。
         	if(drord_fin_st == 3) {
