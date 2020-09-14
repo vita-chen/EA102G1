@@ -99,9 +99,10 @@ color:"white";
 			<FORM METHOD="post" ACTION="dress.do" name="form1" enctype="multipart/form-data" id="uploadForm">
             <!-- Upload image input-->
             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0" name="drpic">
+                <input id="upload"  type="file" onchange="readURL(this);" class="form-control border-0" name="drpic">
                 <div class="input-group-append">
-                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+                    <small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
                 </div>
             </div>
 			
