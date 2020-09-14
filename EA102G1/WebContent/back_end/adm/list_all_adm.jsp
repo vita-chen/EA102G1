@@ -3,6 +3,8 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.adm.model.*"%>
 <%
+AdmVO admVO = (AdmVO) request.getAttribute("admVO"); 
+
 	AdmService admSvc = new AdmService();
 	List<AdmVO> list = admSvc.getAll();
     pageContext.setAttribute("list",list);
@@ -57,11 +59,11 @@
 							<th>${admVO.adm_2=="1" ? "有":"無"}</th>
 							<th>${admVO.adm_3=="1" ? "有":"無"}</th>
 							<th>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#${admVO.adm_id}">
   權限設定
 </button>
 							
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="${admVO.adm_id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -71,27 +73,31 @@
         </button>
       </div>
 
-     <form action="/action_page.php" method="get">
+<form method="POST" action="<%=request.getContextPath()%>/adm/adm.do" enctype="multipart/form-data">
       <div class="modal-body">
-        
-<a>登入權限　　　　:　</a><select name="off_1">
+<input style="display:none;"type="TEXT" name="adm_id" value="${admVO.adm_id}"> 
+<input style="display:none;"type="TEXT" name="adm_account" value="${admVO.adm_account}">
+<input style="display:none;"type="TEXT" name="adm_pwd" value="${admVO.adm_pwd}">
+<input style="display:none;"type="TEXT" name="adm_name" value="${admVO.adm_name}">
+
+<a>登入權限　　　　:　</a><select name="adm_1">
+ <option value="0">關閉</option>
 　<option value="1">開啟</option>
-　<option value="0">關閉</option>
 </select><br><br>
-<a>開通廠商權限　　:　</a><select name="off_2">
+<a>開通廠商權限　　:　</a><select name="adm_2">
+ <option value="0">關閉</option>
 　<option value="1">開啟</option>
-　<option value="0">關閉</option>
 </select><br><br>
-<a>檢舉&廣告權限　:　</a><select name="off_3">
+<a>檢舉&廣告權限　:　</a><select name="adm_3">
+ <option value="0">關閉</option>
 　<option value="1">開啟</option>
-　<option value="0">關閉</option>
 </select><br><br>
 
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-        <button type="submit" class="btn btn-primary">確認修改</button>
+        <button type="hidden" class="btn btn-primary" name="action" value="update_adm">確認修改</button>
       </div>
       </form>
     </div>

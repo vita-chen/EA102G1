@@ -5,15 +5,15 @@
 <script type="text/javascript">
 
 //廠商狀態
-var i = ${vendervo.is_vaild};//封鎖狀態
-var x = ${vendervo.is_enable};//驗證狀態
+var i_off = ${vendervo.is_vaild};//封鎖狀態
+var x_off = ${vendervo.is_enable};//驗證狀態
 //驗證狀態跳轉
 function show()
 {    
-    if(i==0)
+    if(i_off==0)
     {
     	document.location.href="<%=request.getContextPath()%>/front_end/home/session_off_blockade.jsp";		
-    }else if(x==0)
+    }else if(x_off==0)
     {
     	document.location.href="<%=request.getContextPath()%>/front_end/home/session_off_verification.jsp";
     }

@@ -21,6 +21,21 @@ public class AdmService {
 	}
 	
 	//修改後臺管理員
+	public AdmVO update_adm(String adm_account,String adm_pwd,String adm_name,Integer adm_1,Integer adm_2,Integer adm_3,String adm_id) {
+		AdmVO admVO = new AdmVO();
+		
+		admVO.setAdm_account(adm_account);
+		admVO.setAdm_pwd(adm_pwd);
+		admVO.setAdm_name(adm_name);
+		admVO.setAdm_1(adm_1);
+		admVO.setAdm_2(adm_2);
+		admVO.setAdm_3(adm_3);
+		admVO.setAdm_id(adm_id);
+		
+		dao.update(admVO);
+
+		return admVO;
+	}
 	
 	//查單個管理員帳號
 	public AdmVO findByPrimaryKey(String adm_id) {

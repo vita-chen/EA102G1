@@ -21,7 +21,7 @@ session.invalidate();
 
 <div class="card"  style="width: 440px;margin:90px auto;">
   <div class="card-body">
-    <h5 class="card-title">管理員將在24小時內幫您驗證帳號<br><br>
+    <h5 class="card-title">等待管理員驗證將在24小時內幫您驗證帳號<br><br>
      等待<a id='div1'></a>秒頁面自動跳轉</h5>
     <a href="<%=request.getContextPath()%>/front_end/home/home.jsp" class="btn btn-primary">手動轉跳首頁</a>
     <p>

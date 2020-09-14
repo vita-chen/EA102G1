@@ -21,7 +21,7 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 			"VALUES('ADM'|| LPAD(SEQ_ADM_ID.NEXTVAL, 3,'0'),?,?,?,0,0,0,0)";
 	//修改管理員
 	private static final String UPDATE_ADM =
-			"UPDATE ADM SET ADM_ACCOUNT=?,ADM_PWD=?,ADM_NAME=?,ADM_0=?,ADM_1=?,ADM_2=?,ADM_3=? WHERE ADM_ID=?";
+			"UPDATE ADM SET ADM_ACCOUNT=?,ADM_PWD=?,ADM_NAME=?,ADM_1=?,ADM_2=?,ADM_3=? WHERE ADM_ID=?";
 	//刪除管理員
 	private static final String DELETE_ADM = 
 			"";	
@@ -31,7 +31,7 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 	
 	//用單個管理員帳號查資料(登入用)
 	private static final String GET_ONO_BYADM_ACCOUNT =
-			"SELECT ADM_ID,ADM_ACCOUNT,ADM_PWD,ADM_NAME FROM ADM WHERE ADM_ACCOUNT = ?";
+			"SELECT ADM_ID,ADM_ACCOUNT,ADM_PWD,ADM_NAME,ADM_0,ADM_1,ADM_2,ADM_3 FROM ADM WHERE ADM_ACCOUNT = ?";
 	
 	//查詢全部管理員帳號(登入用)
 	private static final String GET_ALL_ADM_ACCOUNT =
@@ -43,7 +43,37 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 	
 	public static void main(String[]args) {
 		
+//		String adm_account = "87";
+//		String adm_pwd = "234";
+//		String adm_name ="145";
+//		String adm_id ="ADM002";
+//		String adm1 = "1";
+//		String adm2 = "1";
+//		String adm3 = "1";
+//		int adm_1 = Integer.parseInt(adm1);
+//		int adm_2 = Integer.parseInt(adm2);
+//		int adm_3 = Integer.parseInt(adm3);
+//		
 		AdmJDBCDAO dao = new AdmJDBCDAO();
+//		
+//		System.out.println(adm_account);
+//		System.out.println(adm_pwd);
+//		System.out.println(adm_name);
+//		System.out.println(adm_1);
+//		System.out.println(adm_2);
+//		System.out.println(adm_3);
+//		AdmVO admVO = new AdmVO();
+//		admVO.setAdm_account(adm_account);
+//		admVO.setAdm_pwd(adm_pwd);
+//		admVO.setAdm_name(adm_name);
+//		admVO.setAdm_1(adm_1);
+//		admVO.setAdm_2(adm_2);
+//		admVO.setAdm_3(adm_3);	
+//		admVO.setAdm_id(adm_id);
+//		
+//		AdmService admSvc = new AdmService();
+//		admVO = admSvc.update_adm(adm_account,adm_pwd,adm_name,adm_1,adm_2,adm_3,adm_id);
+
 		
 //		//新增後臺管理員
 //		AdmVO admvo1 = new AdmVO();
@@ -57,13 +87,12 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 //		//修改後臺管理員
 //		AdmVO admVO0 = new AdmVO();
 //		
-//		admVO0.setAdm_account("123");
+//		admVO0.setAdm_account("12345");
 //		admVO0.setAdm_pwd("123");
 //		admVO0.setAdm_name("123");
-//		admVO0.setAdm_0(1);
-//		admVO0.setAdm_1(1);
+//		admVO0.setAdm_1(0);
 //		admVO0.setAdm_2(1);
-//		admVO0.setAdm_3(1);
+//		admVO0.setAdm_3(0);
 //		admVO0.setAdm_id("ADM002");
 //		dao.update(admVO0);
 		
@@ -76,12 +105,16 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 //		System.out.println("姓名:"+admvo2.getAdm_name());
 		
 //		//用單個管理員帳號查資料
-//		AdmVO admvo3 = dao.getOneByAdm("777");
+//		AdmVO admvo3 = dao.getOneByAdm("8777");
 //		
 //		System.out.println("管理人id:"+admvo3.getAdm_id());
 //		System.out.println("帳號:"+admvo3.getAdm_account());
 //		System.out.println("密碼:"+admvo3.getAdm_pwd());
 //		System.out.println("姓名:"+admvo3.getAdm_name());
+//		System.out.println("權限:"+admvo3.getAdm_0());
+//		System.out.println("權限:"+admvo3.getAdm_1());
+//		System.out.println("權限:"+admvo3.getAdm_2());
+//		System.out.println("權限:"+admvo3.getAdm_3());
 		
 //		//查全部管理員帳號
 //		
@@ -165,11 +198,10 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 			pstmt.setString(1, admVO.getAdm_account());
 			pstmt.setString(2, admVO.getAdm_pwd());
 			pstmt.setString(3, admVO.getAdm_name());
-			pstmt.setInt(4, admVO.getAdm_0());
-			pstmt.setInt(5, admVO.getAdm_1());
-			pstmt.setInt(6, admVO.getAdm_2());
-			pstmt.setInt(7, admVO.getAdm_3());
-			pstmt.setString(8, admVO.getAdm_id());
+			pstmt.setInt(4, admVO.getAdm_1());
+			pstmt.setInt(5, admVO.getAdm_2());
+			pstmt.setInt(6, admVO.getAdm_3());
+			pstmt.setString(7, admVO.getAdm_id());
 					
 			pstmt.executeUpdate();
 			// Handle any driver errors
@@ -287,7 +319,11 @@ public class AdmJDBCDAO implements AdmDAO_interface{
 				admVO.setAdm_id(rs.getString("adm_id"));
 				admVO.setAdm_account(rs.getString("adm_account"));
 				admVO.setAdm_pwd(rs.getString("adm_pwd"));
-				admVO.setAdm_name(rs.getString("adm_name"));				
+				admVO.setAdm_name(rs.getString("adm_name"));
+				admVO.setAdm_0(rs.getInt("adm_0"));
+				admVO.setAdm_1(rs.getInt("adm_1"));
+				admVO.setAdm_2(rs.getInt("adm_2"));
+				admVO.setAdm_3(rs.getInt("adm_3"));
 			}
 			
 		   return admVO;

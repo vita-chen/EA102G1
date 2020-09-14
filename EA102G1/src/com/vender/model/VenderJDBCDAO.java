@@ -82,12 +82,15 @@ public class VenderJDBCDAO implements VenderDAO_interface{
 	//查有幾個未開通廠商
 	private static final String GET_ALL_OFF=
 			"select COUNT(IS_ENABLE) from vender WHERE IS_ENABLE = 0";
-	
+	private static final String GET_ALL_ADM_OFF=
+			"select COUNT(ADM_1) from ADM WHERE ADM_1 = 0";
 	public static void main (String[]args) {
 			
 		VenderJDBCDAO dao = new VenderJDBCDAO();
 		
-		System.out.println(dao.get_all_off());
+//		System.out.println(dao.get_all_off());
+		
+//		System.out.println(dao.get_all_adm_off());
 		
 //		//新增廠商
 //		VenderVO venderVO1 = new VenderVO();
@@ -786,5 +789,61 @@ public class VenderJDBCDAO implements VenderDAO_interface{
 			}
 		}
 		return off;
+	}
+	
+	public int get_all_adm_off() {
+		int offf = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_ALL_ADM_OFF);
+
+			
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				offf=rs.getInt("COUNT(ADM_1)");
+		
+			}
+
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return offf;
 	}
 }
