@@ -138,7 +138,18 @@ if (account == null) {                                             // 如為 nul
                             <td><button type="button" data-toggle="modal" data-target="#repContent" data-id="${orderVO.drord_id}">查看詳情</button></td>
                             
                             <c:if test="${orderVO.drord_fin_st ==3}">
-                            <td><button type="button" data-toggle="modal" data-target="#confirmFin" data-id="${orderVO.drord_id}">確認完成</button></td></c:if>
+                            
+                            <td> 
+                            <form action="<%=request.getContextPath()%>/front_end/dressorder/order.do" method="post" id="conVen">
+                            <button type="button" value="${orderVO.drord_id}" id="vFin">確認完成</button>
+                            <input type="hidden" name="action" value="vfinOrder">
+                             <input type="hidden" name="order_id" value="${orderVO.drord_id}">
+                            </form>
+                            </td>
+                              
+                              </c:if>
+                            
+                            
                             <c:if test="${orderVO.drord_fin_st ==4 || orderVO.drord_fin_st ==5}"><td>廠商已確認完成</td></c:if>
                             <c:if test="${orderVO.drord_fin_st ==1 || orderVO.drord_fin_st ==2}"><td>---</td></c:if>
                         </tr>
@@ -197,34 +208,6 @@ if (account == null) {                                             // 如為 nul
 				   </form>
         </div> </div> </div> </div> </div></div></div>
         
-        
-<!-- model3: 確認完成訂單-->
-<div class="modal fade" id="confirmFin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">完成訂單</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        謝謝您提供婚紗租賃的服務！
-        <br><br>
-      <div class="modal-footer" id="con_final">
-      <form action="<%=request.getContextPath()%>/front_end/dressorder/order.do" method="post" id="conVen">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">還要再確認</button>
-        <button type="button" class="btn btn-primary" id="confirmFin2" >顧客已歸還</button>
-        <input type="hidden" name="action" value="vfinOrder">
-        <input type="hidden" name="order_id" value="" id="conORDID">
-      </form>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-
-
 <script>
 //1-1. 訂單
 $('#orderContent').on('show.bs.modal', function (event) {
@@ -345,20 +328,10 @@ $("#confirmRep").click(function(){
     $('#venRepForm').submit();
 })
 
-//3-1:完成訂單:打開視窗
-$('#confirmFin').on('show.bs.modal', function (event) {
-      var btnThis = $(event.relatedTarget); //觸發事件的按钮
-      var modal = $(this);  //當前modal
-      var modalId = btnThis.data('id');   //解析出data-id的内容
-      $('#con_final').append('<input type="text" id="conFinal" style="display:none;" value="'+modalId+'">');
-})
-
-//3-2:確認完成
-$('#confirmFin2').click(function(){
-	
-	$('#conORDID').val($('#conFinal').val());
-	$('#conVen').submit();
-});
+//3-1:完成訂單
+	$("#vFin").click(function(){
+		$('#conVen').submit();
+	})
 </script>
 
   <!-- body 結束標籤之前，載入Bootstrap 的 JS 及其相依性安裝(jQuery、Popper) -->
