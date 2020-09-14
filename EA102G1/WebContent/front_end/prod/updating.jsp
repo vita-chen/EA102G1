@@ -38,7 +38,8 @@
       <form action="<%=request.getContextPath() %>/prod/prod.do" method="post">
 			<label>名稱</label>
           <div class="form-group">
-			 <input type="text" class="form-control" name="prod_name" value="${prodvo.prod_name }" maxlength="20">
+          
+			 <input type="text" class="form-control" name="prod_name" value="${prodvo.prod_name}" maxlength="20">
           </div> <!-- form-group// -->
           <label>價格</label>
           <div class="form-group">
