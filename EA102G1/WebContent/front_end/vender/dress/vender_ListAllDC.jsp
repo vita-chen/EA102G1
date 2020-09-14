@@ -109,14 +109,14 @@
 					<thead>
 					 <tr>
 						<th scope="col" >#</th>
-						<th scope="col" width="150"></th>
-						<th scope="col" width="80" >方案編號</th>
-						<th scope="col" width="80" >方案名稱</th>
-						<th scope="col" width="100">方案價格</th>
-						<th scope="col" width="60">方案上架狀態</th>
-						<th scope="col" width="100"></th>
-						<th scope="col" width="40"></th>
-						<th scope="col" width="40"></th>
+						<th scope="col" ></th>
+						<th scope="col" >方案編號</th>
+						<th scope="col" >方案名稱</th>
+						<th scope="col" >方案價格</th>
+						<th scope="col" >方案上架狀態</th>
+						<th scope="col" ></th>
+						<th scope="col" ></th>
+						<th scope="col" ></th>
 					</tr>
 	</thead>	
 	 <tbody>
@@ -129,7 +129,7 @@
 			<img width="150" height="100" src="<%=request.getContextPath() %>/front_end/dresscase/dress.do?drcase_id=${DressCaseVO.drcase_id}">
 			</td>
 			<td width="20">${DressCaseVO.drcase_id}</td>
-			<td width="100">${DressCaseVO.drcase_na}</td>
+			<td width="180">${DressCaseVO.drcase_na}</td>
 			<td>${DressCaseVO.drcase_pr}</td>
 			<td width="150">
 			<c:if test="${DressCaseVO.drcase_st==0}">下架中</c:if>
