@@ -519,7 +519,6 @@ public class DressOrderServlet extends HttpServlet {
         	DressOrderService dSvc = new DressOrderService();
         	DressOrderVO doVO = dSvc.findByPrimaryKey(drord_id);
         	Integer drord_fin_st = doVO.getDrord_fin_st();
-        	System.out.println("我是訂單完成狀態"+drord_fin_st);
         	
 //        	如果訂單狀態為3，廠商才能完成(訂單狀態改為4)，才有必要更新此訂單;其他情形無效。
         	if(drord_fin_st == 3) {
@@ -550,10 +549,12 @@ public class DressOrderServlet extends HttpServlet {
         	String drord_id = req.getParameter("order_id");
         	String review_con = req.getParameter("review_con");
         	String stars = req.getParameter("numOfStar");
+        	Integer star = Integer.parseInt(stars);
         	
         	DressOrderService dSvc = new DressOrderService();
         	DressOrderVO doVO = dSvc.findByPrimaryKey(drord_id);
         	Integer drord_fin_st = doVO.getDrord_fin_st();
+        	
         	
 //        	如果訂單狀態為4，會員才能評價(訂單狀態改為5)，才有必要更新此訂單;其他情形無效。
         	if(drord_fin_st == 4) {
@@ -572,7 +573,7 @@ public class DressOrderServlet extends HttpServlet {
         		String dr_vrep_res = doVO.getDr_vrep_res();
 
         		dSvc.updateDrOrder(drord_id, membre_id, vender_id, drord_time, drord_pr, drord_depo, drord_ini, drord_pay_st, 5,
-        				dr_mrep_st,dr_vrep_st, mrep_de,vrep_de, dr_mrep_res, dr_vrep_res, 0, review_con);
+        				dr_mrep_st,dr_vrep_st, mrep_de,vrep_de, dr_mrep_res, dr_vrep_res, star, review_con);
         		} // end of inner-if
         		RequestDispatcher view = req.getRequestDispatcher("/front_end/membre_order/membre_order_dress.jsp");
         		view.forward(req, res);

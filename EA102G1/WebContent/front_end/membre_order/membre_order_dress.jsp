@@ -50,14 +50,19 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/demo.css">
 	<link href="<%=request.getContextPath()%>/css/icons.min.css" rel="stylesheet" type="text/css" />
 	<link href="<%=request.getContextPath()%>/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
-	
 
 <script src="<%=request.getContextPath() %>/vendors/jquery/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<style>
+	.pink{
+		color:deeppink;
+	}
+
+</style>
 </head>
 <body>
 	<div class="wrapper">
-	<!-- topbar -->
 	
 <%@ include file="/front_end/membre_order/membre_topbar.jsp" %>
 	<!-- header -->
@@ -88,8 +93,6 @@
 							</li>
 						</ul>	
 </div>
-<!-- 塞資料的地方 -->
-<!-- 塞資料的地方 -->
 <div class="page-category">
 				
 
@@ -276,33 +279,19 @@
       <div class="modal-body">
         恭喜您完成終身大事，希望您喜歡我們的服務!
         <br><br>
-        請留下您的評價星數，並給予您珍貴的意見。
+        請留下您的評價，並給予您珍貴的意見。
         <br><br>
         <!-- star -->
-        <div class="wrapper2">
-
-		  <input type="checkbox" id="r5" name="rg1" value="1" onclick="btn1()">
-		  <label for="r5">1星</label>
-		  <input type="checkbox" id="r4" name="rg1" value="2" onclick="btn2()">
-		  <label for="r4">2星</label>
-		  <input type="checkbox" id="r3" name="rg1" value="3" onclick="btn3()">
-		  <label for="r3">3星</label>
-		  <input type="checkbox" id="r2" name="rg1" value="4" onclick="btn4()">
-		  <label for="r2">4星</label>
-		  <input type="checkbox" id="r1" name="rg1" value="5" onclick="btn5()">
-		  <label for="r1">5星</label>
-		  
-		   <div class="d-flex justify-content-center my-4">
-				 <div class="w-75">
-								    <input type="range" class="custom-range" id="customRange1" min="0" max="5">
-								  </div>
-								  <span class="font-weight-bold text-primary ml-2 valueSpan"></span>
-								</div>
-
-		</div>
-		
+		 <div class="col-12">
+				<label for="customRange1" class="col-form-label">評價分數:</label>
+                  	<div class="d-flex justify-content-center my-4">
+				  <div class="w-90 pink">
+				    <input type="range" class="custom-range" id="revStar" name="revStar" min="1" max="5">
+				  </div>
+				  <span class="font-weight-bold text-primary ml-2 valueSpan"></span>
+				</div>
+           </div>
 		 
-		
 		<div id="revFinal">
         <form method="post" action="<%=request.getContextPath()%>/front_end/dressorder/order.do" id="rev">
           <div class="form-group">
@@ -326,44 +315,6 @@
 
 <script>
 
-
-function btn1()
-{
-	document.getElementById("r4").disabled=true;
-	document.getElementById("r3").disabled=true;
-	document.getElementById("r2").disabled=true;
-	document.getElementById("r1").disabled=true;
-}
-function btn2()
-{
-	document.getElementById("r5").disabled=true;
-	document.getElementById("r3").disabled=true;
-	document.getElementById("r2").disabled=true;
-	document.getElementById("r1").disabled=true;
-}
-function btn3()
-{
-	document.getElementById("r5").disabled=true;
-	document.getElementById("r4").disabled=true;
-	document.getElementById("r2").disabled=true;
-	document.getElementById("r1").disabled=true;
-}
-function btn4()
-{
-	document.getElementById("r5").disabled=true;
-	document.getElementById("r4").disabled=true;
-	document.getElementById("r2").disabled=true;
-	document.getElementById("r1").disabled=true;
-}
-function btn5()
-{
-	document.getElementById("r5").disabled=true;
-	document.getElementById("r4").disabled=true;
-	document.getElementById("r3").disabled=true;
-	document.getElementById("r2").disabled=true;
-}
-
-	
 //1-1. 訂單
 $('#orderContent').on('show.bs.modal', function (event) {
       var btnThis = $(event.relatedTarget); //觸發事件的按钮
@@ -509,29 +460,10 @@ $('#review').on('show.bs.modal', function (event) {
 })
 	
 //3-2: 送出評價內容與星數
-$('#confirmRev').on("click",function(event){
-	//取內容(已成功)
-	var revContent = $('#message-text').val();
-	//取星數：
-	var num = [];
-	$('input[type=checkbox]:checked').each(function(){
-		num.push($(this).val());
-	});
-	//檢查該陣列不為空值後，在陣列中取最大值
-	if (!Array.isArray(num) || !num.length){
-		alert("請勾選評價星數，謝謝");
-		return;
-	}
-	var max = num[0];
-	for(var i=0;i<num.length;i++){
-		if(num[i]>max){
-			max = num[i];
-		}	
-	}
-	$('#star').val(max);
+$('#confirmRev').click(function(event){
+    $('#star').val($('#revStar').val());
 	$('#ord').val($('#final').val());
 	$('#rev').submit();
-	
 })
 
 //4-1: 會員點選完成訂單，跳出modal視窗前，先將order_id傳入並以hidden的方式放在COMOD裡
@@ -555,8 +487,6 @@ $('#confirmComp').click(function(){
 
 
 </div>
-<!-- 塞資料的地方 -->
-<!-- 塞資料的地方 -->
 </div>
 </div>
 
