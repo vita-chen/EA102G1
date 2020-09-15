@@ -23,7 +23,7 @@ border-radius:5px;
  vertical-align:middle;
 }
 .pp{
-	color: pink;
+	color: deeppink;
 }
 .bgpink{
 	background-color:pink;
@@ -46,6 +46,10 @@ border-radius:5px;
 	margin-top:200px;
 	padding-top:100px;
 }
+
+#head{
+		background-color: 	#E6E6FA;
+	}
 </style>
 </head>
 <jsp:useBean id = "orderSvc" class="com.dressorder.model.DressOrderService"/>
@@ -73,19 +77,13 @@ pageContext.setAttribute("detailList", detailList);
 
 <div class="container accordion mx-auto"  id="myContainer">
 <h5><span class="pp">${membrevo.mem_name }</span> 您好，以下是您下訂的訂單</h5>
-
-<div class="bgpink" id="order_detail"><h5 class="py-2 ml-3">購物明細</h5></div>
-
-
+<br>
 <table class="table table-responsive table-hover">
-<thead >
-
-</thead>
 <tbody>
 <!-- 一筆訂單可能包含多筆訂單明細 -->
 <tr>
 	<c:forEach var="detailVO" items="${detailList}">
-		<tr >
+		<tr id="head">
 		  <th scope="col" width="400">訂單明細編號</th>
 		  <th scope="col" width="400">方案名稱</th>
 		  <th scope="col" width="400">方案價格</th>
@@ -129,7 +127,7 @@ pageContext.setAttribute("detailList", detailList);
 </tbody>
 </table>
 <br>
-<div class="bgpink  justify-content-end" id="total" class="py-2 pr-3"><h4>訂單總金額 : NT$  ${doVO.drord_pr }元</h4></div>
+<div><h5>訂單總金額 : NT$  <font color="deeppink">${doVO.drord_pr }</font>元</h5></div>
 
 <div id="vidDiv">
 <video autoplay muted loop width="480" height="320">  

@@ -28,8 +28,8 @@
 	.mid{
 		margin:0px auto;
 	}
-	.bg{
-		background-color:LavenderBlush;
+	#head{
+		background-color:#e3f2fd;
 	}
 	.rt{
 		margin-right:10px;
@@ -68,9 +68,7 @@
 
 <div class="container accordion mx-auto" id="myContainer">
        		<h5><span class="pp">${membrevo.mem_name }</span> 您好，您的購物清單如下</h5>
-       		
-			<div class="bgblue"><h5 class="py-2 ml-3">溫馨小提醒：確認結帳前，請先與廠商預約時試穿確認尺寸與禮服檔期呦</h5></div>
-			
+       		<br>
 				<table class="table table-hover">
 <%
 @SuppressWarnings("unchecked")
@@ -96,14 +94,14 @@ if (map != null && (map.size() > 0)) {%>
 			amount += dcVOSee.getDrcase_pr();
 	%>
   			
-					<thead>
-					 <tr class="bg">
+					<thead id="head">
+					 <tr>
 						<th scope="col">婚紗方案名稱</th>
 						<th scope="col">婚紗方案價格</th>
 						<th scope="col">取消購買</th>
 					</tr>
 					</thead>
-        		<tbody>
+        			<tbody>
         
 	<!--顯示購買的婚紗方案 -->
 	 <tr>
@@ -143,7 +141,8 @@ if (map != null && (map.size() > 0)) {%>
 		 <form name="checkoutForm" action="<%=request.getContextPath()%>/front_end/dressorder/order.do" method="POST" id="checkoutForm">
               <input type="hidden" name="action" value="CHECKOUT"> 
               <div class="bgpink  justify-content-end" id="total" class="py-2 pr-3">
-              <h5>訂單總金額為新台幣 <font color="deeppink"><%=amount%></font>元</h5></div>
+              <h5 class="py-2 ml-3">總金額為新台幣 <font color="deeppink"><%=amount%></font>元</h5></div>
+              <h5 class="py-2 ml-3">溫馨小提醒：確認結帳前，請先與廠商預約時試穿確認尺寸與禮服檔期呦</h5>
              
                <br>
                <input type="hidden" name="amount" value="<%=amount%>"> 
