@@ -17,22 +17,23 @@
 
 <!-- ============================ COMPONENT REGISTER   ================================= -->
 	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+	<button class="btn btn-info w-25"  id="vup815">vup815</button>
       <article class="card-body">
-		<header class="mb-4"><h4 class="card-title">註冊</h4></header>
+		<header class="mb-4"><h4 class="card-title w-25" >註冊</h4></header>
 		<form action="<%=request.getContextPath()%>/membre/membre.do?action=regis" method="post" enctype="multipart/form-data">
 				<div class="form-row">
 					<div class="col form-group">
 						<label>姓名</label>
-					  	<input type="text" class="form-control" name="mem_name" value="${errorMembrevo.mem_name }" maxlength="10">
+					  	<input type="text" id="mem_name" class="form-control" name="mem_name" value="${errorMembrevo.mem_name }" maxlength="10">
 					</div> <!-- form-group end.// -->
 					<div class="col form-group">
 						<label>電話</label>
-					  	<input type="text" class="form-control" name="phone" value="${errorMembrevo.phone }" maxlength="10">
+					  	<input type="text" id="phone" class="form-control" name="phone" value="${errorMembrevo.phone }" maxlength="10">
 					</div> <!-- form-group end.// -->
 				</div> <!-- form-row end.// -->
 				<div class="form-group">
 					<label>Email</label>
-					<input type="email" class="form-control" placeholder="email" name="email" value="${errorMembrevo.email }" maxlength="20">
+					<input type="email" id="email" class="form-control" placeholder="email" name="email" value="${errorMembrevo.email }" maxlength="20">
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
 					<label class="custom-control custom-radio custom-control-inline">
@@ -92,5 +93,18 @@
 	</div><!-- //container -->
 </footer>
 <!-- ========================= FOOTER END // ========================= -->
+<script>
+let vup815=document.getElementById("vup815");
+let name=document.getElementById("mem_name");
+let phone=document.getElementById("phone");
+let email=document.getElementById("email");
+vup815.addEventListener("click", function(e){
+	name.value="曾新名";
+	phone.value="0973904908";
+	email.value="vup815@gmail.com";
+
+})
+
+</script>
 </body>
 </html>

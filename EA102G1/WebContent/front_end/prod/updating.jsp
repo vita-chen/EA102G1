@@ -10,7 +10,7 @@
  #addPic, input[value="送出修改"] {
     margin: 10px;
     width: 90%;
-    margin-left: 15px;
+    margin-left: 19px;
     color: white;
     background-color: #52a3ea;
     letter-spacing: 0.5rem;
