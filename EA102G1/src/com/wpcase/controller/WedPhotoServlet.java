@@ -744,7 +744,6 @@ public class WedPhotoServlet extends HttpServlet {
 					wpordervo.setVender_id(vender_id);
 					WPOrderService wpordersvc = new WPOrderService();
 					wpordersvc.complete_order(wpordervo);
-					
 					res.setContentType("text/plain");
 					res.setCharacterEncoding("UTF-8");
 					PrintWriter out = res.getWriter();
@@ -851,8 +850,6 @@ public class WedPhotoServlet extends HttpServlet {
 		
 		if ("getOne_Order_Ajax_2".equals(action)) { //Ajax 狀態數字版
 			
-			System.out.println(req.getParameter("action"));
-			System.out.println(req.getParameter("wed_photo_order_no"));
 			String wed_photo_order_no = req.getParameter("wed_photo_order_no");
 			String identity = req.getParameter("identity");
 			WPOrderService wpodsvc = new WPOrderService();
@@ -1017,7 +1014,6 @@ public class WedPhotoServlet extends HttpServlet {
 		if("inquireVenderbyStar".equals(action)){//評價查廠商
 			
 			String select_star = req.getParameter("select_star");
-			System.out.println(select_star);
 			Double star = new Double(select_star);
 			
 			WPCaseService wpcsv = new WPCaseService();

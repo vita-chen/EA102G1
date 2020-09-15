@@ -296,11 +296,17 @@ $(document).ready(function() {
 				}
 				if(JSON.parse(data).note == "成功"){ //成功返回訂單編號
 					alert(JSON.parse(data).wed_photo_order_no+' 訂單生成成功!');
+					
+					var jsonObj = {
+							"type" : "order",
+							"wed_photo_order_no" : JSON.parse(data).wed_photo_order_no ,
+							"vender_id" : vender_id
+						};
+					webSocket.send(JSON.stringify(jsonObj));
 				}
 				
 			}
 		})
-		webSocket.send(vender_id);
 	})
     $(".Cancel").click(function() {
     	

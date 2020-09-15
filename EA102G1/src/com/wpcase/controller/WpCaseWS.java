@@ -29,12 +29,15 @@ public class WpCaseWS {
 		}
 		
 		@OnMessage
-		public void onMessage(Session userSession, String jsonObj) {
-			JSONObject obj = new JSONObject(jsonObj);
+		public void onMessage(Session userSession, String message) {
+			System.out.println(123);
+			JSONObject obj = new JSONObject(message);
 			String vender_id = obj.getString("vender_id");
+			String wed_photo_order_no = obj.getString("wed_photo_order_no");
+			System.out.println(vender_id+"廠商ID"+wed_photo_order_no);
 			Session receiverSession = sessionsMap.get(vender_id);
 			if (receiverSession != null && receiverSession.isOpen()) {
-				receiverSession.getAsyncRemote().sendText(jsonObj); //傳給對方
+				receiverSession.getAsyncRemote().sendText(message); //傳給對方
 			}
 
 		}

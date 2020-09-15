@@ -52,7 +52,6 @@ select{
    position: fixed;
    right: 20px;
    top: 80px;
-  border: 1px dotted #545454FF;
 }
 .WStest{
     height: 50px;

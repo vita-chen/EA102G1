@@ -148,6 +148,9 @@ $(document).ready(function(){
 				 var order_status = JSON.parse(data).order_status;
 				 var wp_mrep_s = JSON.parse(data).wp_mrep_s;
 				 
+				 if(order_status == 3){
+					 alert('訂單已完成囉! 請重新整理')
+				 }
 				 if(order_status != 2 && wp_mrep_s == 0){
 					 $.ajax({
 						 type: "POST",
@@ -168,8 +171,6 @@ $(document).ready(function(){
 								})				 
 						 }
 					 })
-				 }else{
-					 alert('無法完成訂單! 請重新整理')
 				 }
 				 
 			 }

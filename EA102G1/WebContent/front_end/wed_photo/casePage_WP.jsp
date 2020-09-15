@@ -21,11 +21,8 @@
 	WPCaseVO WPCaseVO =(WPCaseVO)request.getAttribute("WPCaseVO");
 	String url = request.getContextPath()+"/wed/wpcase.do?"+request.getQueryString();	
 	session.setAttribute("location",url); 
-	if(WPCaseVO.getWed_photo_status() == 1){
-		response.sendRedirect(request.getContextPath()+"/front_end/wed_photo/home_WP.jsp");
-	    return;
-	}
-	if(WPCaseVO == null){
+
+	if(WPCaseVO == null || WPCaseVO.getWed_photo_status() == 1){
 		response.sendRedirect(request.getContextPath()+"/front_end/wed_photo/home_WP.jsp");
 	    return;
 	}
@@ -39,10 +36,12 @@
 	
 	//其他方案
 	String venderid = WPCaseVO.getVender_id();
+	
 	String caseno = WPCaseVO.getWed_photo_case_no();
 	List<WPCaseVO> list = new WPCaseDAO().getAll();
 	Set<WPCaseVO> other_set = list.stream()
-			.filter( vo -> vo.getVender_id().equals(venderid) && !(vo.getWed_photo_case_no().equals(caseno)))			
+			.filter( vo -> vo.getVender_id().equals(venderid) && !(vo.getWed_photo_case_no().equals(caseno)))	
+			.filter( vo -> vo.getWed_photo_status() == 0)
 			.collect(Collectors.toSet());
 	
 	pageContext.setAttribute("other_set",other_set);
@@ -521,8 +520,8 @@ span svg{
                     </div>
 	        </div>
 	    </div>
-                  <div class="row justify-content-between new_case">
-                   	<c:forEach var="other_set" items="${other_set }">                    	
+                  <div class="row new_case">
+                   	<c:forEach var="other_set" items="${other_set }">
 			           <div class="col-lg-4 col-md-6 col-sm-12">
 			                <a href="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no=${other_set.wed_photo_case_no}" target="_blank">
 			                    <div class="img_box">
@@ -734,10 +733,9 @@ $(document).ready(function(){
 					var jsonObj = {
 							"type" : "order",
 							"wed_photo_order_no" : JSON.parse(data).wed_photo_order_no ,
-							"vender_id" : VENDER_ID
+							"vender_id" : vender_id
 						};
 					webSocket.send(JSON.stringify(jsonObj));
-//	 				webSocket.send($("[name=VENDER_ID]").val());
 				}
 				if(JSON.parse(data).note =="失敗"){
 					alert(JSON.parse(data).time);

@@ -282,7 +282,12 @@ public class MembreServlet extends HttpServlet{
 		    	response.sendRedirect(locationFromRequest);
 		    	return;
 		    }
-		  
+		   String location = (String) session.getAttribute("locationFromWP");
+		   System.out.println(location);
+		   if (location != null) {
+		    	response.sendRedirect(location);
+		    	return;
+		   }
 
 		    
 		    response.sendRedirect(request.getContextPath() + "/front_end/home/home.jsp");
