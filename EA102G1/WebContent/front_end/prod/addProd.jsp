@@ -58,6 +58,7 @@
 <%@ include file="/front_end/prod/header_bottom.jsp"%>
 <%@ include file="/front_end/prod/error_modal.jsp"%>
 <section class="section-content padding-y">
+<button class="btn btn-info" id="switch">Switch</button>
 <div class="container">
 
 <div class="row">
@@ -68,22 +69,22 @@
       <form action="<%=request.getContextPath() %>/prod/prod.do" method="post" enctype="multipart/form-data">
 			<label>名稱</label>
           <div class="form-group">
-			 <input type="text" class="form-control" name="prod_name" value="${prodvo.prod_name }" maxlength="20"/>
+			 <input type="text" id="name" class="form-control" name="prod_name" value="${prodvo.prod_name }" maxlength="20"/>
           </div> <!-- form-group// -->
           <label>價格</label>
           <div class="form-group">
-          <input type="text" class="form-control" name="price" value="${prodvo.price }" maxlength="6"/>
+          <input type="text" id="price" class="form-control" name="price" value="${prodvo.price }" maxlength="6"/>
           </div> <!-- form-group// -->
           <label>數量</label>
             <div class="form-group">
-			<input type="text" class="form-control" name="prod_qty" value="${prodvo.prod_qty }" maxlength="3"/>
+			<input type="text" id="qty" class="form-control" name="prod_qty" value="${prodvo.prod_qty }" maxlength="3"/>
           </div> <!-- form-group// -->
           		<jsp:useBean id="typeDao" class="com.prod_type.model.TypeDAO"/>
 				<div class="form-group">
 					  <label>類別</label>
 					<select name="type_no" style="margin-left:20px">
 					<c:forEach var="typevo" items="${typeDao.all }">
-						<option value="${typevo.type_no }" ${(prodvo.type_no==typevo.type_no)?'selected':'' }>${typevo.type_name }
+						<option id="opt" value="${typevo.type_no }" ${(prodvo.type_no==typevo.type_no)?'selected':'' }>${typevo.type_name }
 					</c:forEach>
 				</select>
 			<label class="btn btn-info" style="margin-left:60px">
@@ -177,6 +178,16 @@ function init(){
 		passContent += index;
 		picToPass.value=passContent;
 		e.srcElement.closest('.preview').remove();
+	})
+	
+	let mySwitch = document.getElementById('switch');
+	let name = document.getElementById('name');
+	let price = document.getElementById('price');
+	let qyt = document.getElementById('qty');
+	mySwitch.addEventListener("click", function(e) {
+		name.value="Switch";
+		price.value="8800";
+		qty.value="2";
 	})
 }
 window.onload = init;
