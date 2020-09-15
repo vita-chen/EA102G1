@@ -39,7 +39,7 @@
 	}
 	#myContainer{
 		position:relative;
-		padding-bottom:30px;
+		padding-bottom:5px;
 		clear:both;
 	}
 	#vidDiv{
@@ -52,6 +52,11 @@
 	margin-top:200px;
 	padding-top:100px;
 }
+
+.bgblue{
+	background-color:#e3f2fd;
+}
+
 </style>
 </head>
 
@@ -63,9 +68,13 @@
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;height:30px;" >
   	溫馨小提醒：確認結帳前，請先與廠商預約時試穿確認尺寸與禮服檔期呦    
 </nav>
+<div style="height:5%"></div>
 
 <div class="container accordion mx-auto" id="myContainer">
        		<h5><span class="pp">${membrevo.mem_name }</span> 您好，您的購物清單如下</h5>
+       		
+			<div class="bgblue"><h5 class="py-2 ml-3">購物清單</h5></div>
+			
 				<table class="table table-hover">
 <%
 @SuppressWarnings("unchecked")
@@ -179,7 +188,7 @@ if (map != null && (map.size() > 0)) {%>
 
 <script>
 $('#check').click(function(){
-	alert("結帳成功");
+	alert("恭喜您，結帳成功");
 	$('#checkoutForm').submit();
 	
 })

@@ -54,12 +54,6 @@
 <script src="<%=request.getContextPath() %>/vendors/jquery/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<style>
-	.pink{
-		color:deeppink;
-	}
-
-</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -285,10 +279,11 @@
 		 <div class="col-12">
 				<label for="customRange1" class="col-form-label">評價分數:</label>
                   	<div class="d-flex justify-content-center my-4">
-				  <div class="w-90 pink">
-				    <input type="range" class="custom-range" id="revStar" name="revStar" min="1" max="5">
+				  <div>
+				    <input type="range" class="custom-range" id="revStar" name="revStar" min="1" max="5" oninput="change()" onchange="change()">
 				  </div>
-				  <span class="font-weight-bold text-primary ml-2 valueSpan"></span>
+				  <div>
+				  <span class="font-weight-bold text-primary ml-2 valueSpan" id="valueSpan"></span></div>
 				</div>
            </div>
 		 
@@ -458,7 +453,31 @@ $('#review').on('show.bs.modal', function (event) {
       $('#revFinal').append('<input type="text" id="final" style="display:none;" value="'+modalId+'">');
       
 })
-	
+
+//即時顯示滑桿值
+function change() {
+  				var value = $('#revStar').val() ;
+  				//判斷value
+  				var str = "馬馬虎虎";
+  				switch(value){
+  					case "1":
+  						str = "胡搞瞎搞!";
+  						break;
+  					case "2":
+  						str = "差強人意!";
+  						break;
+  					case "3":
+  						str = "馬馬虎虎!";
+  						break;
+  					case "4":
+  						str = "棒棒的~!";
+  						break;
+  					case "5":
+  						str = "超級完美!";
+  						break;
+  				}
+  				$('#valueSpan').html(str);
+			}
 //3-2: 送出評價內容與星數
 $('#confirmRev').click(function(event){
     $('#star').val($('#revStar').val());

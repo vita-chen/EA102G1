@@ -270,7 +270,7 @@ if(dcVO == null){
 			</div>
 			<br>
 		<div>
-	 	<h5><%=revContent%></h5>
+	 	<h6><%=revContent%></h6>
 	 	</div>
 	 </div>
 	 
