@@ -164,6 +164,10 @@ select{
 	    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-Appraise" role="tab"
 	      aria-controls="pills-profile" aria-selected="false">評價內容 Appraise</a>
 	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-Membre" role="tab"
+	      aria-controls="pills-profile" aria-selected="false">會員資訊 Member</a>
+	  </li>
 	</ul>
 	<div class="tab-content pt-2 pl-1" id="pills-tabContent">
 	  <div class="tab-pane fade show active" id="pills-Order" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -211,7 +215,25 @@ select{
                <textarea class="form-control" id="message-text" name="wp_vrep_d2" rows="10" disabled></textarea>
            </div>
        	</form>
-	  </div>	  	  
+	  </div>
+	  	  <div class="tab-pane fade" id="pills-Membre" role="tabpanel" aria-labelledby="pills-contact-tab">
+	  	  <img alt="" src="" class="mem_img">
+	  	<form>
+           <div class="form-group">
+               <label for="recipient-name" class="col-form-label">會員姓名 Name:</label>
+               <input type="text" class="form-control" id="recipient-name" name="mem" disabled>
+           </div>
+           <div class="form-group">
+               <label for="recipient-phone" class="col-form-label">會員電話 Phone:</label>
+               <input type="text" class="form-control" id="recipient-phone" name="v_phone" disabled>
+           </div>
+           <div class="form-group">
+               <label for="recipient-mail" class="col-form-label">信箱 E-mail:</label>
+               <input type="text" class="form-control" id="recipient-mail" name="v_mail" disabled>
+           </div>
+           
+       	</form>
+	  </div>  	  
 	</div>
                 </div>
                 <div class="modal-footer">

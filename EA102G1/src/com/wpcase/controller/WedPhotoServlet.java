@@ -27,6 +27,9 @@ import javax.servlet.http.Part;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.membre.model.MembreDAO;
+import com.membre.model.MembreVO;
+import com.vender.model.VenderJDBCDAO;
 import com.vender.model.VenderVO;
 import com.wpcase.model.WPCaseService;
 import com.wpcase.model.WPCaseVO;
@@ -786,6 +789,10 @@ public class WedPhotoServlet extends HttpServlet {
 			String identity = req.getParameter("identity");
 			WPOrderService wpodsvc = new WPOrderService();
 			WPOrderVO ordervo = wpodsvc.getOne(wed_photo_order_no);
+			MembreDAO membredao = new MembreDAO();
+			MembreVO memvo = membredao.getOneById(ordervo.getMembre_id());
+			VenderJDBCDAO venderdao = new VenderJDBCDAO();
+			VenderVO vendervo = venderdao.findByPrimaryKey(ordervo.getVender_id());
 			WPCaseService wpcasvc = new WPCaseService();
 			WPCaseVO casevo = wpcasvc.getOneWPno(wpodsvc.orderChange(wed_photo_order_no));
 			
@@ -803,6 +810,13 @@ public class WedPhotoServlet extends HttpServlet {
 				obj.put("review_content", ordervo.getReview_content());
 				obj.put("wed_photo_case_no", casevo.getWed_photo_case_no());
 				obj.put("wed_photo_name", casevo.getWed_photo_name());
+				obj.put("mem_id", memvo.getMembre_id());
+				obj.put("mem_name", memvo.getMem_name());
+				obj.put("m_mail", memvo.getEmail());
+				obj.put("m_phone", memvo.getPhone());
+				obj.put("contact", vendervo.getVen_contact());
+				obj.put("v_mail", vendervo.getVen_mail());
+				obj.put("v_phone", vendervo.getVen_phone());
 				if(identity.equals("member")) { // 身分判別 廠商給廠商檢舉資訊 會員給會員檢舉資訊
 					if(ordervo.getWp_mrep_s() == 1) {
 						obj.put("wp_mrep_s", "已提出檢舉 待管理員審核");
@@ -939,6 +953,7 @@ public class WedPhotoServlet extends HttpServlet {
 			out.close();
 		}
 		
+
 		if("inquireCase".equals(action)){
 			
 			String search_case_name = req.getParameter("search_case");

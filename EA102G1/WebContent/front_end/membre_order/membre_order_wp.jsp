@@ -184,6 +184,9 @@
                         <li class="nav-item">
                             <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-Report" role="tab" aria-controls="pills-contact" aria-selected="false">檢舉內容 Report</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-Member" role="tab" aria-controls="pills-contact" aria-selected="false">會員資訊 Member</a>
+                        </li>
                     </ul>
                     <div class="tab-content pt-2 pl-1" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-Order" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -225,11 +228,27 @@
                             <form>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">檢舉狀態 Report:</label>
-                                    <input type="text" class="form-control" id="recipient-name-odstu" name="wp_mrep_s" disabled>
+                                    <input type="text" class="form-control" id="recipient-name" name="wp_mrep_s" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">檢舉內容 Message:</label>
                                     <textarea class="form-control" id="message-text" name="wp_mrep_d2" rows="10" disabled></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="pills-Member" role="tabpanel" aria-labelledby="pills-contact-tab">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">廠商聯絡人 Name:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="contact" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-phone" class="col-form-label">廠商手機 Phone:</label>
+                                    <input type="text" class="form-control" id="recipient-phone" name="phone" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-email" class="col-form-label">廠商E-mail :</label>
+                                    <input type="text" class="form-control" id="recipient-email" name="e-mail" disabled>
                                 </div>
                             </form>
                         </div>

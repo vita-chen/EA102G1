@@ -99,6 +99,9 @@ $(document).ready(function(){
 				$('[name="wp_mrep_d2"]').val(JSON.parse(data).wp_mrep_d);//wp_mrep_d
 				$('.case_info').text(JSON.parse(data).wed_photo_case_no+' '+JSON.parse(data).wed_photo_name)
 				$('.case_a').attr('href',url+'/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no='+JSON.parse(data).wed_photo_case_no)
+				$('[name="contact"]').val(JSON.parse(data).contact);
+				$('[name="phone"]').val(JSON.parse(data).v_phone);
+				$('[name="e-mail"]').val(JSON.parse(data).v_mail);
 			 }
 		 })
 	})
