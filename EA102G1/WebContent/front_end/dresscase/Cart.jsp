@@ -63,17 +63,13 @@
 <body>
 
 <%@ include file="/front_end/home/Header_Cart.jsp"%>
-<div style="height:10%;margin-top:10px;"></div>
-
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;height:30px;" >
-  	溫馨小提醒：確認結帳前，請先與廠商預約時試穿確認尺寸與禮服檔期呦    
-</nav>
+<div style="height:5%;margin-top:10px;"></div>
 <div style="height:5%"></div>
 
 <div class="container accordion mx-auto" id="myContainer">
        		<h5><span class="pp">${membrevo.mem_name }</span> 您好，您的購物清單如下</h5>
        		
-			<div class="bgblue"><h5 class="py-2 ml-3">購物清單</h5></div>
+			<div class="bgblue"><h5 class="py-2 ml-3">溫馨小提醒：確認結帳前，請先與廠商預約時試穿確認尺寸與禮服檔期呦</h5></div>
 			
 				<table class="table table-hover">
 <%

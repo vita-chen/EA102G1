@@ -326,7 +326,6 @@ public class DressOrderServlet extends HttpServlet {
 //       5. membre在訂單頁面看訂單內容
         if("SeeDetail".equals(action)){
         	String drord_id = req.getParameter("order_id");
-        	System.out.println(drord_id);
         	DressOrderDetailService  dSvc = new DressOrderDetailService();
         	List<DressOrderDetailVO> deVOList = dSvc.findByOrder(drord_id);
         	
@@ -338,6 +337,11 @@ public class DressOrderServlet extends HttpServlet {
     			List<Integer> casePrList = new ArrayList<Integer>();
     			List<List<String>> addNaList = new ArrayList<List<String>>();
     			List<Integer> dePrList = new ArrayList<Integer>();
+    			
+    			//訂單總金額
+    			DressOrderService ordSvc = new DressOrderService();
+    			DressOrderVO doVO = ordSvc.findByPrimaryKey(drord_id);
+    			Integer orderPrice = doVO.getDrord_pr();
     			Integer row= deVOList.size();
     			
 //    			遍歷每個order_detail：子層
@@ -384,6 +388,7 @@ public class DressOrderServlet extends HttpServlet {
     			mainObj.put("addNa",addNaArr);
     			mainObj.put("dePr", dePrArr);
     			mainObj.put("row", row);
+    			mainObj.put("orderPrice", orderPrice);
         		res.setContentType("application/json");
     			res.setCharacterEncoding("UTF-8");
     			res.getWriter().print(mainObj);

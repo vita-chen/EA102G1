@@ -11,5 +11,6 @@ public interface DressOrderDAO_interface {
           public DressOrderVO findLatestOrder(String membre_id);
           public List<DressOrderVO> findByMembre(String membre_id);
           public List<DressOrderVO> findByVender(String vender_id);
+          public List<DressOrderVO> findByVenderRev(String vender_id);
           
 }

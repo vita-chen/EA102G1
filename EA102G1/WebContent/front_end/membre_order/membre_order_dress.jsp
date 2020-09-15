@@ -340,6 +340,8 @@ $('#orderContent').on('show.bs.modal', function (event) {
 		var casePrArr = JSON.parse(data.casePr);
 		var addNaArr = JSON.parse(data.addNa);
 		var dePrArr = JSON.parse(data.dePr);
+		var orderPrice = JSON.parse(data.orderPrice);
+		
 		$("#new_content").html('');
 		  $("#new_content").append('<div class="table-responsive" style="text-align:left;"><table class="table table-hover">');
 		  $("#new_content").append('<thead><tr>');
@@ -354,7 +356,7 @@ $('#orderContent').on('show.bs.modal', function (event) {
 				$("#new_content").append('<tr bgcolor="white" height="40"><th width="220">'+caseNaArr[i]+'</th><td width="80">'+casePrArr[i]+'</td><td width="300">'+addNaArr[i]+'</td><td width="80">'+dePrArr[i]+'</td></tr>');
 			}
 		  }
-		  $("#new_content").append('</tbody></table>');
+		  $("#new_content").append('<tr></tr><tr><td width="630"></td><td width="350">訂單總金額為: 新台幣 '+orderPrice+' 元</td></tr></tbody></table>');
 }
 //2-1. 檢舉
 $('#repContent').on('show.bs.modal', function (event) {

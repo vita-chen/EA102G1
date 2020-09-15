@@ -52,6 +52,17 @@ if (account == null) {                                             // 如為 nul
 <link rel="stylesheet" href="../../vendors/bootstrap/css/bootstrap.min.css">
 <script src="<%=request.getContextPath() %>/vendors/jquery/jquery-3.4.1.min.js"></script>
 
+<style>
+#orderTable tr{
+	text-align:left;
+}
+
+.right{
+	text-align:right;
+	margin-right:10px;
+
+}
+</style>
 
 
 </head>
@@ -236,9 +247,10 @@ $('#orderContent').on('show.bs.modal', function (event) {
 		var casePrArr = JSON.parse(data.casePr);
 		var addNaArr = JSON.parse(data.addNa);
 		var dePrArr = JSON.parse(data.dePr);
+		var orderPrice = JSON.parse(data.orderPrice);
 		
 		  $("#new_content").html('');
-		  $("#new_content").append('<div class="table-responsive" style="text-align:left;"><table class="table table-hover">');
+		  $("#new_content").append('<div class="table-responsive" id="orderTable"><table class="table table-hover">');
 		  $("#new_content").append('<thead><tr>');
 		  $("#new_content").append('<th width="220" height="40" bgcolor="white">  方案名稱</th><th width="80">方案價格</th><th width="300">加購項目</th><th width="80">小計</th>');
 		  $("#new_content").append('</tr></thead><tbody>');
@@ -251,7 +263,7 @@ $('#orderContent').on('show.bs.modal', function (event) {
 					$("#new_content").append('<tr bgcolor="white" height="40"><th width="220">'+caseNaArr[i]+'</th><td width="80">'+casePrArr[i]+'</td><td width="300">'+addNaArr[i]+'</td><td width="80">'+dePrArr[i]+'</td></tr>');
 				}
 		  }
-		  $("#new_content").append('</tbody></table>');
+		  $("#new_content").append('<tr></tr><tr><td width="500" class="right">訂單總金額為: 新台幣 '+orderPrice+' 元</td></tr></tbody></table>');
 	
 }
 //2-1. 檢舉

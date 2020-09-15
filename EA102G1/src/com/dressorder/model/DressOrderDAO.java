@@ -28,6 +28,9 @@ public class DressOrderDAO implements DressOrderDAO_interface {
 	private static final String FIND_BY_VENDER_STMT =
 			"SELECT * FROM DRESS_ORDER where vender_id = ? ORDER BY drord_id desc";
 
+	private static final String FIND_BY_VENDER_REV_STMT =
+			"SELECT * FROM DRESS_ORDER where vender_id = ? and dr_rev_star =5 ";
+	
 	private static final String GET_LATEST = "SELECT* FROM DRESS_ORDER WHERE membre_id = ? ORDER BY drord_time asc";
 	
 	private static final String GET_ALL_STMT = "SELECT * FROM DRESS_ORDER ORDER BY drord_id desc";
@@ -469,6 +472,76 @@ public DressOrderVO findLatestOrder(String membre_id) {
 		return list;
 	}
 	
+	public List<DressOrderVO> findByVenderRev(String vender_id) {
+		List<DressOrderVO> list = new ArrayList<DressOrderVO>();
+		DressOrderVO doVO3 = null;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			Class.forName(driver);
+			con = DriverManager.getConnection(url,user,pw);
+			
+			pstmt = con.prepareStatement(FIND_BY_VENDER_REV_STMT);
+			pstmt.setString(1, vender_id);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				doVO3 = new DressOrderVO();
+				doVO3.setDrord_id(rs.getString("drord_id"));
+				doVO3.setMembre_id(rs.getString("membre_id"));
+				doVO3.setVender_id(rs.getString("vender_id"));
+				doVO3.setDrord_time(rs.getTimestamp("drord_time"));
+				doVO3.setDrord_pr(rs.getInt("drord_pr"));
+				doVO3.setDrord_depo(rs.getInt("drord_depo"));
+				doVO3.setDrord_ini(rs.getInt("drord_ini"));
+				doVO3.setDrord_pay_st(rs.getInt("drord_pay_st"));
+				doVO3.setDrord_fin_st(rs.getInt("drord_fin_st"));
+				doVO3.setDr_mrep_st(rs.getInt("dr_mrep_st"));
+				doVO3.setDr_vrep_st(rs.getInt("dr_vrep_st"));
+				doVO3.setDr_mrep_de(rs.getString("dr_mrep_de"));
+				doVO3.setDr_vrep_de(rs.getString("dr_vrep_de"));
+				doVO3.setDr_mrep_res(rs.getString("dr_mrep_res"));
+				doVO3.setDr_vrep_res(rs.getString("dr_vrep_res"));
+				doVO3.setDr_rev_star(rs.getInt("dr_rev_star"));
+				doVO3.setDr_rev_con(rs.getString("dr_rev_con"));
+				list.add(doVO3);
+			}
+		}	
+		catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "+ e.getMessage());
+		}
+		catch (SQLException se)  {
+			throw new RuntimeException("A database error occured. "+ se.getMessage());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
+	
 	
 	public static void main(String[] args) {
 		DressOrderDAO doDAO= new DressOrderDAO();
@@ -550,12 +623,12 @@ public DressOrderVO findLatestOrder(String membre_id) {
 //		System.out.println("查詢成功!");
 		
 //		5.getLatest
-		DressOrderVO doVO4 = doDAO.findLatestOrder("M004");
-		System.out.print(doVO4.getDrord_id()+",");
-		System.out.print(doVO4.getMembre_id()+",");
-		System.out.print(doVO4.getVender_id()+",");
-		System.out.print(doVO4.getDrord_time()+",");
-		System.out.print(doVO4.getDrord_pr()+",");
+//		DressOrderVO doVO4 = doDAO.findLatestOrder("M004");
+//		System.out.print(doVO4.getDrord_id()+",");
+//		System.out.print(doVO4.getMembre_id()+",");
+//		System.out.print(doVO4.getVender_id()+",");
+//		System.out.print(doVO4.getDrord_time()+",");
+//		System.out.print(doVO4.getDrord_pr()+",");
 		
 //		6.getByMembre
 //		List<DressOrderVO> list = doDAO.findByMembre("M004");
@@ -567,14 +640,14 @@ public DressOrderVO findLatestOrder(String membre_id) {
 //		System.out.print(doVO4.getDrord_pr()+","+"\n");
 //		}
 		
-//		7.getByVender
-//		List<DressOrderVO> list = doDAO.findByVender("V007");
-//		for(DressOrderVO doVO4:list) {
-//		System.out.print(doVO4.getDrord_id()+",");
-//		System.out.print(doVO4.getMembre_id()+",");
-//		System.out.print(doVO4.getVender_id()+",");
-//		System.out.print(doVO4.getDrord_time()+",");
-//		System.out.print(doVO4.getDrord_pr()+","+"\n");
-//		}
+//		7.getByVenderRev
+		List<DressOrderVO> list = doDAO.findByVenderRev("V007");
+		for(DressOrderVO doVO4:list) {
+		System.out.print(doVO4.getDrord_id()+",");
+		System.out.print(doVO4.getMembre_id()+",");
+		System.out.print(doVO4.getVender_id()+",");
+		System.out.print(doVO4.getDrord_time()+",");
+		System.out.print(doVO4.getDrord_pr()+","+"\n");
+		}
 	}
 }

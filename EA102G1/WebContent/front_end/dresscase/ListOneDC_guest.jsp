@@ -216,8 +216,9 @@ if(dcVO == null){
 <!-- CONTAINER2:(1)廠商資訊 (2)廠商評價 -->
 <div class="container">
 	<!-- 撈出 該方案對應的廠商的評價來放 -->
-	<% DressOrderService ordSvc = new DressOrderService();
-	List<DressOrderVO> list = ordSvc.findByVender(vVO.getVender_id());
+	<% 
+	DressOrderService ordSvc = new DressOrderService();
+	List<DressOrderVO> list = ordSvc.findByVenderRev(vVO.getVender_id());
 	
 	String revContent = "等待您來評價";
 	if(list!=null & list.size()> 0){
@@ -225,7 +226,6 @@ if(dcVO == null){
 		/* 該筆評價的星數與百分比 */
 		Integer revStar = list.get(0).getDr_rev_star();
 		Integer percent = Math.round(revStar *100)/5;
-		System.out.println(revContent);
 		if(revContent.equals("未評價")){
 			revContent = "等待您來評價！";
 		}

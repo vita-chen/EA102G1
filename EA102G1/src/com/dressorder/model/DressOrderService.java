@@ -84,5 +84,7 @@ public class DressOrderService {
 	public List<DressOrderVO> findByVender(String vender_id){
 		return dodao.findByVender(vender_id);
 	}
-	
+	public List<DressOrderVO> findByVenderRev(String vender_id){
+		return dodao.findByVenderRev(vender_id);
+	}
 }
