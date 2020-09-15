@@ -170,13 +170,13 @@
 						</tr>
 						<tr>
 							<td>文章標題:</td>
-							<td><input type="TEXT" name="forum_title" size="45"></td>
+							<td><input type="TEXT" name="forum_title" id="title" size="45"></td>
 						</tr>
 						<tr>
 							<td>文章內容:</td>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea name="forum_content"></textarea></td>
+							<td colspan="2"><textarea name="forum_content" id="editor1"></textarea></td>
 						</tr>
 					</table>
 
@@ -193,6 +193,120 @@
 <!-- 													先寫死，之後登入解決後再改動態寫法 -->
 <!-- 				<input type="hidden" name="membre_id" value="M001"> -->
 				<input type="submit" value="送出新增">
+				<button type="button" onclick="addData()" >神奇小按鈕</button>
+				
+				
+<!-- ckeditor 新增文章內容部分 -->
+				
+				<script>
+				// Don't forget to add CSS for your custom styles.
+			    CKEDITOR.addCss('figure[class*=easyimage-gradient]::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; right: 0; }' +
+			      'figure[class*=easyimage-gradient] figcaption { position: relative; z-index: 2; }' +
+			      '.easyimage-gradient-1::before { background-image: linear-gradient( 135deg, rgba( 115, 110, 254, 0 ) 0%, rgba( 66, 174, 234, .72 ) 100% ); }' +
+			      '.easyimage-gradient-2::before { background-image: linear-gradient( 135deg, rgba( 115, 110, 254, 0 ) 0%, rgba( 228, 66, 234, .72 ) 100% ); }');
+
+			    CKEDITOR.replace('editor1', {
+			      extraPlugins: 'easyimage',
+			      removePlugins: 'image',
+			      removeDialogTabs: 'link:advanced',
+			      toolbar: [{
+			          name: 'document',
+			          items: ['Undo', 'Redo']
+			        },
+			        {
+			          name: 'styles',
+			          items: ['Format']
+			        },
+			        {
+			          name: 'basicstyles',
+			          items: ['Bold', 'Italic', 'Strike', '-', 'RemoveFormat']
+			        },
+			        {
+			          name: 'paragraph',
+			          items: ['NumberedList', 'BulletedList']
+			        },
+			        {
+			          name: 'links',
+			          items: ['Link', 'Unlink']
+			        },
+			        {
+			          name: 'insert',
+			          items: ['EasyImageUpload', 'Table']
+			        }
+			        			        			        
+			      ],
+			      height: 630,
+			      cloudServices_uploadUrl: 'https://33333.cke-cs.com/easyimage/upload/',
+			      // Note: this is a token endpoint to be used for CKEditor 4 samples only. Images uploaded using this token may be deleted automatically at any moment.
+			      // To create your own token URL please visit https://ckeditor.com/ckeditor-cloud-services/.
+			      cloudServices_tokenUrl: 'https://33333.cke-cs.com/token/dev/ijrDsqFix838Gh3wGO3F77FSW94BwcLXprJ4APSp3XQ26xsUHTi0jcb1hoBt',
+			      easyimage_styles: {
+			        gradient1: {
+			          group: 'easyimage-gradients',
+			          attributes: {
+			            'class': 'easyimage-gradient-1'
+			          },
+			          label: 'Blue Gradient',
+			          icon: 'https://ckeditor.com/docs/ckeditor4/4.14.1/examples/assets/easyimage/icons/gradient1.png',
+			          iconHiDpi: 'https://ckeditor.com/docs/ckeditor4/4.14.1/examples/assets/easyimage/icons/hidpi/gradient1.png'
+			        },
+			        gradient2: {
+			          group: 'easyimage-gradients',
+			          attributes: {
+			            'class': 'easyimage-gradient-2'
+			          },
+			          label: 'Pink Gradient',
+			          icon: 'https://ckeditor.com/docs/ckeditor4/4.14.1/examples/assets/easyimage/icons/gradient2.png',
+			          iconHiDpi: 'https://ckeditor.com/docs/ckeditor4/4.14.1/examples/assets/easyimage/icons/hidpi/gradient2.png'
+			        },
+			        noGradient: {
+			          group: 'easyimage-gradients',
+			          attributes: {
+			            'class': 'easyimage-no-gradient'
+			          },
+			          label: 'No Gradient',
+			          icon: 'https://ckeditor.com/docs/ckeditor4/4.14.1/examples/assets/easyimage/icons/nogradient.png',
+			          iconHiDpi: 'https://ckeditor.com/docs/ckeditor4/4.14.1/examples/assets/easyimage/icons/hidpi/nogradient.png'
+			        }
+			      },
+			      easyimage_toolbar: [
+			        'EasyImageFull',
+			        'EasyImageSide',
+			        'EasyImageGradient1',
+			        'EasyImageGradient2',
+			        'EasyImageNoGradient',
+			        'EasyImageAlt'
+			      ]
+			    });
+			    
+			    function addData(){
+			    	$("input[name='forum_title']").val("終於來到了可以挑片的這一天");
+
+			    	CKEDITOR.instances.editor1.setData('今天來挑片除了讓我們獨自慢慢的挑，沒想到還有可樂可以喝啊。'
+
+			    			+'要從200張挑出42張真的好難啊⋯<br>'
+
+			    			+'回想起拍照就只拍了一天，沒想到這樣拍出來也有10個系列之多。每種都都優秀的作品。真的也是要謝謝攝影師Dragon，很多照片都還沒修就已經很美了。所以更增加了我們挑選的難度呀。很多張我們倆個真的是掙扎再掙扎，看了又看、比了又比，才辦法狠下心來。<br>'
+
+			    			+'真的超級期待下次看修片後的照片～～<br>'
+
+			    			+'(JUDY婚紗)找Acho副總婉貞就對了！！<br>'
+			    			
+			    			+'<img src="https://rcdn.weddingday.com.tw/resize/652b5fbd825f1590c0dd663af99a4b1b5d454c1b69594.jpg?width=800" />'
+			    			
+			    			+'<img src="https://rcdn.weddingday.com.tw/resize/b0caf6998eb8d6caded56bae4ece24115d454c290b71f.jpg?width=800" />'
+			    			
+			    			+'<img src="https://rcdn.weddingday.com.tw/resize/fce4cb5451fd401706379738a89ba3385d454c385bc94.jpg?width=800" />');
+			    	// TODO write down your mock data here
+			    }
+			    
+			    function sendEdit(){
+			    	
+			    }
+				</script>
+	
+<!-- ckeditor 新增文章內容部分 -->			
+				
 				</FORM>
 			</div>
 		</div>
