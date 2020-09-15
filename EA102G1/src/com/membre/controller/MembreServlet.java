@@ -278,11 +278,7 @@ public class MembreServlet extends HttpServlet{
 		    	return;
 		    }
 		  
-//		    String location = (String) session.getAttribute("location");
-//		    if (location != null) {
-//		    	response.sendRedirect(location);
-//		    	return;
-//		    }
+
 		    
 		    response.sendRedirect(request.getContextPath() + "/front_end/home/home.jsp");
 		} // end of login

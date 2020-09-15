@@ -38,11 +38,12 @@ public class MailService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(myGmail));
 			message.setContent(
-					"<div style='background-color: #edf0f3; width:800px;'><div style='margin: 0 auto; background-image:url(https://lh3.googleusercontent.com/proxy/3SH5GWT2TtpnEOtLg3TKGcj_64cv2xvmg6oNx2LcMIRWZCc_oi7U3LIskY4xxrdpJqliq-Zdx3CxQ2ffIrpdvv7Xxin8j_v0M6F16Q8R5m6gWv6GbJs8vhIz_Rxe1t8wj-fRbaOLFQ);"
+					"<div style='background-color: #edf0f3; width:800px;'><div style='margin: 0 auto; background-image:url"
+					+ "(https://lh3.googleusercontent.com/proxy/ZCDFmnseg9sBib9cWeHPqzxqlWQNeTlMYPHdR5H0rpKba98rsY6a8kuLXllnREXFCHoE2RB-TjFwpJbT_agr7We3yFAA-yhVG-Bk64o_);"
 							+ "background-repeat:no-repeat;" 
 							+ "background-size:cover; width:500px; height:200px'>"
-							+ "<div style='backdrop-filter: blur(2px); padding: 20px;'><H1 style='text-align:center; color: white;'>Hello!" + mem_name + "</H1>"
-							+ "<p style='color: white; text-align: center;'>感謝您加入婚禮導航，請點選按鈕進行驗證</p>"
+							+ "<div style='backdrop-filter: blur(2px); padding: 20px;'><H1 style='text-align:center;'>Hello!" + mem_name + "</H1>"
+							+ "<p style='text-align: center;'>感謝您加入婚禮導航，請點選按鈕進行驗證</p>"
 							+ "<div style='margin-top:10px;'><a href=" + url + " style='text-decoration:none;'><div style='border: 1px solid white; width:fit-content; margin:0 auto; background-color:white; border-radius:2px; line-height:40px; font-size:15px; color:#202124;'><div style='margin: 0 12px;'>驗證去</div></div></a></div></div></div>",
 							"text/html; charset=UTF-8");
 

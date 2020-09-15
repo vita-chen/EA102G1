@@ -27,8 +27,6 @@
 					String queryString = request.getQueryString();
 					request.setAttribute("currentLocation", currentLocation);
 					request.setAttribute("queryString", queryString);
-					String sessionLocation = currentLocation +"?"+ queryString;
-					session.setAttribute("sessionLocation", sessionLocation);
 				%>
      <li  class="nav-item"><a href="<%=request.getContextPath()%>/prod/list.do?action=checkBuyList&location=${currentLocation }?${queryString}" class="nav-link px-2">  <i class="fa fa-heart"></i> Wishlist </a></li>
         <li  class="nav-item"><a href="<%=request.getContextPath()%>/order/shopping.do?action=goToCart&location=${currentLocation }?${queryString}" class="nav-link px-2"> <i class="fa fa-shopping-cart"></i> My Cart <span class="badge badge-pill badge-danger" id="shopping_cart_num">0</span> </a></li>
