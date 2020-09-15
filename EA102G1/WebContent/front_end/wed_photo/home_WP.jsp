@@ -25,6 +25,7 @@
 	//最新方案
 	WPCaseDAO wpcasedao = new WPCaseDAO();
 	List<WPCaseVO> new_list = wpcasedao.getAll().stream()
+			.filter(v -> v.getWed_photo_status() == 0)
 			.sorted(Comparator.comparing(WPCaseVO::getWed_photo_addtime).reversed())
 			.collect(Collectors.toList())
 			.subList(0,3);
