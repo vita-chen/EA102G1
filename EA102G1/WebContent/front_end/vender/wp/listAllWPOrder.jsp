@@ -62,6 +62,10 @@ select{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+#mem_img{
+width:100px;
+height :100px;
+}
 </style>
 <body>
 <div class="container">
@@ -217,7 +221,7 @@ select{
        	</form>
 	  </div>
 	  	  <div class="tab-pane fade" id="pills-Membre" role="tabpanel" aria-labelledby="pills-contact-tab">
-	  	  <img alt="" src="" class="mem_img">
+	  	  <img alt="" id="mem_img">
 	  	<form>
            <div class="form-group">
                <label for="recipient-name" class="col-form-label">會員姓名 Name:</label>
@@ -231,7 +235,6 @@ select{
                <label for="recipient-mail" class="col-form-label">信箱 E-mail:</label>
                <input type="text" class="form-control" id="recipient-mail" name="v_mail" disabled>
            </div>
-           
        	</form>
 	  </div>  	  
 	</div>

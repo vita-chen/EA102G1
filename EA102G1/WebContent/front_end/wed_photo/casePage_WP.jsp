@@ -21,7 +21,10 @@
 	WPCaseVO WPCaseVO =(WPCaseVO)request.getAttribute("WPCaseVO");
 	String url = request.getContextPath()+"/wed/wpcase.do?"+request.getQueryString();	
 	session.setAttribute("location",url); 
-	
+	if(WPCaseVO.getWed_photo_status() == 1){
+		response.sendRedirect(request.getContextPath()+"/front_end/wed_photo/home_WP.jsp");
+	    return;
+	}
 	if(WPCaseVO == null){
 		response.sendRedirect(request.getContextPath()+"/front_end/wed_photo/home_WP.jsp");
 	    return;

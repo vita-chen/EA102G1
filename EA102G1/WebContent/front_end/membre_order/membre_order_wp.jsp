@@ -185,7 +185,7 @@
                             <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-Report" role="tab" aria-controls="pills-contact" aria-selected="false">檢舉內容 Report</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-Member" role="tab" aria-controls="pills-contact" aria-selected="false">會員資訊 Member</a>
+                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-Vender" role="tab" aria-controls="pills-contact" aria-selected="false">廠商資訊 Vender</a>
                         </li>
                     </ul>
                     <div class="tab-content pt-2 pl-1" id="pills-tabContent">
@@ -236,7 +236,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="pills-Member" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <div class="tab-pane fade" id="pills-Vender" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <form>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">廠商聯絡人 Name:</label>

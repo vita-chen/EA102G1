@@ -122,8 +122,7 @@ $(document).ready(function(){
 				$('[name="wp_vrep_d2"]').val(JSON.parse(data).wp_vrep_d);//wp_vrep_d
 				$('.case_info').text(JSON.parse(data).wed_photo_case_no+' '+JSON.parse(data).wed_photo_name)
 				$('.case_a').attr('href',url+'/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no='+JSON.parse(data).wed_photo_case_no)
-				$('.memimg').attr('src',url+'/membre/membre.do?action=getphoto&membre_id='+JSON.parse(data).mem_id)
-				console.log(url+'/membre/membre.do?action=getphoto&membre_id='+JSON.parse(data).mem_id)
+				$('#mem_img').attr('src',url+'/membre/membre.do?action=getphoto&membre_id='+JSON.parse(data).mem_id)
 				$('[name="mem"]').val(JSON.parse(data).mem_name)
 				$('[name="v_phone"]').val(JSON.parse(data).v_phone)
 				$('[name="v_mail"]').val(JSON.parse(data).v_mail)

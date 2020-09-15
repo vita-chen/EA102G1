@@ -480,6 +480,7 @@ color: #FFFFFFFF;
     <div class="container">
         <div class="row justify-content-between">
         <c:forEach var="list" items="${list_case }">
+        <c:if test="${list.wed_photo_status==0}">
             <div class="col-12">
                 <div class="new_case">
                     <a href="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no=${list.wed_photo_case_no}" target="_blank">
@@ -498,6 +499,7 @@ color: #FFFFFFFF;
                     </a>
                 </div>
             </div>
+         </c:if>
          </c:forEach>
          </div>
    </div>
