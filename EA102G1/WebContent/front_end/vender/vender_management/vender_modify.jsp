@@ -120,7 +120,8 @@
 <button type="submit" class="btn btn-primary col-sm-4" name="action" value="update">修改</button>
 
 </form>
-					
+<br>
+<br>					
 </div>
 <!-- 塞資料的地方 -->
 <!-- 塞資料的地方 -->

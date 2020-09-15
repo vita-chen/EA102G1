@@ -117,53 +117,19 @@
 							</div>
 						</article>
 						<!-- filter-group .// -->
-						<article class="filter-group">
+						<article class="filter-group" style="display:none">
 							<header class="card-header">
-								<a href="#" data-toggle="collapse" data-target="#collapse_4"
+								<a style="display:none" href="#" data-toggle="collapse" data-target="#collapse_4"
 									aria-expanded="true" class=""> <i
 									class="icon-control fa fa-chevron-down"></i>
 									<h6 class="title">評價</h6>
 								</a>
 							</header>
-							<div class="filter-content collapse show" id="collapse_4"
+							<div style="display:none" class="filter-content collapse show" id="collapse_4"
 								style="">
 								<div class="card-body">
 
-									<label class="custom-control custom-checkbox"> <input
-										type="checkbox" id="star5" checked=""
-										class="custom-control-input">
-										<div class="custom-control-label text-warning">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i>
-										</div>
-									</label> <label class="custom-control custom-checkbox"> <input
-										type="checkbox" id="star4" checked=""
-										class="custom-control-input">
-										<div class="custom-control-label text-warning">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star"></i>
-										</div>
-									</label> <label class="custom-control custom-checkbox"> <input
-										type="checkbox" id="star3" checked=""
-										class="custom-control-input">
-										<div class="custom-control-label text-warning">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i>
-										</div>
-									</label> <label class="custom-control custom-checkbox"> <input
-										type="checkbox" id="star2" checked=""
-										class="custom-control-input">
-										<div class="custom-control-label text-warning">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i>
-										</div>
-									</label> <label class="custom-control custom-checkbox"> <input
-										type="checkbox" id="star1" checked=""
-										class="custom-control-input">
-										<div class="custom-control-label text-warning">
-											<i class="fa fa-star"></i>
-										</div>
-									</label>
+									
 									<label class="custom-control custom-checkbox"> <input
 										type="checkbox" id="star0" checked=""
 										class="custom-control-input">
@@ -184,15 +150,7 @@
 				<!-- col.// -->
 				<main class="col-md-9" style="margin-top: 10%">
 
-					<header class="border-bottom mb-4 pb-3">
-						<div class="form-inline">
-							<label>排序：</label> <select class="mr-2 form-control"
-								id="sortByPrice">
-								<option value="asc">價格：低到高</option>
-								<option value="desc">價格：高到低</option>
-							</select>
-						</div>
-					</header>
+
 					<!-- sect-heading -->
 
 					<div class="row" id="items"></div>

@@ -321,6 +321,39 @@ public class CarOrderServlet extends HttpServlet {
 			}
 
 		} // end of updateCarOrderStatus
+		
+		if ("updateCarOrderStatus_me".equals(action)) { // 來自carReservation.jsp的請求
+			try {
+
+				/*********************** 1.接收請求參數 *************************/
+				String cod_id = req.getParameter("cod_id");
+				Integer cod_status = Integer.parseInt(req.getParameter("cod_status"));
+
+				CarOrderVO carOrderVO = new CarOrderVO();
+				carOrderVO.setCod_id(cod_id);
+				carOrderVO.setCod_status(cod_status);
+
+				/*************************** 2.開始更新訂單狀態 ***************************************/
+				CarOrderService carOrderSvc = new CarOrderService();
+				carOrderSvc.updateCarOrderStatus(carOrderVO);
+
+				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
+
+				// 調度
+
+
+				res.sendRedirect(req.getContextPath() + "/front_end/membre_order/membre_order_car.jsp");
+
+
+
+				/*************************** 其他可能的錯誤處理 **********************************/
+			} catch (Exception e) {
+				PrintWriter out = res.getWriter();
+				out.println(e.toString()); // 把SQL指令的錯誤訊息印出來(記得要先把轉交(跳轉OR調度)的程式碼註解掉)
+				e.printStackTrace();
+			}
+
+		} // end of updateCarOrderStatus
 
 		/*********************** 會員提交評價星數&心得 *************************/
 

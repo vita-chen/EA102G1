@@ -45,7 +45,7 @@
 							<th>Email</th>
 							<th>圖片</th>
 							<th>驗證狀態</th>
-							<th>廠商狀態</th>
+							<th>資料修改信</th>
 							<th>註冊時間</th>					
 						</tr>
 						<%@ include file="page1.file"%>
@@ -96,14 +96,15 @@
 									</FORM>
 								</td>
 								<td>
-								${venderVO.is_vaild=="1" ? "權限正常":"被停權"}
+								寄送
 								
 									<FORM METHOD="post"
 										ACTION="<%=request.getContextPath()%>/vender/vender.do"
 										style="margin-bottom: 0px;">
-										<input type="submit" value="停權"> <input type="hidden"
-											name="vender_id" value="${venderVO.vender_id}"> <input
-											type="hidden" name="action" value="delete_vender">
+										<input type="submit" value="寄送"> 
+										<input type="hidden" name="ven_account" value="${venderVO.ven_account}"> 
+										<input type="hidden" name="ven_mail" value="${venderVO.ven_mail}">
+										<input type="hidden" name="action" value="vender_modifyemail">
 									</FORM>
 								</td>
 								<td>${venderVO.ven_regis_time}</td>

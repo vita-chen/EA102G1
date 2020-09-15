@@ -12,7 +12,7 @@
 <%
 	// 日後對接完之後可以拿掉	
 	MembreVO memTemp = new MembreVO();
-	memTemp.setMembre_id("M001");
+	memTemp.setMembre_id("M014");
 	session.setAttribute("membreVO", (Object) memTemp);
 	MembreVO membreVO = (MembreVO) session.getAttribute("membreVO");
 	pageContext.setAttribute("membreVO", membreVO);

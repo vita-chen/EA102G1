@@ -274,7 +274,6 @@ body {
 				<th class="text-center" scope="col">禮車訂單狀態</th>
 				<th class="text-center" scope="col">確認訂單已完成</th>
 				<th class="text-center" scope="col">取消訂單</th>
-				<th class="text-center" scope="col">評價</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -381,14 +380,14 @@ body {
 						<form method="post" action="${contextPath}/carOrder/carorder.do">
 							<c:choose>
 								<c:when test="${carOrderVO.getCod_status() >=3}">
-									<input type="hidden" name="action" value="updateCarOrderStatus">
+									<input type="hidden" name="action" value="updateCarOrderStatus_me">
 									<input type="hidden" name="cod_id" value="${carOrderVO.cod_id}">
 									<input type="hidden" name="cod_status" value="3">
 									<input type="submit" value="確認訂單已完成" disabled
 										class="btn btn-info btn-sm">
 								</c:when>
 								<c:otherwise>
-									<input type="hidden" name="action" value="updateCarOrderStatus">
+									<input type="hidden" name="action" value="updateCarOrderStatus_me">
 									<input type="hidden" name="cod_id" value="${carOrderVO.cod_id}">
 									<input type="hidden" name="cod_status" value="3">
 									<input type="submit" value="確認訂單已完成"
@@ -408,7 +407,7 @@ body {
 										class="btn btn-danger  btn-sm">
 								</c:when>
 								<c:otherwise>
-									<input type="hidden" name="action" value="updateCarOrderStatus">
+									<input type="hidden" name="action" value="updateCarOrderStatus_me">
 									<input type="hidden" name="cod_id" value="${carOrderVO.cod_id}">
 									<input type="hidden" name="cod_status" value="4">
 									<input type="submit" value="取消訂單" class="btn btn-danger btn-sm">
@@ -417,92 +416,6 @@ body {
 						</form>
 					</td>
 
-					<td class="text-center align-middle">
-
-						<form method="post" action="${contextPath}/carOrder/carorder.do"
-							class="submitReview">
-							<%-- ************如果訂單狀態變成2/3(廠商/客戶確認訂單已完成)時，才能按「來去給評價」************ --%>
-							<c:choose>
-								<c:when test="${carOrderVO.getCod_status()==2 || carOrderVO.getCod_status()==3}">
-									<button type="button" class="btn btn-primary btn-sm" 
-										data-toggle="modal"
-										data-target="#submitReviewModel_${carOrderVO.getCod_id()}">來去給評價</button>
-								</c:when>
-								<c:otherwise>
-									<button type="button" class="btn btn-primary btn-sm" disabled
-										data-toggle="modal"
-										data-target="#submitReviewModel_${carOrderVO.getCod_id()}">來去給評價</button>
-								</c:otherwise>
-							</c:choose>
-							<!-- Modal -->
-							<div class="modal fade"
-								id="submitReviewModel_${carOrderVO.getCod_id()}" tabindex="-1"
-								role="dialog" aria-labelledby="exampleModalLongTitle"
-								aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLongTitle">和大家分享本次交易的心得吧！</h5>
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<%-- ************如果星數&心得都無值，用戶可以選星數並輸入交易心得************ --%>
-										<c:choose>
-											<c:when
-												test="${carOrderVO.getCrev_star()==0 && carOrderVO.getCrev_msgs()==null}">
-												<div class="modal-body">
-													<div class="container">
-														<div class="pt-3">
-															<input id="input-2" name="input-2"
-																class="rating rating-loading" data-min="0" data-max="5"
-																data-step="1" value="${carOrderVO.getCrev_star()}"
-																data-size="md">
-														</div>
-
-														<div class="pt-3">
-															<textarea name="crev_msgs" class="form-control"
-																placeholder="告訴別人你有多滿意這次的服務吧~">${carOrderVO.getCrev_msgs()}</textarea>
-														</div>
-													</div>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary"
-														data-dismiss="modal">取消</button>
-													<input type="hidden" name="action" value="submitReview" />
-													<input type="hidden" name="crev_star" /> <input
-														type="hidden" name="cod_id" value="${carOrderVO.cod_id}" />
-													<input type="submit" class="btn btn-primary submitReview"
-														value="送出評價" />
-
-												</div>
-											</c:when>
-											<%-- ************如果星數&心得都有值，則用戶僅能readonly，不可修改星數&評價************ --%>
-											<c:otherwise>
-												<div class="modal-body">
-													<div class="container">
-														<div class="pt-3">
-															<input id="input-2" name="input-2"
-																class="rating rating-loading" data-min="0" data-max="5"
-																data-step="1" value="${carOrderVO.getCrev_star()}"
-																data-size="md" readonly>
-														</div>
-
-														<div class="pt-3">
-															<textarea name="crev_msgs" class="form-control"
-																placeholder="告訴別人你有多滿意這次的服務吧~" readonly>${carOrderVO.getCrev_msgs()}</textarea>
-														</div>
-													</div>
-												</div>
-												<div class="modal-footer"></div>
-											</c:otherwise>
-										</c:choose>
-									</div>
-								</div>
-							</div>
-						</form>
-					</td>
 				</tr>
 			</c:forEach>
 

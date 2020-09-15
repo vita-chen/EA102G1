@@ -631,6 +631,7 @@ public class VenderJDBCDAO implements VenderDAO_interface{
 			while (rs.next()) {
 				venderVO = new VenderVO();
 				venderVO.setVender_id(rs.getString("vender_id"));
+				venderVO.setVen_account(rs.getString("ven_account"));
 				venderVO.setVen_name(rs.getString("ven_name"));
 				venderVO.setVen_addr(rs.getString("ven_addr"));
 				venderVO.setVen_phone(rs.getString("ven_phone"));
