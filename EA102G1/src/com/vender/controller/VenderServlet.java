@@ -603,7 +603,7 @@ public class VenderServlet extends HttpServlet {
 			VenderService service = new VenderService();
 			VenderVO vendervo = service.vender_login(ven_account);
 			HttpSession session = req.getSession();
-			session.setAttribute("vendervov", vendervo);
+			session.setAttribute("vendervo", vendervo);
 			
 			String url = "/back_end/vender/modify_vender.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmp.jsp

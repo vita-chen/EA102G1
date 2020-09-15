@@ -5,7 +5,7 @@
 <%
 	VenderVO venderVO = (VenderVO) request.getAttribute("venderVO");
 
-Object account = session.getAttribute("vendervov"); 
+Object account = session.getAttribute("vendervo"); 
 
 %>
 
@@ -21,119 +21,83 @@ Object account = session.getAttribute("vendervov");
 </head>
 <body>
 <%-- 錯誤表列 --%>
-	<div class="container mx-auto h-auto mt-8" style="min-height: 100%">
-		<div class="container mx-auto">
-			<div class="flex flex-wrap justify-center">
-				<div class="w-full max-w-sm">
-					<div
-						class="flex flex-col break-words bg-white border-2 rounded shadow-md">
-						<div
-							class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">廠商資料修改</div>
-						<form class="w-full p-6" method="POST"
-							action="<%=request.getContextPath()%>/vender/vender.do"
-							name="form1" enctype="multipart/form-data">
-							<input type="hidden" name="_token"
-								value="cBZ6DP971sTfePEQRX1kYYG6uCSqMhTke4Ik1Hh3">
-							<div>
-								<c:if test="${not empty errorMsgs}">
-									<font style="color: red">請修正以下錯誤:</font>
-									<ul>
-										<c:forEach var="message" items="${errorMsgs}">
-											<li style="color: red">${message}</li>
-										</c:forEach>
-									</ul>
-								</c:if>
-							</div>
 
-							<div class="flex flex-wrap mb-6">
-							
-								<label for="name"
-									class="block text-gray-700 text-sm font-bold mb-2">	廠商編號:
-								</label> <input class="form-input w-full"type="TEXT" name="ven_account" size="45" 
-			 value="${vendervov.vender_id}" />
-
-							</div>
-
-							<div class="flex flex-wrap mb-6">
-								<label for="email"
-									class="block text-gray-700 text-sm font-bold mb-2"> 密碼:
-								</label> <input class="form-input w-full"type="password" name="ven_pwd" size="45"
-			 value="${vendervov.ven_pwd}" />
-
-							</div>
-
-							<div class="flex flex-wrap mb-6">
-								<label for="address"
-									class="block text-gray-700 text-sm font-bold mb-2">
-									廠商名稱: </label> <input class="form-input w-full"type="TEXT" name="ven_name" size="45" 
-			 value="${vendervov.ven_name}" />
-
-							</div>
-
-							<div class="flex flex-wrap mb-6">
-
-								<label for="縣市1"
-									class="block text-gray-700 text-sm font-bold mb-2">
-									廠商地址: </label>
-									　
+			
+  
+    <c:if test="${not empty errorMsgs}">
+					<font style="color: red">請修正以下錯誤:</font>
+					<ul>
+						<c:forEach var="message" items="${errorMsgs}">
+							<li style="color: red">${message}</li>
+						</c:forEach>
+					</ul>
+				</c:if>
+<form  method="POST" action="<%=request.getContextPath()%>/vender/vender.do"
+	   name="form1" enctype="multipart/form-data">
+	   
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-1 col-form-label">廠商編號</label>
+    <div class="col-sm-3">
+      <input type="text" readonly class="form-control-plaintext" name="vender_id" value="${vendervo.vender_id}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-1 colcol-form-label">密碼</label>
+    <div class="col-sm-3">
+      <input type="password" class="form-control" name="ven_pwd" value="${vendervo.ven_pwd}">
+    </div>
+  </div>
+  
+    <div class="form-group row">
+    <label for="inputPassword" class="col-sm-1 col-form-label">廠商名稱</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" name="ven_name" value="${vendervo.ven_name}">
+    </div>
+  </div>
+    <div class="form-group row">
+    <label for="inputPassword" class="col-sm-1 col-form-label">住址</label>
+    <div class="col-sm-3">
 <select id="縣市1"name="addr1"></select>
 <select id="鄉鎮市區1"name="addr2"></select>
-<input class="form-input w-full" type="TEXT" name="addr3" size="45"
-			  value="${vendervov.ven_addr}" />
- 
- 
-							</div>
-
-							<div class="flex flex-wrap mb-6">
-								<label for="password-confirm"
-									class="block text-gray-700 text-sm font-bold mb-2"> 手機:
-								</label> <input readonly="readonly" class="form-input w-full"type="TEXT" name="ven_phone" size="45"
-			 value="${vendervov.ven_phone}" />
-							</div>
-
-							<div class="flex flex-wrap mb-6">
-								<label for="phone"
-									class="block text-gray-700 text-sm font-bold mb-2">
-									連絡人: </label> <input class="form-input w-full"type="TEXT" name="ven_contact" size="45"
-			 value="${vendervov.ven_contact}" /> <span id="phone-error"
-									class="text-xs"></span>
-							</div>
-
-							<div>
-
-								<div class="flex flex-wrap mb-6">
-									<label for="phone"
-										class="block text-gray-700 text-sm font-bold mb-2">
-										Email: </label> <input class="form-input w-full"type="email" name="ven_mail" size="45"
-			 value="${vendervov.ven_mail}" /></span>
-								</div>
-
-								<div>
-
-									<div class="flex flex-wrap mb-6">
-										<label for="phone"
-											class="block text-gray-700 text-sm font-bold mb-2">
-											上傳名片(審核一定要上傳!): </label> <input class="form-input w-full"type="file" name="ven_evidence_pic" size="45"
-			 value="<%= (venderVO==null)? "100" : venderVO.getVen_evidence_pic()%>" />
-										<span id="phone-error" class="text-xs"></span>
-										
-										<img id="imgg" style="height: 30%;width: 30%;border:0;"
-	src="<%=request.getContextPath() %>/vender/vender.do?action=getphot&vender_id=${vendervov.vender_id}">
-
-									</div>
-
-									<div class="flex flex-wrap">
-										<button type="hidden" name="action" value="update_modify"
-											class="inline-block align-middle text-center select-none border font-bold whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 ml-auto">
-											修改資料</button>
-									</div>
-						</form>
-					</div>
-				</div>
-			</div>
+<input class="form-control" type="TEXT" name="addr3" size="45" value="${vendervo.ven_addr}" />
+    </div>
+  </div>
+    <div class="form-group row">
+    <label for="inputPassword" class="col-sm-1 col-form-label">電話</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" name="ven_phone" value="${vendervo.ven_phone}">
+    </div>
+  </div>
+    <div class="form-group row">
+    <label for="inputPassword" class="col-sm-1 col-form-label">負責人</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" name="ven_contact" value="${vendervo.ven_contact}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-1 col-form-label">EMAIL</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" name="ven_mail" value="${vendervo.ven_mail}">
+    </div>
+  </div>
+  <div class="form-group row">
+    	<label for="exampleFormControlFile1"class="col-sm-1 col-form-label">名片</label>
+    	<div class="col-sm-2">
+			<input type="file" class="" name="ven_evidence_pic">
 		</div>
-	</div>
+  </div>
+  <div class="form-group row">
+  <img id="imgg" style="height: 30%;width: 30%;border:0;"
+	src="<%=request.getContextPath() %>/vender/vender.do?action=getphot&vender_id=${vendervo.vender_id}">
+  </div>
+
+<button type="submit" class="btn btn-primary col-sm-4" name="action" value="update_modify">修改資料</button>
+
+</form>
+
 	<br>
+
+
 
 </body>
 <script src="<%=request.getContextPath()%>/js/vender/regis.js"></script>

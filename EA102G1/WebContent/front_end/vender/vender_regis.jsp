@@ -69,7 +69,7 @@ request.setAttribute("phone", phone);
 								<label for="address"
 									class="block text-gray-700 text-sm font-bold mb-2">
 									廠商名稱: </label> <input class="form-input w-full"type="TEXT" name="ven_name" size="45" 
-			 value="<%= (venderVO==null)? "吳永志" : venderVO.getVen_name()%>" />
+			 value="<%= (venderVO==null)? "" : venderVO.getVen_name()%>" />
 
 							</div>
 
@@ -98,7 +98,7 @@ request.setAttribute("phone", phone);
 								<label for="phone"
 									class="block text-gray-700 text-sm font-bold mb-2">
 									連絡人: </label> <input class="form-input w-full"type="TEXT" name="ven_contact" size="45"
-			 value="<%= (venderVO==null)? "吳先生" : venderVO.getVen_contact()%>" /> <span id="phone-error"
+			 value="<%= (venderVO==null)? "劉先生" : venderVO.getVen_contact()%>" /> <span id="phone-error"
 									class="text-xs"></span>
 							</div>
 
@@ -108,7 +108,7 @@ request.setAttribute("phone", phone);
 									<label for="phone"
 										class="block text-gray-700 text-sm font-bold mb-2">
 										Email: </label> <input class="form-input w-full"type="email" name="ven_mail" size="45"
-			 value="<%= (venderVO==null)? "100@gg" : venderVO.getVen_mail()%>" /></span>
+			 value="<%= (venderVO==null)? "a0908280731@gmail.com" : venderVO.getVen_mail()%>" /></span>
 								</div>
 
 								<div>

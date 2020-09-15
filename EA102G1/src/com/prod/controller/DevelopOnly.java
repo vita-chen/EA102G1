@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class DevelopOnly {
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String USER = "EA102";
+	private static final String USER = "EA102G1";
 	private static final String PASSWORD = "123456";
 	private static final String SQL = "insert into prod_pic values (pic_seq.nextval,?,?)";
 	private static final String MEMBRESQL="update membre set photo = ? where membre_id = ?";
