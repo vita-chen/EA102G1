@@ -232,10 +232,9 @@ public class WPCaseService {
 	public Double ven_star(String vender_id) {//回傳廠商星星分數 (總分/評價數)
 		VenderJDBCDAO venderdao = new VenderJDBCDAO();
 		VenderVO vendervo = venderdao.findByPrimaryKey(vender_id);
-		Double star =  (double)vendervo.getVen_stars_total() / vendervo.getVen_review_count();
-		
-		BigDecimal bg = new BigDecimal(star).setScale(1, RoundingMode.UP);
-		 
+		if(vendervo.getVen_stars_total() == 0) return 0.0;
+		Double star =  (double)vendervo.getVen_stars_total() / vendervo.getVen_review_count();		
+		BigDecimal bg = new BigDecimal(star).setScale(1, RoundingMode.UP);		 
 		return bg.doubleValue();
 	}
 	public WPImgVO imgForVender(String vender_id) {

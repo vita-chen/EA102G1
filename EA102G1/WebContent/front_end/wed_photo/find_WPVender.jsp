@@ -656,7 +656,7 @@ $(document).ready(function() {
     }
 
     /*-----設定每頁顯示行數------*/
-    var pageSize = 3;           //*
+    var pageSize = 6;           //*
     /*-------------------------*/
 
     var totalPage = Math.ceil(num / pageSize); //算出總共有幾頁
