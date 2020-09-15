@@ -279,6 +279,7 @@
 			      ]
 			    });
 			    
+			    
 			    function addData(){
 			    	$("input[name='forum_title']").val("終於來到了可以挑片的這一天");
 
