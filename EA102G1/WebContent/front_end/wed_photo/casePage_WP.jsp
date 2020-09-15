@@ -492,7 +492,7 @@ span svg{
 	            
 	            <div class="con2head"><pre>${WPCaseVO.wed_photo_intro }</pre></div>
 	            <div class="btn-group" role="group" aria-label="Basic example">
-	                       <button type="button" class="btn btn-danger">我要詢問</button>
+	                       
 	                       <button type="button" class="btn btn-danger collect">加入收藏</button>	                       
 	                       <input type="hidden" name="membre_id" value="${membrevo.membre_id }">
 	                       <input type="hidden" name="wed_photo_case_no" value="${WPCaseVO.wed_photo_case_no }">
@@ -508,7 +508,7 @@ span svg{
 				</c:if>
 				
 				<div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-danger">我要詢問</button>
+                        
                         <button type="button" class="btn btn-danger collect">加入收藏</button>
                         <button type="button" class="btn btn-danger Order" data-toggle="modal" data-target="#exampleModal">立即下訂</button>
                 </div>

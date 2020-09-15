@@ -473,7 +473,11 @@ a:hover {
     border: 0.5px #FFF solid;
     opacity: 1;
 }
+span svg {
+    font-size: 20px;
+    color: #F8E506FF;
 
+}                     
 /*熱門廠商 結束*/
 </style>
 <body>
@@ -525,13 +529,14 @@ a:hover {
      <div class="container new_case_container">
         <p>最新方案 New case <a href="<%=request.getContextPath()%>/front_end/wed_photo/find_WPCase.jsp"><span>看更多</span></a></p>
         <div class="row justify-content-between new_case">
+        
         <c:forEach var="new_list" items="${new_list }">
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <a href="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no=${new_list.wed_photo_case_no}" target="_blank">
                     <div class="img_box">
                         <div class="new_case_icon">New</div>
                         <img src="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_WPImg&wed_photo_case_no=${new_list.wed_photo_case_no}">
-                        <div class="img_text">
+                        <div class="img_text">   
                             <h5>${new_list.wed_photo_name }</h5>
                             <div class="text_new">
 								${new_list.wed_photo_intro }
@@ -556,11 +561,14 @@ a:hover {
                 <jsp:useBean id ="service" class="com.wpcase.model.WPCaseService"/>
                 <c:forEach var="vender" items="${list_vender }" end="2">
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="<%=request.getContextPath() %>/wed/wpcase.do?action=goVenderPage&vender_id=${vender.vender_id}">
+                    <a href="<%=request.getContextPath() %>/wed/wpcase.do?action=goVenderPage&vender_id=${vender.vender_id}" target="_blank">
                         <div class="ven_box">
                             <div class="ven_icon"><img src="<%=request.getContextPath() %>/vender/vender.do?action=getphot&vender_id=${vender.vender_id}" alt=""></div>
                             <div class="ven_text">
-                                <h5>${vender.ven_name }</h5>
+                                <h5>${vender.ven_name }<span>
+                                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                            </svg>${service.ven_star(vender.vender_id) }</span></h5>
                                 <div class="img_text3">
                                   <span class="review">${vender.ven_review_count }則評價</span>
                                     <span class="case">${service.countCase(vender.vender_id)}筆方案</span>

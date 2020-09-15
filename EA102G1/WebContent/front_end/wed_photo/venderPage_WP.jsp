@@ -330,7 +330,7 @@ a:hover {
 
 .disappear {
     margin-top: 30px;
-    height: 820px;
+    height: 940px;
     width: 100%;    
     background-image: url('<%=request.getContextPath()%>/img/wp_img/wpbanner05.jpg');
     background-repeat: no-repeat;
@@ -352,6 +352,7 @@ a:hover {
 }
 
 .ven_map {
+	margin-top:45px;
     height: 400px;
     width: 100%;   
     text-align: center;
@@ -377,6 +378,11 @@ a:hover {
     color:#212121FF;
     text-shadow: #FFF 0.1em 0.1em 0.1em;
 }
+.info_text h5 svg {
+    font-size: 20px;
+    color: #F8E506FF;
+
+}
 .info_text{
     border:1.5px #FFF solid;
     text-align: center;
@@ -392,17 +398,28 @@ a:hover {
     font-size: 28px;
 }
 
-
+.new_text{
+display:block;
+margin: auto;
+font-size: 35px;
+font-width: 600;
+text-shadow: #2B2B2BFF 0.1em 0.1em 0.1em;
+color: #FFFFFFFF;
+}
 /*廠商資訊 結束*/
 </style>
 <body>
 	<div class="container">
         <div class="dis_dis">
+        <jsp:useBean id ="service" class="com.wpcase.model.WPCaseService"/>
             <div class="row ven_info">
                 <div class="col-4 info"><img src="<%=request.getContextPath() %>/vender/vender.do?action=getphot&vender_id=${VenderVO.vender_id}"></div>
                 <div class="col-8 info">
                     <div class="info_text">
                         <p>${VenderVO.ven_name}</p>
+                        <h5><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                            </svg>${service.ven_star(VenderVO.vender_id) }</h5>
                         ${VenderVO.ven_addr}<br>
                         <c:if test="${membrevo == null }">
                         登入後查看其他聯絡資訊
@@ -419,6 +436,7 @@ a:hover {
                     <iframe width="100%" height="100%" frameborder="0" style="border:0" src="" allowfullscreen>
                     </iframe>
                 </div>
+                <div class="new_text">全部方案</div>
             </div>
         </div>
     </div>

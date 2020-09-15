@@ -120,7 +120,7 @@
 	                            <td><a href="<%=request.getContextPath()%>/wed/wpcase.do?action=getOne_CasePage&wed_photo_case_no=${WPCaseVO.wed_photo_case_no}" target="_blank">${WPCaseVO.wed_photo_case_no}</a></td>
 	                            <td>${WPCaseVO.vender_id }</td>
 	                            <td>${WPCaseVO.wed_photo_name }</td>
-	                            <td><button type="button" class="btn btn-secondary btnw Cancel" value="${WPCaseVO.wed_photo_case_no }">取消訂單</button></td>
+	                            <td><button type="button" class="btn btn-secondary btnw Cancel" value="${WPCaseVO.wed_photo_case_no }">取消收藏</button></td>
 	                            <td><button type="button" class="btn btn-secondary btnw Order" data-toggle="modal" data-target="#exampleModal" value="${WPCaseVO.vender_id }" name="${WPCaseVO.wed_photo_case_no}">直接下訂</button></td>
 	                        </tr>
                        
