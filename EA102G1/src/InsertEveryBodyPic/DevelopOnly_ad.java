@@ -1,4 +1,4 @@
-package com.ad.controller;
+package InsertEveryBodyPic;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DevelopOnly {
+public class DevelopOnly_ad {
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 	private static final String USER = "EA102G1";
 	private static final String PASSWORD = "123456";

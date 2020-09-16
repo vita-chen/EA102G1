@@ -1,4 +1,4 @@
-package com.wpcase.controller;
+package InsertEveryBodyPic;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
