@@ -255,7 +255,7 @@ public class ProdServlet extends HttpServlet {
 					if (part.getName().equals("pic") && picToPass.indexOf(toPass) == -1) {
 						index++;
 						if (!detector.detectPic(part)) {
-							errors.add("請勿上傳含有動物的圖片");
+							errors.add("請勿上傳貓貓的圖片!");
 							break;
 						}
 					}

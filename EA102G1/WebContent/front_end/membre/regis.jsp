@@ -33,7 +33,7 @@
 				</div> <!-- form-row end.// -->
 				<div class="form-group">
 					<label>Email</label>
-					<input type="email" id="email" class="form-control" placeholder="email" name="email" value="${errorMembrevo.email }" maxlength="20">
+					<input type="email" id="email" class="form-control" placeholder="email" name="email" value="${errorMembrevo.email }" maxlength="40">
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
 					<label class="custom-control custom-radio custom-control-inline">
