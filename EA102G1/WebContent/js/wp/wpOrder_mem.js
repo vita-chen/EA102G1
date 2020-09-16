@@ -119,7 +119,7 @@ $(document).ready(function(){
 				 wed_photo_order_no:$("[name='wed_photo_order_no']").val(),
 				 vender_id:$("[name='vender_id']").val(),
 				 identity:"member"
-			 },			
+			 },
 			 success: function (data){
 				 var order_status = JSON.parse(data).order_status;
 				 var wp_vrep_s = JSON.parse(data).wp_vrep_s;

@@ -144,7 +144,7 @@ display:none;
                         <input type="radio" id="customRadioInline2" name="WED_PHOTO_STATUS" value="1" class="custom-control-input">
                         <label class="custom-control-label" for="customRadioInline2">下架狀態</label>
                     </div>
-                    <span class="help">需要幫助嗎？</span>
+                    <span class="help">需要幫助嗎？</span>　<span class="help2">需要幫助嗎？</span>
                 </div>
                 <div class="col-md">
                     <label for="upfile1">選擇圖片 choose file</label>
@@ -166,12 +166,20 @@ display:none;
 </body>
 <script type="text/javascript">
 function init() {
-	$('.help').click(function(){
-		$('[name="WED_PHOTO_NAME"]').val('名稱最多可以20個字');
-		$('[name="WED_PHOTO_INTRO"]').text('方案介紹 內容隨便填');
-		$('[name="WED_PHOTO_PRICE"]').val(123456);
-	})
 	
+	var str = "※建議時段17:00~21:30(4.5小時)\n※總服務時數不變，時段可彈性微調\n※若同時想詢問平面拍照跟動態錄影，可在詢問單的備註欄告知\n※雙人雙機、SDE快剪價格另計";
+	var str1 = "※建議時段7:30~21:30(14小時)\n※總服務時數不變，時段可彈性微調\n※若同時想詢問平面拍照跟動態錄影，可在詢問單的備註欄告知\n※雙人雙機、SDE快剪價格另計";
+	
+	$('.help').click(function(){
+		$('[name="WED_PHOTO_NAME"]').val('【振興方案】單晚宴');
+		$('[name="WED_PHOTO_INTRO"]').text(str);
+		$('[name="WED_PHOTO_PRICE"]').val(19800);
+	})
+	$('.help2').click(function(){
+		$('[name="WED_PHOTO_NAME"]').val('【振興方案】上午儀式+下午儀式+晚宴');
+		$('[name="WED_PHOTO_INTRO"]').text(str1);
+		$('[name="WED_PHOTO_PRICE"]').val(25600);
+	})
     var upfile1 = document.getElementById("upfile1");
     var preview = document.getElementById('preview');
     var removeA = document.getElementById('removeA');

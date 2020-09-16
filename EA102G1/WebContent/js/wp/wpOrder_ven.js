@@ -143,7 +143,7 @@ $(document).ready(function(){
 				 wed_photo_order_no:$("[name='wed_photo_order_no']").val(),
 				 identity:"vender"
 				 //點擊button 把按鈕的 value="${wpordervo.wed_photo_order_no }"傳給後端找資料	 
-			 },			
+			 },
 			 success: function (data){
 				 var order_status = JSON.parse(data).order_status;
 				 var wp_mrep_s = JSON.parse(data).wp_mrep_s;
