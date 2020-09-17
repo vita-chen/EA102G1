@@ -17,7 +17,6 @@
 
 <!-- ============================ COMPONENT REGISTER   ================================= -->
 	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
-	<button class="btn btn-info w-25"  id="vup815">vup815</button>
       <article class="card-body">
 		<header class="mb-4"><h4 class="card-title w-25" >註冊</h4></header>
 		<form action="<%=request.getContextPath()%>/membre/membre.do?action=regis" method="post" enctype="multipart/form-data">
@@ -93,18 +92,5 @@
 	</div><!-- //container -->
 </footer>
 <!-- ========================= FOOTER END // ========================= -->
-<script>
-let vup815=document.getElementById("vup815");
-let name=document.getElementById("mem_name");
-let phone=document.getElementById("phone");
-let email=document.getElementById("email");
-vup815.addEventListener("click", function(e){
-	name.value="曾新名";
-	phone.value="0973904908";
-	email.value="vup815@gmail.com";
-
-})
-
-</script>
 </body>
 </html>

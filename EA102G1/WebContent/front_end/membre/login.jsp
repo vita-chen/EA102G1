@@ -21,7 +21,6 @@
 <!-- }) -->
 <!-- ============================ COMPONENT LOGIN   ================================= -->
 	<div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
-	<button class="btn btn-info w-25" id="N">N</button>
       <div class="card-body">
       <h4 class="card-title mb-4 w-25">登入</h4>
       <form action="<%= request.getContextPath()%>/membre/membre.do" method="post">
@@ -69,15 +68,6 @@
 	</div><!-- //container -->
 </footer>
 <!-- ========================= FOOTER END // ========================= -->
-<script>
-let n = document.getElementById("N");
-let email = document.getElementById("email");
-let pw = document.getElementById("pw");
-n.addEventListener("click", function(e) {
-	email.value="Nezuko@gmail.com";
-	pw.value="Nezuko";
-})
-</script>
 
 
 </body>

@@ -58,7 +58,6 @@
 <%@ include file="/front_end/prod/header_bottom.jsp"%>
 <%@ include file="/front_end/prod/error_modal.jsp"%>
 <section class="section-content padding-y">
-<button class="btn btn-info" id="switch">Switch</button>
 <div class="container">
 
 <div class="row">
@@ -179,16 +178,7 @@ function init(){
 		picToPass.value=passContent;
 		e.srcElement.closest('.preview').remove();
 	})
-	
-	let mySwitch = document.getElementById('switch');
-	let name = document.getElementById('name');
-	let price = document.getElementById('price');
-	let qyt = document.getElementById('qty');
-	mySwitch.addEventListener("click", function(e) {
-		name.value="Switch";
-		price.value="8800";
-		qty.value="2";
-	})
+
 }
 window.onload = init;
 </script>
